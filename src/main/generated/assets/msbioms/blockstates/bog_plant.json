@@ -1,0 +1,190 @@
+{
+  "variants": {
+    "age=0": [
+      {
+        "model": "msbioms:block/bog_plant_stage_0"
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_0",
+        "y": 90
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_0",
+        "y": 180
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_0",
+        "y": 270
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_0_offset_1"
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_0_offset_1",
+        "y": 90
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_0_offset_1",
+        "y": 180
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_0_offset_1",
+        "y": 270
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_0_offset_2"
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_0_offset_2",
+        "y": 90
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_0_offset_2",
+        "y": 180
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_0_offset_2",
+        "y": 270
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_0_offset_3"
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_0_offset_3",
+        "y": 90
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_0_offset_3",
+        "y": 180
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_0_offset_3",
+        "y": 270
+      }
+    ],
+    "age=1": [
+      {
+        "model": "msbioms:block/bog_plant_stage_1"
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_1",
+        "y": 90
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_1",
+        "y": 180
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_1",
+        "y": 270
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_1_offset_1"
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_1_offset_1",
+        "y": 90
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_1_offset_1",
+        "y": 180
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_1_offset_1",
+        "y": 270
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_1_offset_2"
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_1_offset_2",
+        "y": 90
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_1_offset_2",
+        "y": 180
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_1_offset_2",
+        "y": 270
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_1_offset_3"
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_1_offset_3",
+        "y": 90
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_1_offset_3",
+        "y": 180
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_1_offset_3",
+        "y": 270
+      }
+    ],
+    "age=2": [
+      {
+        "model": "msbioms:block/bog_plant_stage_2"
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_2",
+        "y": 90
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_2",
+        "y": 180
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_2",
+        "y": 270
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_2_offset_1"
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_2_offset_1",
+        "y": 90
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_2_offset_1",
+        "y": 180
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_2_offset_1",
+        "y": 270
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_2_offset_2"
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_2_offset_2",
+        "y": 90
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_2_offset_2",
+        "y": 180
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_2_offset_2",
+        "y": 270
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_2_offset_3"
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_2_offset_3",
+        "y": 90
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_2_offset_3",
+        "y": 180
+      },
+      {
+        "model": "msbioms:block/bog_plant_stage_2_offset_3",
+        "y": 270
+      }
+    ]
+  }
+}

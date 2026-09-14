@@ -1,0 +1,26 @@
+{
+  "values": [
+    "msbioms:calcite_wall",
+    "msbioms:prismarine_bricks_wall",
+    "msbioms:dark_prismarine_wall",
+    "msbioms:smooth_basalt_wall",
+    "msbioms:polished_andesite_wall",
+    "msbioms:polished_diorite_wall",
+    "msbioms:resin_wall",
+    "msbioms:purpur_block_wall",
+    "msbioms:quartz_bricks_wall",
+    "msbioms:smooth_quartz_wall",
+    "msbioms:dripstone_wall",
+    "msbioms:packed_mud_wall",
+    "msbioms:smooth_sandstone_wall",
+    "msbioms:smooth_red_sandstone_wall",
+    "msbioms:smooth_stone_wall",
+    "msbioms:amethyst_wall",
+    "msbioms:netherrack_wall",
+    "msbioms:honeycomb_wall",
+    "msbioms:blue_ice_wall",
+    "msbioms:clay_wall",
+    "msbioms:polished_granite_wall",
+    "msbioms:end_stone_wall"
+  ]
+}

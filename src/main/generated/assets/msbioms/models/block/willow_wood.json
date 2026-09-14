@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "msbioms:block/willow_log",
+    "side": "msbioms:block/willow_log"
+  }
+}

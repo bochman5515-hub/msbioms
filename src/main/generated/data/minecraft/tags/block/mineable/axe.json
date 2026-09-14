@@ -1,0 +1,21 @@
+{
+  "values": [
+    "msbioms:willow_log",
+    "msbioms:willow_wood",
+    "msbioms:stripped_willow_log",
+    "msbioms:stripped_willow_wood",
+    "msbioms:willow_planks",
+    "msbioms:willow_stairs",
+    "msbioms:willow_slab",
+    "msbioms:willow_fence",
+    "msbioms:willow_fence_gate",
+    "msbioms:willow_door",
+    "msbioms:willow_trapdoor",
+    "msbioms:willow_pressure_plate",
+    "msbioms:willow_button",
+    "msbioms:willow_sign",
+    "msbioms:willow_wall_sign",
+    "msbioms:willow_hanging_sign",
+    "msbioms:willow_wall_hanging_sign"
+  ]
+}

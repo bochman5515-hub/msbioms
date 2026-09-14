@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_wall_sign",
+  "textures": {
+    "all": "msbioms:block/willow_sign",
+    "particle": "msbioms:block/willow_planks"
+  }
+}

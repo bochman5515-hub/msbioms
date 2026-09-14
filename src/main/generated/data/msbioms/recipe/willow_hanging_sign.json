@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": "minecraft:iron_chain",
+    "P": "msbioms:stripped_willow_log"
+  },
+  "pattern": [
+    "C C",
+    "PPP",
+    "PPP"
+  ],
+  "result": {
+    "count": 6,
+    "id": "msbioms:willow_hanging_sign"
+  }
+}

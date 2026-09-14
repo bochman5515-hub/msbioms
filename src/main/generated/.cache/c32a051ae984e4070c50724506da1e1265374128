@@ -1,0 +1,8 @@
+// 26.2	-999999999-01-01T00:00:00	MSBioms/Tags for minecraft:item
+5e6b65c99dc916869418444dfef377c1c5d82026 data/minecraft/tags/item/enchantable/durability.json
+23df25f41c72098c1c054a0280f049fedf574ea0 data/minecraft/tags/item/hanging_signs.json
+1edb19ac724db01ff71ed3bd52d9fca3b7417a2c data/minecraft/tags/item/leaves.json
+315194549d9ae666b19a4372ce72d09d73eb7296 data/minecraft/tags/item/logs.json
+515d7d5c6def8de47daff92fb360efe4a2449d7b data/minecraft/tags/item/planks.json
+932d4c0a5784250bdfc4c5a9e0379e948be7bc64 data/minecraft/tags/item/saplings.json
+6e43bf524500f6872920d9f2899ec8ad6db7967e data/minecraft/tags/item/signs.json

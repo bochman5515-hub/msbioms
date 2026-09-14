@@ -1,0 +1,24 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "msbioms:block/bog_1"
+      }
+    },
+    {
+      "apply": {
+        "model": "msbioms:block/bog_2"
+      }
+    },
+    {
+      "apply": {
+        "model": "msbioms:block/bog_3"
+      }
+    },
+    {
+      "apply": {
+        "model": "msbioms:block/bog_4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "msbioms:block/hay_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/hay_block"
+    },
+    "type=top": {
+      "model": "msbioms:block/hay_slab_top_top"
+    }
+  }
+}
