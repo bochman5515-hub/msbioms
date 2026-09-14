@@ -1,4 +1,53 @@
 {
-  "itemGroup.msbioms": "MSBioms",
-  "item.msbioms.dried_earth": "Dried Earth"
+  "creativemodetab.msbioms.msbioms_blocks": "MSB Mod Menu",
+  "creativemodetab.msbioms.msbioms_vanilla_variants": "Vanilla Block Variants",
+
+  "item.msbioms.dried_earth": "Dried Earth",
+
+  "item.msbioms.willow_log": "Willow Log",
+  "item.msbioms.willow_wood": "Willow Wood",
+  "item.msbioms.stripped_willow_log": "Stripped Willow Log",
+  "item.msbioms.stripped_willow_wood": "Stripped Willow Wood",
+
+  "item.msbioms.willow_planks": "Willow Planks",
+  "item.msbioms.willow_stairs": "Willow Stairs",
+  "item.msbioms.willow_slab": "Willow Slab",
+
+  "item.msbioms.willow_leaves": "Willow Leaves",
+  "item.msbioms.willow_sapling": "Willow Sapling",
+
+  "item.msbioms.willow_fence": "Willow Fence",
+  "item.msbioms.willow_fence_gate": "Willow Fence Gate",
+
+  "item.msbioms.willow_door": "Willow Door",
+  "item.msbioms.willow_trapdoor": "Willow Trapdoor",
+  "item.msbioms.willow_pressure_plate": "Willow Pressure Plate",
+  "item.msbioms.willow_button": "Willow Button",
+
+  "item.msbioms.willow_sign": "Willow Sign",
+  "item.msbioms.willow_hanging_sign": "Willow Hanging Sign",
+
+  "item.msbioms.packed_ice_stairs": "Packed Ice Stairs",
+  "item.msbioms.packed_ice_slab": "Packed Ice Slab",
+  "item.msbioms.smooth_basalt_slab": "Smooth Basalt Slab",
+  "item.msbioms.smooth_basalt_stairs": "Smooth Basalt Stairs",
+  "item.msbioms.smooth_basalt_wall": "Smooth Basalt Wall",
+  "item.msbioms.calcite_slab": "Calcite Slab",
+  "item.msbioms.calcite_stairs": "Calcite Stairs",
+  "item.msbioms.calcite_wall": "Calcite Wall",
+  "item.msbioms.prismarine_bricks_wall": "prismarine bricks wall",
+  "item.msbioms.dark_prismarine_wall": "dark prismarine wall",
+
+  "item.msbioms.polished_andesite_wall": "dark andesite wall",
+  "item.msbioms.polished_diorite_wall": "dark diorite wall",
+  "item.msbioms.polished_granite_wall": "dark granite wall",
+
+  "item.msbioms.purpur_block_wall": "Purpur block wall",
+  "item.msbioms.quartz_bricks_wall": "Quartz bricks wall",
+  "item.msbioms.smooth_quartz_wall": "Smooth quartz wall",
+
+  "item.msbioms.high_grass": "Marsh grass",
+  "item.msbioms.dead_branch": "Dead Branch",
+  "item.msbioms.watergrass": "Duckweed",
+  "item.msbioms.bog": "Elodea"
 }

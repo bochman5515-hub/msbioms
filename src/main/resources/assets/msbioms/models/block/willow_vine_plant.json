@@ -1,0 +1,47 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "texture": "msbioms:block/willow_vine",
+    "particle": "msbioms:block/willow_vine"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 8],
+      "to": [16, 16, 8],
+      "rotation": {
+        "angle": 45,
+        "axis": "y",
+        "origin": [8, 8, 8]
+      },
+      "faces": {
+        "north": {
+          "texture": "#texture",
+          "tintindex": 0
+        },
+        "south": {
+          "texture": "#texture",
+          "tintindex": 0
+        }
+      }
+    },
+    {
+      "from": [0, 0, 8],
+      "to": [16, 16, 8],
+      "rotation": {
+        "angle": -45,
+        "axis": "y",
+        "origin": [8, 8, 8]
+      },
+      "faces": {
+        "north": {
+          "texture": "#texture",
+          "tintindex": 0
+        },
+        "south": {
+          "texture": "#texture",
+          "tintindex": 0
+        }
+      }
+    }
+  ]
+}

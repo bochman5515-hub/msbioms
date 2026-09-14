@@ -24,6 +24,6 @@ public class OverworldBiomeBuilderMixin {
             Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> biomes,
             CallbackInfo ci
     ) {
-        ModBiomeParameters.addCustomBiomes(biomes);
+        //ModBiomeParameters.addCustomBiomes(biomes);
     }
 }

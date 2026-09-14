@@ -1,0 +1,60 @@
+{
+  "type": "minecraft:canyon",
+  "config": {
+    "debug_settings": {
+      "air_state": {
+        "Name": "minecraft:air"
+      },
+      "barrier_state": {
+        "Name": "minecraft:glass"
+      },
+      "lava_state": {
+        "Name": "minecraft:lava"
+      },
+      "water_state": {
+        "Name": "minecraft:water"
+      }
+    },
+    "lava_level": {
+      "above_bottom": 8
+    },
+    "probability": 0.06,
+    "replaceable": "#minecraft:overworld_carver_replaceables",
+    "shape": {
+      "distance_factor": {
+        "type": "minecraft:uniform",
+        "max_exclusive": 4.4,
+        "min_inclusive": 2.5
+      },
+      "horizontal_radius_factor": {
+        "type": "minecraft:uniform",
+        "max_exclusive": 1.6,
+        "min_inclusive": 0.75
+      },
+      "thickness": {
+        "type": "minecraft:trapezoid",
+        "max": 7.5,
+        "min": 0.0,
+        "plateau": 3.2
+      },
+      "vertical_radius_center_factor": 0.0,
+      "vertical_radius_default_factor": 0.32,
+      "width_smoothness": 6
+    },
+    "vertical_rotation": {
+      "type": "minecraft:uniform",
+      "max_exclusive": 0.045,
+      "min_inclusive": -0.045
+    },
+    "y": {
+      "type": "minecraft:uniform",
+      "max_inclusive": {
+        "absolute": -65
+      },
+      "min_inclusive": {
+        "absolute": -117
+      }
+    },
+    "yScale": 0.48
+  }
+}

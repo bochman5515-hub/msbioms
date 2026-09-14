@@ -3,7 +3,10 @@
   "package": "msbioms.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "AquiferMixin",
+    "BlockEntityTypeAccessor",
     "ExampleMixin",
+    "NoiseBasedChunkGeneratorMixin",
     "OverworldBiomeBuilderMixin"
   ],
   "injectors": {

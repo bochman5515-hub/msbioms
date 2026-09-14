@@ -1,57 +1,71 @@
 package msbioms.item;
 
 import msbioms.MSBioms;
-import msbioms.block.ModBlocks;
 
-import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
+import msbioms.block.ModBlocks;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+
+import java.util.function.Function;
 
 public class ModItems {
 
-    public static final ResourceKey<Item> DRIED_EARTH_KEY =
-            ResourceKey.create(
-                    BuiltInRegistries.ITEM.key(),
-                    Identifier.fromNamespaceAndPath(
-                            MSBioms.MOD_ID,
-                            "dried_earth"));
-    public static final Item DRIED_EARTH = register(
-            new BlockItem(
-                    ModBlocks.DRIED_EARTH,
-                    new Item.Properties().setId(DRIED_EARTH_KEY)));
-    public static final ResourceKey<CreativeModeTab> MSBIOMS_TAB_KEY =
-            ResourceKey.create(
-                    BuiltInRegistries.CREATIVE_MODE_TAB.key(),
-                    Identifier.fromNamespaceAndPath(
-                            MSBioms.MOD_ID,
-                            "msbioms_tab"));
-    public static final CreativeModeTab MSBIOMS_TAB =
-            FabricCreativeModeTab.builder()
-                    .icon(() -> new ItemStack(DRIED_EARTH))
-                    .title(Component.translatable("itemGroup.msbioms"))
-                    .displayItems((params, output) -> {
-                        output.accept(DRIED_EARTH);
-                    })
-                    .build();
+    public static final Item DEAD_BRANCH = registerItem(
+            "dead_branch",
+            Item::new
+    );
 
-    private static Item register(Item item) {
+    public static final Item HIGH_GRASS = registerItem(
+            "high_grass",
+            HighGrassItem::new
+    );
+    public static final Item WATERGRASS = registerItem(
+            "watergrass",
+            WatergrassItem::new
+    );
+    public static final Item BOG = registerItem(
+            "bog",
+            BogItem::new
+    );
+
+
+    private static Item registerItem(
+            String name,
+            Function<Item.Properties, Item> function
+    ) {
+        ResourceKey<Item> itemKey = ResourceKey.create(
+                BuiltInRegistries.ITEM.key(),
+                Identifier.fromNamespaceAndPath(
+                        MSBioms.MOD_ID,
+                        name
+                )
+        );
+
         return Registry.register(
                 BuiltInRegistries.ITEM,
-                DRIED_EARTH_KEY,
-                item);}
+                itemKey,
+                function.apply(
+                        new Item.Properties()
+                                .setId(itemKey)
+                )
+        );
+
+    }
+
+    public static ResourceKey<Item> getRK(Item item) {
+        return BuiltInRegistries.ITEM
+                .getResourceKey(item)
+                .orElseThrow();
+    }
+
     public static void registerModItems() {
         MSBioms.LOGGER.info(
-                "Registering items for " + MSBioms.MOD_ID);
+                "Registering items for " + MSBioms.MOD_ID
+        );
+    }
 
-        Registry.register(
-                BuiltInRegistries.CREATIVE_MODE_TAB,
-                MSBIOMS_TAB_KEY,
-                MSBIOMS_TAB);}
 }

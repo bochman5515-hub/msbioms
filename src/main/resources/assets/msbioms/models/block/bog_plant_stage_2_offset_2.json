@@ -1,0 +1,24 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "cross": "msbioms:block/bog_plant_stage_2",
+    "particle": "msbioms:block/bog_plant_stage_2"
+  },
+  "elements": [
+    {
+      "from": [1.5, 0.3, -0.5],
+      "to": [18.5, 0.3, 16.5],
+      "shade": false,
+      "faces": {
+        "up": {
+          "uv": [0, 0, 16, 16],
+          "texture": "#cross"
+        },
+        "down": {
+          "uv": [0, 0, 16, 16],
+          "texture": "#cross"
+        }
+      }
+    }
+  ]
+}

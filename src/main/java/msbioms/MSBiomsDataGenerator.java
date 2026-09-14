@@ -1,8 +1,6 @@
 package msbioms;
 
-import msbioms.datagen.ModBlockTagsProvider;
-import msbioms.datagen.ModModelProvider;
-import msbioms.datagen.ModWorldgenProvider;
+import msbioms.datagen.*;
 import msbioms.worldgen.ModBiomes;
 import msbioms.worldgen.ModConfiguredFeatures;
 import msbioms.worldgen.ModPlacedFeatures;
@@ -24,6 +22,9 @@ public class MSBiomsDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModBlockTagsProvider::new);
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModWorldgenProvider::new);
+		pack.addProvider(ModItemTagsProvider::new);
+		pack.addProvider(ModLootTableProvider::new);
+		pack.addProvider(ModRecipeProvider::new);
 	}
 
 	@Override

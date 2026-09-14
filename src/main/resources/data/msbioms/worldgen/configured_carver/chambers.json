@@ -1,0 +1,53 @@
+{
+  "type": "msbioms:chambers",
+  "config": {
+    "debug_settings": {
+      "air_state": {
+        "Name": "minecraft:air"
+      },
+      "barrier_state": {
+        "Name": "minecraft:glass"
+      },
+      "lava_state": {
+        "Name": "minecraft:lava"
+      },
+      "water_state": {
+        "Name": "minecraft:water"
+      }
+    },
+    "floor_level": {
+      "type": "minecraft:uniform",
+      "max_exclusive": -0.55,
+      "min_inclusive": -0.85
+    },
+    "horizontal_radius_multiplier": {
+      "type": "minecraft:uniform",
+      "max_exclusive": 3.6,
+      "min_inclusive": 2.4
+    },
+    "lava_level": {
+      "above_bottom": 8
+    },
+    "probability": 0.025,
+    "replaceable": "#minecraft:overworld_carver_replaceables",
+    "vertical_radius_multiplier": {
+      "type": "minecraft:uniform",
+      "max_exclusive": 0.46,
+      "min_inclusive": 0.30
+    },
+    "y": {
+      "type": "minecraft:uniform",
+      "max_inclusive": {
+        "absolute": 300
+      },
+      "min_inclusive": {
+        "absolute": -120
+      }
+    },
+    "yScale": {
+      "type": "minecraft:uniform",
+      "max_exclusive": 0.40,
+      "min_inclusive": 0.22
+    }
+  }
+}

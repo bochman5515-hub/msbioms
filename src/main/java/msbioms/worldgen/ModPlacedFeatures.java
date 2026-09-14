@@ -2,19 +2,19 @@ package msbioms.worldgen;
 
 import msbioms.MSBioms;
 
+
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
-
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.CountPlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+
+
 
 public class ModPlacedFeatures {
 
@@ -25,6 +25,20 @@ public class ModPlacedFeatures {
                             MSBioms.MOD_ID,
                             "tall_spruce"
                     )
+            );
+    public static final ResourceKey<PlacedFeature> WILLOW_TREE_PLACED_KEY =
+            ResourceKey.create(
+                    Registries.PLACED_FEATURE,
+                    Identifier.fromNamespaceAndPath(
+                            MSBioms.MOD_ID,
+                            "willow_tree"
+                    )
+            );
+
+    public static final ResourceKey<PlacedFeature> CHAMBER_PLACED_KEY =
+            ResourceKey.create(
+                    Registries.PLACED_FEATURE,
+                    MSBioms.id("chamber")
             );
 
     public static void bootstrap(
@@ -44,6 +58,23 @@ public class ModPlacedFeatures {
                         VegetationPlacements.treePlacement(
                                 CountPlacement.of(1),
                                 Blocks.SPRUCE_SAPLING
+                        )
+                )
+        );
+        context.register(
+                WILLOW_TREE_PLACED_KEY,
+
+                new PlacedFeature(
+                        configuredFeatures.getOrThrow(
+                                ModConfiguredFeatures.WILLOW_TREE_NBT_KEY
+                        ),
+
+                        VegetationPlacements.treePlacement(
+                                CountPlacement.of(1),
+
+                                // Пока используем ванильный блок
+                                // только как технический аргумент.
+                                Blocks.OAK_SAPLING
                         )
                 )
         );

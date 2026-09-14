@@ -1,4 +1,53 @@
 {
-  "itemGroup.msbioms": "MSBioms",
-  "item.msbioms.dried_earth": "Сухая земля"
+  "creativemodetab.msbioms.msbioms_blocks": "Меню мода MSB",
+  "creativemodetab.msbioms.msbioms_vanilla_variants": "Ванильные варианты блоков",
+
+  "item.msbioms.dried_earth": "Сухая земля",
+
+  "item.msbioms.willow_log": "Ивовое бревно",
+  "item.msbioms.willow_wood": "Ивовая древесина",
+  "item.msbioms.stripped_willow_log": "Очищенное ивовое бревно",
+  "item.msbioms.stripped_willow_wood": "Очищенная ивовая древесина",
+
+  "item.msbioms.willow_planks": "Ивовые доски",
+  "item.msbioms.willow_stairs": "Ивовые ступеньки",
+  "item.msbioms.willow_slab": "Ивовая плита",
+
+  "item.msbioms.willow_leaves": "Ивовая листва",
+  "item.msbioms.willow_sapling": "Саженец ивы",
+
+  "item.msbioms.willow_fence": "Ивовый забор",
+  "item.msbioms.willow_fence_gate": "Ивовая калитка",
+
+  "item.msbioms.willow_door": "Ивовая дверь",
+  "item.msbioms.willow_trapdoor": "Ивовый люк",
+  "item.msbioms.willow_pressure_plate": "Ивовая нажимная плита",
+  "item.msbioms.willow_button": "Ивовая кнопка",
+
+  "item.msbioms.willow_sign": "Ивовая табличка",
+  "item.msbioms.willow_hanging_sign": "Ивовая подвесная табличка",
+
+  "item.msbioms.packed_ice_stairs": "Ступеньки из плотного льда",
+  "item.msbioms.packed_ice_slab": "Плита из плотного льда",
+  "item.msbioms.smooth_basalt_slab": "Плита из гладкого базальта",
+  "item.msbioms.smooth_basalt_stairs": "Ступеньки из гладкого базальта",
+  "item.msbioms.smooth_basalt_wall": "Ограда из гладкого базальта",
+  "item.msbioms.calcite_slab": "Плита из кальцита",
+  "item.msbioms.calcite_stairs": "Ступеньки из кальцита",
+  "item.msbioms.calcite_wall": "Ограда из кальцита",
+  "item.msbioms.prismarine_bricks_wall": "Ограда из призмаринового кирпича",
+  "item.msbioms.dark_prismarine_wall": "Ограда из тёмного призмарина",
+
+  "item.msbioms.polished_andesite_wall": "Ограда из полированного андезита",
+  "item.msbioms.polished_diorite_wall": "Ограда из полированного диорита",
+  "item.msbioms.polished_granite_wall": "Ограда из полированного гранита",
+
+  "item.msbioms.purpur_block_wall": "Ограда из пурпура",
+  "item.msbioms.quartz_bricks_wall": "Ограда из кварцевых кирпичей",
+  "item.msbioms.smooth_quartz_wall": "Гладкая кварцевая ограда",
+
+  "item.msbioms.high_grass": "Болотная трава",
+  "item.msbioms.dead_branch": "Сухая веточка",
+  "item.msbioms.watergrass": "Ряска",
+  "item.msbioms.bog": "Пучок элодеи"
 }
