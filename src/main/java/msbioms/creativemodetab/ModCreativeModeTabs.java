@@ -29,6 +29,7 @@ public class ModCreativeModeTabs {
                             .displayItems((parameters, output) -> {
 
                                 output.accept(ModBlocks.DRIED_EARTH);
+                                output.accept(ModBlocks.SALT_BLOCk);
                                 output.accept(ModBlocks.MOSS);
                                 output.accept(ModBlocks.MOSS_CARPET);
 

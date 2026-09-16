@@ -282,6 +282,16 @@ public class ModBlocks {
             "dried_earth",
             properties -> new Block(
                     properties.strength(0.5f)));
+
+    public static final Block SALT_BLOCk = registerBlock(
+            "salt_block",
+            properties -> new Block(
+                    properties.strength(0.5f)
+                            .sound(SoundType.GRAVEL)
+                            .friction(28f)
+
+            ));
+
     public static final Block PACKED_ICE_STAIRS = registerBlock(
             "packed_ice_stairs",
             properties -> new StairBlock(

@@ -443,6 +443,7 @@ public class ModModelProvider extends FabricModelProvider {
         // =========================
 
         generator.createTrivialCube(ModBlocks.DRIED_EARTH);
+        generator.createTrivialCube(ModBlocks.SALT_BLOCk);
         generateBog(generator);
 
 

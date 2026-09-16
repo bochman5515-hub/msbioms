@@ -17,11 +17,7 @@ public class ModWorldGeneration {
                     Registries.CONFIGURED_CARVER,
                     MSBioms.id("anomalous_layer")
             );
-    public static final ResourceKey<ConfiguredWorldCarver<?>> CHAMBERS_CARVER =
-            ResourceKey.create(
-                    Registries.CONFIGURED_CARVER,
-                    MSBioms.id("chambers")
-            );
+
     public static final ResourceKey<ConfiguredWorldCarver<?>> CHAMBERS_CARVER_KEY =
             ResourceKey.create(
                     Registries.CONFIGURED_CARVER,
@@ -47,10 +43,7 @@ public class ModWorldGeneration {
                 ANOMALOUS_LAYER_CARVER
         );
 
-        BiomeModifications.addCarver(
-                BiomeSelectors.foundInOverworld(),
-                CHAMBERS_CARVER
-        );
+
         BiomeModifications.addCarver(
                 BiomeSelectors.foundInOverworld(),
                 CHAMBERS_CARVER_KEY

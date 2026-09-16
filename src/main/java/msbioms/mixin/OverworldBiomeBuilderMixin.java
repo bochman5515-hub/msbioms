@@ -24,6 +24,17 @@ public class OverworldBiomeBuilderMixin {
             Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> biomes,
             CallbackInfo ci
     ) {
-        //ModBiomeParameters.addCustomBiomes(biomes);
+
+        /*
+         * Добавляем willow_forest непосредственно
+         * в vanilla Overworld multi-noise biome map.
+         *
+         * Это важно для MSBioms, потому что наш custom
+         * world preset использует:
+         *
+         * minecraft:multi_noise
+         * preset: minecraft:overworld
+         */
+        ModBiomeParameters.addWillowForest(biomes);
     }
 }

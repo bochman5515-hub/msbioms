@@ -36,6 +36,11 @@ public class ModConfiguredFeatures {
             ResourceKey.create(
                     Registries.CONFIGURED_FEATURE,
                     MSBioms.id("willow_tree_nbt"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BIG_WILLOW_TREE_NBT_KEY =
+            ResourceKey.create(
+                    Registries.CONFIGURED_FEATURE,
+                    MSBioms.id("big_willow_tree_nbt")
+            );
 
 
 
@@ -107,11 +112,54 @@ public class ModConfiguredFeatures {
                         .randomRotation(false)
                         .build();
 
+
         context.register(
                 WILLOW_TREE_NBT_KEY,
                 new ConfiguredFeature<>(
                         TYGFeatures.TREE_FROM_NBT_V2.get(),
                         willowTreeConfig
+                )
+        );
+
+        TreeFromStructureNBTConfigV2 bigWillowTreeConfig =
+                new TreeFromStructureNBTConfigV2.Builder()
+                        .baseLocation(
+                                MSBioms.id("features/trees/willow/big_willow_base")
+                        )
+                        .canopyLocation(
+                                MSBioms.id("features/trees/willow/big_willow_canopy")
+                        )
+                        .height(
+                                UniformInt.of(1, 2)
+                        )
+                        .logProvider(
+                                BlockStateProvider.simple(ModBlocks.WILLOW_WOOD)
+                        )
+                        .leavesProvider(
+                                List.of(
+                                        BlockStateProvider.simple(ModBlocks.WILLOW_LEAVES)
+                                )
+                        )
+                        .logTarget(
+                                Set.of(Blocks.OAK_LOG)
+                        )
+                        .leavesTarget(
+                                List.of(Blocks.OAK_LEAVES)
+                        )
+                        .growableOn(
+                                BlockPredicate.matchesTag(
+                                        BlockTags.SUBSTRATE_OVERWORLD
+                                )
+                        )
+                        .maxLogDepth(5)
+                        .randomRotation(false)
+                        .build();
+
+        context.register(
+                BIG_WILLOW_TREE_NBT_KEY,
+                new ConfiguredFeature<>(
+                        TYGFeatures.TREE_FROM_NBT_V2.get(),
+                        bigWillowTreeConfig
                 )
         );
 
@@ -121,8 +169,15 @@ public class ModConfiguredFeatures {
     public static final TreeGrower WILLOW =
             new TreeGrower(
                     "willow",
+                    0.20F,
+
                     Optional.empty(),
+                    Optional.empty(),
+
                     Optional.of(WILLOW_TREE_NBT_KEY),
+                    Optional.of(BIG_WILLOW_TREE_NBT_KEY),
+
+                    Optional.empty(),
                     Optional.empty()
             );
 }

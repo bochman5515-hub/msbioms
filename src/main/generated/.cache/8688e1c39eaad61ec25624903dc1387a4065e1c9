@@ -1,8 +1,8 @@
 // 26.2	-999999999-01-01T00:00:00	MSBioms/MSBioms World Generation
 ad85bc457016315956f3a2fad555ec077a50a3c9 data/msbioms/worldgen/biome/salt_stony_shore.json
-278895fa69b57721db6ec00216d412d8648816c3 data/msbioms/worldgen/configured_feature/chamber.json
+cb5af71b668b6d5547a03554ce26d0e5868ac743 data/msbioms/worldgen/biome/willow_forest.json
+36832bd42ca92bf27ca31de37903296f1b7952da data/msbioms/worldgen/configured_feature/big_willow_tree_nbt.json
 6cdf13ac2c5ed9f6c54b0e3a2fc7b6730361676c data/msbioms/worldgen/configured_feature/tall_spruce.json
 e3df067be9ed91188b36ab051edbae5a95592fad data/msbioms/worldgen/configured_feature/willow_tree_nbt.json
-cc37bd23e8b38ab0db1a3fda68b7a9e06f845c80 data/msbioms/worldgen/placed_feature/chamber.json
 53e6ed29dc92accc9c5e39838a29b0769f852e1c data/msbioms/worldgen/placed_feature/tall_spruce.json
 ccb23cc430c22b7f54ba729c9655ef57925a0b37 data/msbioms/worldgen/placed_feature/willow_tree.json

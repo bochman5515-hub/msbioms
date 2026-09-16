@@ -28,9 +28,6 @@ public abstract class NoiseBasedChunkGeneratorMixin {
                 .map(Object::toString)
                 .orElse("<NO KEY>");
 
-        System.out.println(
-                "[MSBioms DEBUG] NoiseBasedChunkGenerator settings = " + key
-        );
     }
 
     /**

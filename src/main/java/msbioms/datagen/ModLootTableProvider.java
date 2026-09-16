@@ -38,6 +38,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 
         // Dried Earth
         dropSelf(ModBlocks.DRIED_EARTH);
+        dropSelf(ModBlocks.SALT_BLOCk);
         dropSelf(ModBlocks.CALCITE_SLAB);
         dropSelf(ModBlocks.CALCITE_STAIRS);
         dropSelf(ModBlocks.CALCITE_WALL);

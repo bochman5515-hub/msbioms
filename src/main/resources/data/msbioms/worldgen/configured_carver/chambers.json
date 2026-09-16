@@ -15,39 +15,35 @@
         "Name": "minecraft:water"
       }
     },
+
     "floor_level": {
       "type": "minecraft:uniform",
       "max_exclusive": -0.55,
       "min_inclusive": -0.85
     },
-    "horizontal_radius_multiplier": {
-      "type": "minecraft:uniform",
-      "max_exclusive": 3.6,
-      "min_inclusive": 2.4
-    },
+
+    "horizontal_radius_multiplier": 1.0,
+
     "lava_level": {
       "above_bottom": 8
     },
-    "probability": 0.025,
+
+    "probability": 0.005,
+
     "replaceable": "#minecraft:overworld_carver_replaceables",
-    "vertical_radius_multiplier": {
-      "type": "minecraft:uniform",
-      "max_exclusive": 0.46,
-      "min_inclusive": 0.30
-    },
+
+    "vertical_radius_multiplier": 1.0,
+
     "y": {
       "type": "minecraft:uniform",
       "max_inclusive": {
-        "absolute": 300
+        "absolute": -35
       },
       "min_inclusive": {
-        "absolute": -120
+        "absolute": -115
       }
     },
-    "yScale": {
-      "type": "minecraft:uniform",
-      "max_exclusive": 0.40,
-      "min_inclusive": 0.22
-    }
+
+    "yScale": 1.0
   }
 }

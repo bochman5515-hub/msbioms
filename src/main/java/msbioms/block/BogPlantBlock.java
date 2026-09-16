@@ -306,7 +306,6 @@ public class BogPlantBlock extends LilyPadBlock
     }
     @Override
     protected void entityInside(
-
             BlockState state,
             Level level,
             BlockPos pos,
@@ -314,81 +313,63 @@ public class BogPlantBlock extends LilyPadBlock
             InsideBlockEffectApplier effectApplier,
             boolean isPrecise
     ) {
-
-        if (entity instanceof Boat) {
-            System.out.println(
-                    "BOG BOAT: "
-                            + pos
-                            + " AGE="
-                            + state.getValue(AGE)
-            );
-
-            Vec3 movement = entity.getDeltaMovement();
-
-            entity.setDeltaMovement(
-                    movement.x * 0.60,
-                    movement.y,
-                    movement.z * 0.60
-            );
-
-            return;
-        }
-
-        if (level.isClientSide()) {
-            return;
-        }
-
-        Vec3 movement = entity.getDeltaMovement();
-
-        // =========================
-        // ЛОДКА
-        // =========================
-
         int age = state.getValue(AGE);
 
-        // =========================
-        // ПРОВАЛИВАНИЕ ИГРОКА
-        // =========================
-        if (entity instanceof Player
-                && age == 2
-                && state.getValue(SINKING) == 0) {
+        // Лодка
+        if (entity instanceof Boat) {
+            Vec3 movement = entity.getDeltaMovement();
 
-            System.out.println("BOG START SINKING");
+            double slowdown = switch (age) {
+                case 0 -> 0.95;
+                case 1 -> 0.90;
+                case 2 -> 0.85;
+                default -> 1.0;
+            };
 
-            level.setBlock(
-                    pos,
-                    state.setValue(SINKING, 1),
-                    3
-            );
-
-            level.scheduleTick(
-                    pos,
-                    this,
-                    20
+            entity.setDeltaMovement(
+                    movement.x * slowdown,
+                    movement.y,
+                    movement.z * slowdown
             );
 
             return;
         }
 
+        // Игрок
+        if (entity instanceof Player) {
+            double slowdown = switch (age) {
+                case 0 -> 0.99;
+                case 1 -> 0.95;
+                case 2 -> 0.88;
+                default -> 1.0;
+            };
+
+            entity.makeStuckInBlock(
+                    state,
+                    new Vec3(slowdown, 1.0, slowdown)
+            );
+
+            // Только AGE 2 запускает погружение
+            if (age == 2 && state.getValue(SINKING) == 0) {
+                if (!level.isClientSide()) {
+                    System.out.println("BOG START SINKING");
+
+                    level.setBlock(
+                            pos,
+                            state.setValue(SINKING, 1),
+                            3
+                    );
+
+                    level.scheduleTick(pos, this, 20);
+                }
+            }
+
+            return;
+        }
+    }
         // =========================
         // ЗАМЕДЛЕНИЕ
         // =========================
-        double slowdown;
-
-        switch (age) {
-            case 0 -> slowdown = 0.95;
-            case 1 -> slowdown = 0.90;
-            case 2 -> slowdown = 0.85;
-            default -> slowdown = 1.0;
-        }
-
-        entity.setDeltaMovement(
-                movement.x * slowdown,
-                movement.y,
-                movement.z * slowdown
-        );
-    }
-
     @Override
     protected VoxelShape getCollisionShape(
             BlockState state,
