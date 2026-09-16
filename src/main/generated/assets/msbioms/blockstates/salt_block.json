@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "msbioms:block/salt_block"
+    }
+  }
+}
