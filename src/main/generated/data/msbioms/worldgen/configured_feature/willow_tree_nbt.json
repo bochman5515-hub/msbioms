@@ -46,7 +46,6 @@
     "log_target": [
       "minecraft:oak_log"
     ],
-    "random_rotation": false,
     "replace_from_nbt": {}
   }
 }

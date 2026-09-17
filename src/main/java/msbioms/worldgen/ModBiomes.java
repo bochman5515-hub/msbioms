@@ -251,6 +251,19 @@ public class ModBiomes {
                 ModPlacedFeatures.WILLOW_TREE_PLACED_KEY
         );
 
+        willowGenerationBuilder.addFeature(
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                ModPlacedFeatures.WILLOW_GROUND_VEGETATION_PLACED_KEY
+        );
+        willowGenerationBuilder.addFeature(
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                ModPlacedFeatures.WILLOW_SHORE_VEGETATION_PLACED_KEY
+        );
+
+        willowGenerationBuilder.addFeature(
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                ModPlacedFeatures.WILLOW_VINES_PLACED_KEY
+        );
 
         BiomeGenerationSettings willowGeneration =
                 willowGenerationBuilder.build();

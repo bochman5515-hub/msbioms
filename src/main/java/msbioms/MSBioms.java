@@ -5,6 +5,7 @@ import msbioms.block.ModWoodTypes;
 import msbioms.creativemodetab.ModCreativeModeTabs;
 import msbioms.item.ModItems;
 import msbioms.worldgen.ModBiomeGeneration;
+import msbioms.worldgen.ModFeatures;
 import msbioms.worldgen.carver.ChambersCarver;
 import net.fabricmc.api.ModInitializer;
 
@@ -41,6 +42,7 @@ public class MSBioms implements ModInitializer {
 		ModBiomeGeneration.generateModBiomeGeneration();
 		ModBiomePlacement.register();
 		ModCreativeModeTabs.registerModCreativeModeTabs();
+		ModFeatures.registerModFeatures();
 
 		LOGGER.info("MSBioms initialized");
 		LOGGER.info("Hello Fabric world!");

@@ -87,18 +87,18 @@ public class TallPlantPartBlock extends Block implements SimpleWaterloggedBlock 
             LevelReader level,
             BlockPos pos
     ) {
-        // Верхняя часть должна находиться непосредственно над нижней.
         if (!lowerPart) {
             return level.getBlockState(pos.below()).is(otherPart);
         }
 
-        // Нижняя часть ВСЕГДА требует опору снизу.
         BlockState below = level.getBlockState(pos.below());
 
         return below.is(BlockTags.DIRT)
                 || below.is(Blocks.GRASS_BLOCK)
                 || below.is(Blocks.CLAY)
-                || below.is(Blocks.MUD);
+                || below.is(Blocks.MUD)
+                || below.is(Blocks.SAND)
+                || below.is(ModBlocks.MOSS);
     }
     /**
      * Если вода появляется/исчезает рядом с блоком,
