@@ -145,6 +145,55 @@ public class ModCreativeModeTabs {
                                 output.accept(ModBlocks.HAY_SLAB);
                                 output.accept(ModBlocks.BASALT_SLAB);
 
+                                output.accept(ModItems.MICRO_STONE);
+
+                                output.accept(ModItems.MICRO_OAK_PLANKS);
+                                output.accept(ModItems.MICRO_BIRCH_PLANKS);
+                                output.accept(ModItems.MICRO_DARK_OAK_PLANKS);
+                                output.accept(ModItems.MICRO_ACACIA_PLANKS);
+                                output.accept(ModItems.MICRO_JUNGLE_PLANKS);
+                                output.accept(ModItems.MICRO_MANGROVE_PLANKS);
+                                output.accept(ModItems.MICRO_CHERRY_PLANKS);
+                                output.accept(ModItems.MICRO_PALE_OAK_PLANKS);
+                                output.accept(ModItems.MICRO_BAMBOO_MOSAIC);
+                                output.accept(ModItems.MICRO_WARPED_PLANKS);
+                                output.accept(ModItems.MICRO_CRIMSON_PLANKS);
+                                output.accept(ModItems.MICRO_WILLOW_PLANKS);
+                                output.accept(ModItems.MICRO_SPRUCE_PLANKS);
+
+                                output.accept(ModItems.MICRO_COBBLESTONE);
+                                output.accept(ModItems.MICRO_MOSSY_COBBLESTONE);
+                                output.accept(ModItems.MICRO_ANDESITE);
+                                output.accept(ModItems.MICRO_GRANITE);
+                                output.accept(ModItems.MICRO_DIORITE);
+                                output.accept(ModItems.MICRO_COBBLED_DEEPSLATE);
+                                output.accept(ModItems.MICRO_TUFF);
+                                output.accept(ModItems.MICRO_TUFF_BRICKS);
+                                output.accept(ModItems.MICRO_DEEPSLATE_BRICKS);
+                                output.accept(ModItems.MICRO_STONE_BRICKS);
+                                output.accept(ModItems.MICRO_BRICKS);
+                                output.accept(ModItems.MICRO_DARK_PRISMARINE);
+                                output.accept(ModItems.MICRO_PRISMARINE);
+                                output.accept(ModItems.MICRO_SMOOTH_SANDSTONE);
+                                output.accept(ModItems.MICRO_SMOOTH_RED_SANDSTONE);
+                                output.accept(ModItems.MICRO_SMOOTH_QUARTZ);
+                                output.accept(ModItems.MICRO_BLACKSTONE);
+                                output.accept(ModItems.MICRO_POLISHED_BLACKSTONE_BRICKS);
+                                output.accept(ModItems.MICRO_MAGMA);
+                                output.accept(ModItems.MICRO_QUARTZ_BRICKS);
+                                output.accept(ModItems.MICRO_NETHER_BRICKS);
+                                output.accept(ModItems.MICRO_RED_NETHER_BRICKS);
+                                output.accept(ModItems.MICRO_DRIPSTONE_BLOCK);
+                                output.accept(ModItems.MICRO_SMOOTH_BASALT);
+                                output.accept(ModItems.MICRO_AMETHYST_BLOCK);
+                                output.accept(ModItems.MICRO_RESIN_BLOCK);
+                                output.accept(ModItems.MICRO_RESIN_BRICKS);
+                                output.accept(ModItems.MICRO_SULFUR);
+                                output.accept(ModItems.MICRO_SULFUR_BRICKS);
+                                output.accept(ModItems.MICRO_CINNABAR);
+                                output.accept(ModItems.MICRO_CINNABAR_BRICKS);
+
+
                             })
                             .build()
             );

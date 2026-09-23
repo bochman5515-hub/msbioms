@@ -20,6 +20,8 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import org.jspecify.annotations.NonNull;
 
@@ -67,11 +69,17 @@ public class ModConfiguredFeatures {
                     Registries.CONFIGURED_FEATURE,
                     MSBioms.id("willow_ground_vegetation")
             );
-    public static final ResourceKey<ConfiguredFeature<?, ?>> WILLOW_SHORE_VEGETATION_KEY =
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WILLOW_HIGH_GRASS_KEY =
             ResourceKey.create(
                     Registries.CONFIGURED_FEATURE,
-                    MSBioms.id("willow_shore_vegetation")
+                    MSBioms.id("willow_high_grass")
             );
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BOG_PLANT_KEY =
+            ResourceKey.create(
+                    Registries.CONFIGURED_FEATURE,
+                    MSBioms.id("bog_plant")
+            );
+
 
 
 
@@ -216,12 +224,21 @@ public class ModConfiguredFeatures {
                 )
         );
         context.register(
-                WILLOW_SHORE_VEGETATION_KEY,
+                WILLOW_HIGH_GRASS_KEY,
                 new ConfiguredFeature<>(
-                        ModFeatures.WILLOW_SHORE_VEGETATION,
+                        ModFeatures.WILLOW_HIGH_GRASS,
                         NoneFeatureConfiguration.INSTANCE
                 )
         );
+
+        context.register(
+                BOG_PLANT_KEY,
+                new ConfiguredFeature<>(
+                        ModFeatures.BOG_PLANT,
+                        NoneFeatureConfiguration.INSTANCE
+                )
+        );
+
         PlacedFeature smallWillowPlaced =
                 new PlacedFeature(
                         context.lookup(Registries.CONFIGURED_FEATURE)

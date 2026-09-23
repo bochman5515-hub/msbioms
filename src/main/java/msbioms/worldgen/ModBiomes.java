@@ -8,6 +8,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstrapContext;
 
+import net.minecraft.data.worldgen.placement.AquaticPlacements;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 
@@ -245,25 +247,35 @@ public class ModBiomes {
          * "В этом биоме разрешено генерировать
          *  ивовое дерево."
          */
-
+        willowGenerationBuilder.addFeature(
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                AquaticPlacements.SEAGRASS_SWAMP
+        );
+        willowGenerationBuilder.addFeature(
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                ModPlacedFeatures.WILLOW_HIGH_GRASS_PLACED_KEY
+        );
         willowGenerationBuilder.addFeature(
                 GenerationStep.Decoration.VEGETAL_DECORATION,
                 ModPlacedFeatures.WILLOW_TREE_PLACED_KEY
         );
-
         willowGenerationBuilder.addFeature(
                 GenerationStep.Decoration.VEGETAL_DECORATION,
-                ModPlacedFeatures.WILLOW_GROUND_VEGETATION_PLACED_KEY
-        );
-        willowGenerationBuilder.addFeature(
-                GenerationStep.Decoration.VEGETAL_DECORATION,
-                ModPlacedFeatures.WILLOW_SHORE_VEGETATION_PLACED_KEY
+                ModPlacedFeatures.BOG_PLANT_PLACED_KEY
         );
 
         willowGenerationBuilder.addFeature(
                 GenerationStep.Decoration.VEGETAL_DECORATION,
                 ModPlacedFeatures.WILLOW_VINES_PLACED_KEY
         );
+
+
+
+        willowGenerationBuilder.addFeature(
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                ModPlacedFeatures.WILLOW_GROUND_VEGETATION_PLACED_KEY
+        );
+
 
         BiomeGenerationSettings willowGeneration =
                 willowGenerationBuilder.build();
@@ -360,6 +372,8 @@ public class ModBiomes {
                         )
 
                         .build();
+
+
 
 
 

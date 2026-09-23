@@ -52,15 +52,17 @@ public class TallPlantPartBlock extends Block implements SimpleWaterloggedBlock 
         builder.add(WATERLOGGED);
     }
 
-    /**
-     * Как у водных растений/кораллов:
-     * если место содержит воду, блок становится waterlogged,
-     * а вода сохраняется как часть состояния блока.
-     */
+    // =========================================================
+    // WATERLOGGING
+    // =========================================================
+
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
-        FluidState fluidState = context.getLevel()
-                .getFluidState(context.getClickedPos());
+    public BlockState getStateForPlacement(
+            BlockPlaceContext context
+    ) {
+        FluidState fluidState =
+                context.getLevel()
+                        .getFluidState(context.getClickedPos());
 
         return defaultBlockState()
                 .setValue(
@@ -71,39 +73,107 @@ public class TallPlantPartBlock extends Block implements SimpleWaterloggedBlock 
     }
 
     @Override
-    protected FluidState getFluidState(BlockState state) {
+    protected FluidState getFluidState(
+            BlockState state
+    ) {
         return state.getValue(WATERLOGGED)
                 ? Fluids.WATER.getSource(false)
                 : Fluids.EMPTY.defaultFluidState();
     }
 
-    /**
-     * Нижняя часть может стоять на земле или находиться в воде.
-     * Верхняя часть обязана находиться над нижней.
-     */
+    // =========================================================
+    // SURVIVAL
+    // =========================================================
+
     @Override
     protected boolean canSurvive(
             BlockState state,
             LevelReader level,
             BlockPos pos
     ) {
+
+        /*
+         * =====================================================
+         * ВЕРХНЯЯ ЧАСТЬ
+         * =====================================================
+         *
+         * HIGH_GRASS
+         *
+         * Должна иметь HIGH_GRASS_PLANT снизу.
+         */
         if (!lowerPart) {
-            return level.getBlockState(pos.below()).is(otherPart);
+            return level.getBlockState(
+                    pos.below()
+            ).is(otherPart);
         }
 
-        BlockState below = level.getBlockState(pos.below());
+        /*
+         * =====================================================
+         * НИЖНЯЯ ЧАСТЬ
+         * =====================================================
+         *
+         * HIGH_GRASS_PLANT
+         */
 
-        return below.is(BlockTags.DIRT)
-                || below.is(Blocks.GRASS_BLOCK)
-                || below.is(Blocks.CLAY)
-                || below.is(Blocks.MUD)
-                || below.is(Blocks.SAND)
-                || below.is(ModBlocks.MOSS);
+        BlockPos groundPos =
+                pos.below();
+
+        BlockState groundState =
+                level.getBlockState(groundPos);
+
+        /*
+         * -----------------------------------------------------
+         * Растение на суше.
+         * -----------------------------------------------------
+         */
+        if (!state.getValue(WATERLOGGED)) {
+            return isValidGround(groundState);
+        }
+
+        /*
+         * -----------------------------------------------------
+         * Растение в воде.
+         *
+         * HIGH_GRASS_PLANT [WATERLOGGED]
+         * SAND / MOSS / DIRT
+         * -----------------------------------------------------
+         */
+        return isFullWater(level, pos)
+                && isValidGround(groundState);
     }
-    /**
-     * Если вода появляется/исчезает рядом с блоком,
-     * Minecraft обновляет waterlogged-состояние.
-     */
+
+    // =========================================================
+    // GROUND
+    // =========================================================
+
+    private static boolean isValidGround(
+            BlockState state
+    ) {
+        return state.is(BlockTags.DIRT)
+                || state.is(Blocks.GRASS_BLOCK)
+                || state.is(Blocks.CLAY)
+                || state.is(Blocks.MUD)
+                || state.is(Blocks.SAND)
+                || state.is(Blocks.GRAVEL)
+                || state.is(Blocks.MOSS_BLOCK)
+                || state.is(ModBlocks.MOSS);
+    }
+
+    private static boolean isFullWater(
+            LevelReader level,
+            BlockPos pos
+    ) {
+        FluidState fluidState =
+                level.getFluidState(pos);
+
+        return fluidState.is(FluidTags.WATER)
+                && fluidState.isSource();
+    }
+
+    // =========================================================
+    // NEIGHBOUR UPDATES
+    // =========================================================
+
     @Override
     protected BlockState updateShape(
             BlockState state,
@@ -123,10 +193,6 @@ public class TallPlantPartBlock extends Block implements SimpleWaterloggedBlock 
             );
         }
 
-        if (!this.canSurvive(state, level, pos)) {
-            return Blocks.AIR.defaultBlockState();
-        }
-
         return super.updateShape(
                 state,
                 level,
@@ -139,9 +205,10 @@ public class TallPlantPartBlock extends Block implements SimpleWaterloggedBlock 
         );
     }
 
-    /**
-     * При разрушении одной половины уничтожаем вторую.
-     */
+    // =========================================================
+    // BREAKING
+    // =========================================================
+
     @Override
     public BlockState playerWillDestroy(
             Level level,
@@ -149,12 +216,22 @@ public class TallPlantPartBlock extends Block implements SimpleWaterloggedBlock 
             BlockState state,
             Player player
     ) {
+        /*
+         * Если ломаем нижнюю часть —
+         * удаляем верхнюю.
+         *
+         * Если ломаем верхнюю —
+         * удаляем нижнюю.
+         */
         BlockPos otherPos = lowerPart
                 ? pos.above()
                 : pos.below();
 
         if (level.getBlockState(otherPos).is(otherPart)) {
-            level.destroyBlock(otherPos, false);
+            level.destroyBlock(
+                    otherPos,
+                    false
+            );
         }
 
         return super.playerWillDestroy(

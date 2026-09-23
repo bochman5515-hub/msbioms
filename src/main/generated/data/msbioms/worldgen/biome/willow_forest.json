@@ -45,10 +45,12 @@
     [
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
+      "minecraft:seagrass_swamp",
+      "msbioms:willow_high_grass",
       "msbioms:willow_tree",
-      "msbioms:willow_ground_vegetation",
-      "msbioms:willow_shore_vegetation",
-      "msbioms:willow_vines"
+      "msbioms:bog_plant",
+      "msbioms:willow_vines",
+      "msbioms:willow_ground_vegetation"
     ]
   ],
   "has_precipitation": true,

@@ -128,6 +128,17 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 
         // Willow leaves
         add(
+                ModBlocks.MICRO_STONE,
+                block -> createSingleItemTable(ModItems.MICRO_STONE)
+        );
+
+        add(
+                ModBlocks.MICRO_OAK_PLANKS,
+                block -> createSingleItemTable(
+                        ModItems.MICRO_OAK_PLANKS
+                )
+        );
+        add(
                 ModBlocks.WILLOW_LEAVES,
                 block -> createSilkTouchOrShearsDispatchTable(
                         block,

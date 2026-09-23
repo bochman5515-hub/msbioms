@@ -2,6 +2,8 @@ package msbioms.block;
 
 import msbioms.MSBioms;
 
+import msbioms.item.MicroBlockItem;
+import msbioms.item.ModItems;
 import msbioms.mixin.BlockEntityTypeAccessor;
 import msbioms.worldgen.ModConfiguredFeatures;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
@@ -127,6 +129,493 @@ public class ModBlocks {
       //                      .ignitedByLava()
       //      )
     //);
+
+
+
+
+
+
+
+
+
+
+    // =========================
+// Micro blocks — planks
+// =========================
+
+    public static final Block MICRO_BIRCH_PLANKS =
+            registerBlockWithoutItem(
+                    "micro_birch_planks",
+                    properties -> new MicroBlock(
+                            properties
+                                    .strength(2.0F)
+                                    .sound(SoundType.WOOD)
+                                    .noOcclusion(),
+                            () -> ModItems.MICRO_BIRCH_PLANKS
+                    )
+            );
+
+    public static final Block MICRO_DARK_OAK_PLANKS =
+            registerBlockWithoutItem(
+                    "micro_dark_oak_planks",
+                    properties -> new MicroBlock(
+                            properties
+                                    .strength(2.0F)
+                                    .sound(SoundType.WOOD)
+                                    .noOcclusion(),
+                            () -> ModItems.MICRO_DARK_OAK_PLANKS
+                    )
+            );
+
+    public static final Block MICRO_ACACIA_PLANKS =
+            registerBlockWithoutItem(
+                    "micro_acacia_planks",
+                    properties -> new MicroBlock(
+                            properties
+                                    .strength(2.0F)
+                                    .sound(SoundType.WOOD)
+                                    .noOcclusion(),
+                            () -> ModItems.MICRO_ACACIA_PLANKS
+                    )
+            );
+
+    public static final Block MICRO_JUNGLE_PLANKS =
+            registerBlockWithoutItem(
+                    "micro_jungle_planks",
+                    properties -> new MicroBlock(
+                            properties
+                                    .strength(2.0F)
+                                    .sound(SoundType.WOOD)
+                                    .noOcclusion(),
+                            () -> ModItems.MICRO_JUNGLE_PLANKS
+                    )
+            );
+
+    public static final Block MICRO_MANGROVE_PLANKS =
+            registerBlockWithoutItem(
+                    "micro_mangrove_planks",
+                    properties -> new MicroBlock(
+                            properties
+                                    .strength(2.0F)
+                                    .sound(SoundType.WOOD)
+                                    .noOcclusion(),
+                            () -> ModItems.MICRO_MANGROVE_PLANKS
+                    )
+            );
+
+    public static final Block MICRO_CHERRY_PLANKS =
+            registerBlockWithoutItem(
+                    "micro_cherry_planks",
+                    properties -> new MicroBlock(
+                            properties
+                                    .strength(2.0F)
+                                    .sound(SoundType.WOOD)
+                                    .noOcclusion(),
+                            () -> ModItems.MICRO_CHERRY_PLANKS
+                    )
+            );
+
+    public static final Block MICRO_PALE_OAK_PLANKS =
+            registerBlockWithoutItem(
+                    "micro_pale_oak_planks",
+                    properties -> new MicroBlock(
+                            properties
+                                    .strength(2.0F)
+                                    .sound(SoundType.WOOD)
+                                    .noOcclusion(),
+                            () -> ModItems.MICRO_PALE_OAK_PLANKS
+                    )
+            );
+
+    public static final Block MICRO_BAMBOO_MOSAIC =
+            registerBlockWithoutItem(
+                    "micro_bamboo_mosaic",
+                    properties -> new MicroBlock(
+                            properties
+                                    .strength(2.0F)
+                                    .sound(SoundType.WOOD)
+                                    .noOcclusion(),
+                            () -> ModItems.MICRO_BAMBOO_MOSAIC
+                    )
+            );
+
+    public static final Block MICRO_WARPED_PLANKS =
+            registerBlockWithoutItem(
+                    "micro_warped_planks",
+                    properties -> new MicroBlock(
+                            properties
+                                    .strength(2.0F)
+                                    .sound(SoundType.WOOD)
+                                    .noOcclusion(),
+                            () -> ModItems.MICRO_WARPED_PLANKS
+                    )
+            );
+
+    public static final Block MICRO_CRIMSON_PLANKS =
+            registerBlockWithoutItem(
+                    "micro_crimson_planks",
+                    properties -> new MicroBlock(
+                            properties
+                                    .strength(2.0F)
+                                    .sound(SoundType.WOOD)
+                                    .noOcclusion(),
+                            () -> ModItems.MICRO_CRIMSON_PLANKS
+                    )
+            );
+
+    public static final Block MICRO_WILLOW_PLANKS =
+            registerBlockWithoutItem(
+                    "micro_willow_planks",
+                    properties -> new MicroBlock(
+                            properties
+                                    .strength(2.0F)
+                                    .sound(SoundType.WOOD)
+                                    .noOcclusion(),
+                            () -> ModItems.MICRO_WILLOW_PLANKS
+                    )
+            );
+
+    public static final Block MICRO_COBBLESTONE = registerBlockWithoutItem(
+            "micro_cobblestone",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(2.0F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_COBBLESTONE
+            )
+    );
+
+    public static final Block MICRO_MOSSY_COBBLESTONE = registerBlockWithoutItem(
+            "micro_mossy_cobblestone",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(2.0F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_MOSSY_COBBLESTONE
+            )
+    );
+
+    public static final Block MICRO_ANDESITE = registerBlockWithoutItem(
+            "micro_andesite",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.5F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_ANDESITE
+            )
+    );
+
+    public static final Block MICRO_GRANITE = registerBlockWithoutItem(
+            "micro_granite",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.5F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_GRANITE
+            )
+    );
+
+    public static final Block MICRO_DIORITE = registerBlockWithoutItem(
+            "micro_diorite",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.5F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_DIORITE
+            )
+    );
+
+    public static final Block MICRO_COBBLED_DEEPSLATE = registerBlockWithoutItem(
+            "micro_cobbled_deepslate",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(3.5F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_COBBLED_DEEPSLATE
+            )
+    );
+
+    public static final Block MICRO_TUFF = registerBlockWithoutItem(
+            "micro_tuff",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.5F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_TUFF
+            )
+    );
+
+    public static final Block MICRO_TUFF_BRICKS = registerBlockWithoutItem(
+            "micro_tuff_bricks",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(3.5F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_TUFF_BRICKS
+            )
+    );
+
+    public static final Block MICRO_DEEPSLATE_BRICKS = registerBlockWithoutItem(
+            "micro_deepslate_bricks",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(3.5F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_DEEPSLATE_BRICKS
+            )
+    );
+
+    public static final Block MICRO_STONE_BRICKS = registerBlockWithoutItem(
+            "micro_stone_bricks",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.5F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_STONE_BRICKS
+            )
+    );
+
+    public static final Block MICRO_BRICKS = registerBlockWithoutItem(
+            "micro_bricks",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(2.0F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_BRICKS
+            )
+    );
+
+    public static final Block MICRO_DARK_PRISMARINE = registerBlockWithoutItem(
+            "micro_dark_prismarine",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.5F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_DARK_PRISMARINE
+            )
+    );
+
+    public static final Block MICRO_PRISMARINE = registerBlockWithoutItem(
+            "micro_prismarine",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.5F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_PRISMARINE
+            )
+    );
+
+    public static final Block MICRO_SMOOTH_SANDSTONE = registerBlockWithoutItem(
+            "micro_smooth_sandstone",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(0.8F)
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_SMOOTH_SANDSTONE
+            )
+    );
+
+    public static final Block MICRO_SMOOTH_RED_SANDSTONE = registerBlockWithoutItem(
+            "micro_smooth_red_sandstone",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(0.8F)
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_SMOOTH_RED_SANDSTONE
+            )
+    );
+
+    public static final Block MICRO_SMOOTH_QUARTZ = registerBlockWithoutItem(
+            "micro_smooth_quartz",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(0.8F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_SMOOTH_QUARTZ
+            )
+    );
+    public static final Block MICRO_SPRUCE_PLANKS = registerBlockWithoutItem(
+            "micro_spruce_planks",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(2.0F)
+                            .sound(SoundType.WOOD)
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_SPRUCE_PLANKS
+            )
+    );
+    public static final Block MICRO_BLACKSTONE = registerBlockWithoutItem(
+            "micro_blackstone",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.5F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_BLACKSTONE
+            )
+    );
+
+    public static final Block MICRO_POLISHED_BLACKSTONE_BRICKS = registerBlockWithoutItem(
+            "micro_polished_blackstone_bricks",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.5F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_POLISHED_BLACKSTONE_BRICKS
+            )
+    );
+
+    public static final Block MICRO_MAGMA = registerBlockWithoutItem(
+            "micro_magma",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(0.5F)
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_MAGMA
+            )
+    );
+
+    public static final Block MICRO_QUARTZ_BRICKS = registerBlockWithoutItem(
+            "micro_quartz_bricks",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(0.8F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_QUARTZ_BRICKS
+            )
+    );
+
+    public static final Block MICRO_NETHER_BRICKS = registerBlockWithoutItem(
+            "micro_nether_bricks",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(2.0F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_NETHER_BRICKS
+            )
+    );
+
+    public static final Block MICRO_RED_NETHER_BRICKS = registerBlockWithoutItem(
+            "micro_red_nether_bricks",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(2.0F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_RED_NETHER_BRICKS
+            )
+    );
+
+    public static final Block MICRO_DRIPSTONE_BLOCK = registerBlockWithoutItem(
+            "micro_dripstone_block",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.5F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_DRIPSTONE_BLOCK
+            )
+    );
+
+    public static final Block MICRO_SMOOTH_BASALT = registerBlockWithoutItem(
+            "micro_smooth_basalt",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.25F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_SMOOTH_BASALT
+            )
+    );
+
+    public static final Block MICRO_AMETHYST_BLOCK = registerBlockWithoutItem(
+            "micro_amethyst_block",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.5F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_AMETHYST_BLOCK
+            )
+    );
+
+    public static final Block MICRO_RESIN_BLOCK = registerBlockWithoutItem(
+            "micro_resin_block",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.0F)
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_RESIN_BLOCK
+            )
+    );
+
+    public static final Block MICRO_RESIN_BRICKS = registerBlockWithoutItem(
+            "micro_resin_bricks",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.5F)
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_RESIN_BRICKS
+            )
+    );
+
+    public static final Block MICRO_SULFUR = registerBlockWithoutItem(
+            "micro_sulfur",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.0F)
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_SULFUR
+            )
+    );
+
+    public static final Block MICRO_SULFUR_BRICKS = registerBlockWithoutItem(
+            "micro_sulfur_bricks",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.5F)
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_SULFUR_BRICKS
+            )
+    );
+
+    public static final Block MICRO_CINNABAR = registerBlockWithoutItem(
+            "micro_cinnabar",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.0F)
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_CINNABAR
+            )
+    );
+
+    public static final Block MICRO_CINNABAR_BRICKS = registerBlockWithoutItem(
+            "micro_cinnabar_bricks",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.5F)
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_CINNABAR_BRICKS
+            )
+    );
+
     public static final Block WILLOW_LEAVES = registerBlock(
             "willow_leaves",
             properties -> new TintedParticleLeavesBlock(
@@ -549,6 +1038,27 @@ public class ModBlocks {
                             .noCollision()
             )
     );
+    public static final Block MICRO_STONE = registerBlockWithoutItem(
+            "micro_stone",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(1.5F)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_STONE
+            )
+    );
+    public static final Block MICRO_OAK_PLANKS = registerBlockWithoutItem(
+            "micro_oak_planks",
+            properties -> new MicroBlock(
+                    properties
+                            .strength(2.0F)
+                            .sound(SoundType.WOOD)
+                            .noOcclusion(),
+                    () -> ModItems.MICRO_OAK_PLANKS
+            )
+    );
+
 
     public static final Block DRIPSTONE_STAIRS = registerBlock(
             "dripstone_stairs",

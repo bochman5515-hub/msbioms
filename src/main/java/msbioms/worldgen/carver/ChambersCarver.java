@@ -7,6 +7,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.CarvingMask;
@@ -19,9 +20,12 @@ import org.apache.commons.lang3.mutable.MutableBoolean;
 
 import java.util.function.Function;
 
-public class ChambersCarver extends WorldCarver<CaveCarverConfiguration> {
+public class ChambersCarver
+        extends WorldCarver<CaveCarverConfiguration> {
 
-    public ChambersCarver(Codec<CaveCarverConfiguration> codec) {
+    public ChambersCarver(
+            Codec<CaveCarverConfiguration> codec
+    ) {
         super(codec);
     }
 
@@ -35,6 +39,7 @@ public class ChambersCarver extends WorldCarver<CaveCarverConfiguration> {
 
     @Override
     public boolean carve(
+
             CarvingContext context,
             CaveCarverConfiguration configuration,
             ChunkAccess chunk,
@@ -44,15 +49,32 @@ public class ChambersCarver extends WorldCarver<CaveCarverConfiguration> {
             ChunkPos sourceChunkPos,
             CarvingMask carvingMask
     ) {
-        double centerX = sourceChunkPos.getBlockX(random.nextInt(16));
-        double centerY = configuration.y.sample(random, context);
-        double centerZ = sourceChunkPos.getBlockZ(random.nextInt(16));
+        double centerX =
+                sourceChunkPos.getBlockX(random.nextInt(16));
 
-        double length = 120.0D + random.nextDouble() * 30.0D;
-        double width = 45.0D + random.nextDouble() * 20.0D;
-        double height = 16.0D + random.nextDouble() * 7.0D;
+        double centerY =
+                configuration.y.sample(random, context);
 
-        double angle = random.nextDouble() * Math.PI * 2.0D;
+        double centerZ =
+                sourceChunkPos.getBlockZ(random.nextInt(16));
+
+        /*
+         * Общие размеры камеры.
+         */
+        double length =
+                60.0D + random.nextDouble() * 20.0D;
+
+        double maxWidth =
+                22.0D + random.nextDouble() * 8.0D;
+
+        double maxHeight =
+                13.0D + random.nextDouble() * 5.0D;
+
+        /*
+         * Направление основной оси.
+         */
+        double angle =
+                random.nextDouble() * Math.PI * 2.0D;
 
         double dirX = Math.cos(angle);
         double dirZ = Math.sin(angle);
@@ -60,770 +82,1104 @@ public class ChambersCarver extends WorldCarver<CaveCarverConfiguration> {
         double sideX = -dirZ;
         double sideZ = dirX;
 
-        double noise1 = random.nextDouble() * Math.PI * 2.0D;
-        double noise2 = random.nextDouble() * Math.PI * 2.0D;
-        double noise3 = random.nextDouble() * Math.PI * 2.0D;
-        double noise4 = random.nextDouble() * Math.PI * 2.0D;
+        /*
+         * Seed конкретной камеры.
+         */
+        long seed =
+                ((long) Math.floor(centerX) * 341873128712L)
+                        ^ ((long) Math.floor(centerY) * 132897987541L)
+                        ^ ((long) Math.floor(centerZ) * 42317861L);
 
-        int minX = Math.max(
-                Mth.floor(centerX - length * 0.5D - 5.0D),
-                chunk.getPos().getMinBlockX()
+        RandomSource chamberRandom =
+                RandomSource.create(seed);
+
+        /*
+         * Несколько крупных волн формы.
+         *
+         * Они не создают отдельные комнаты.
+         * Они изменяют границу одной непрерывной камеры.
+         */
+        double wave1 =
+                chamberRandom.nextDouble() * Math.PI * 2.0D;
+
+        double wave2 =
+                chamberRandom.nextDouble() * Math.PI * 2.0D;
+
+        double wave3 =
+                chamberRandom.nextDouble() * Math.PI * 2.0D;
+
+        double bend =
+                (chamberRandom.nextDouble() - 0.5D)
+                        * 0.16D;
+
+        /*
+         * Область X/Z, которую потенциально может занимать
+         * камера.
+         */
+        int minX =
+                Mth.floor(centerX - length * 0.6D);
+
+        int maxX =
+                Mth.floor(centerX + length * 0.6D);
+
+        int minZ =
+                Mth.floor(centerZ - length * 0.6D);
+
+        int maxZ =
+                Mth.floor(centerZ + length * 0.6D);
+
+        int minY =
+                Mth.floor(centerY - maxHeight * 1.5D);
+
+        int maxY =
+                Mth.floor(centerY + maxHeight * 1.5D);
+
+        int candidates = 0;
+        int insideChunk = 0;
+        int carvedBlocks = 0;
+
+        minY = Math.max(minY, context.getMinGenY());
+        maxY = Math.min(
+                maxY,
+                context.getMinGenY() + context.getGenDepth() - 1
         );
 
-        int maxX = Math.min(
-                Mth.ceil(centerX + length * 0.5D + 5.0D),
-                chunk.getPos().getMaxBlockX()
-        );
+        MutableBoolean hasGrass =
+                new MutableBoolean(false);
 
-        int minY = Mth.floor(centerY - height * 0.5D - 4.0D);
-        int maxY = Mth.ceil(centerY + height * 0.5D + 4.0D);
-
-        int minZ = Math.max(
-                Mth.floor(centerZ - width * 0.5D - 5.0D),
-                chunk.getPos().getMinBlockZ()
-        );
-
-        int maxZ = Math.min(
-                Mth.ceil(centerZ + width * 0.5D + 5.0D),
-                chunk.getPos().getMaxBlockZ()
-        );
-
-        BlockPos.MutableBlockPos pos =
-                new BlockPos.MutableBlockPos();
-
-        BlockPos.MutableBlockPos checkPos =
-                new BlockPos.MutableBlockPos();
-
+        /*
+         * Перебираем только ограничивающий прямоугольник.
+         */
         for (int x = minX; x <= maxX; x++) {
             for (int z = minZ; z <= maxZ; z++) {
 
+                /*
+                 * Переводим мировую позицию в координаты
+                 * относительно оси камеры.
+                 */
                 double dx = x - centerX;
                 double dz = z - centerZ;
 
-                double localX =
+                double longitudinal =
                         dx * dirX + dz * dirZ;
 
-                double localZ =
+                double lateral =
                         dx * sideX + dz * sideZ;
 
-                double nx =
-                        localX / (length * 0.5D);
+                /*
+                 * Нормализованная координата вдоль камеры.
+                 */
+                double t =
+                        longitudinal / (length * 0.5D);
 
-                double nz =
-                        localZ / (width * 0.5D);
-
-                if (Math.abs(nx) > 1.05D) {
+                /*
+                 * За пределами камеры ничего не делаем.
+                 */
+                if (Math.abs(t) > 1.12D) {
                     continue;
                 }
 
                 /*
-                 * Продольный профиль камеры.
-                 *
-                 * Центральная часть остаётся широкой,
-                 * а торцы постепенно сужаются.
+                 * -------------------------------------------------
+                 * ИЗГИБ ОСИ
+                 * -------------------------------------------------
                  */
-                double t = Math.abs(nx);
 
-                double taper =
-                        1.0D - smoothStep(
-                                0.58D,
-                                1.0D,
-                                t
+                double curve =
+                        Math.sin(
+                                (t + 1.0D)
+                                        * Math.PI
+                                        * 0.5D
+                                        + wave1
+                        ) * bend * length;
+
+                double localLateral =
+                        lateral - curve;
+
+                /*
+                 * -------------------------------------------------
+                 * ПРОФИЛЬ ШИРИНЫ
+                 * -------------------------------------------------
+                 *
+                 * Концы сужаются.
+                 * Центр расширяется.
+                 */
+
+                double endShape =
+                        Math.sqrt(
+                                Math.max(
+                                        0.0D,
+                                        1.0D - t * t
+                                )
+                        );
+
+                double width =
+                        maxWidth
+                                * (
+                                0.48D
+                                        + 0.52D * endShape
                         );
 
                 /*
-                 * Неровность стен.
-                 *
-                 * Здесь специально используется несколько
-                 * разных масштабов, включая вертикальный.
+                 * Крупные неровности стен.
                  */
+                double wallWave =
+                        Math.sin(
+                                longitudinal * 0.065D
+                                        + wave2
+                        );
+
+                double wallWave2 =
+                        Math.sin(
+                                longitudinal * 0.115D
+                                        + lateral * 0.055D
+                                        + wave3
+                        );
+
+                width *=
+                        1.0D
+                                + wallWave * 0.13D
+                                + wallWave2 * 0.07D;
+
+                /*
+                 * Несколько больших локальных выпуклостей.
+                 */
+                width +=
+                        getLargeBulge(
+                                longitudinal,
+                                lateral,
+                                wave1,
+                                wave2
+                        );
+
+                /*
+                 * -------------------------------------------------
+                 * ПОПЕРЕЧНОЕ СЕЧЕНИЕ КАМЕРЫ
+                 * -------------------------------------------------
+                 *
+                 * Стена больше не вертикальная.
+                 * Ширина зависит от положения по высоте.
+                 */
+
+                double side =
+                        localLateral / width;
+
+                /*
+                 * Профиль потолка и пола.
+                 */
+                double ceiling =
+                        getCeilingHeight(
+                                longitudinal,
+                                maxHeight,
+                                wave1,
+                                wave2,
+                                wave3
+                        );
+
+                double floor =
+                        getFloorHeight(
+                                longitudinal,
+                                maxHeight,
+                                wave1,
+                                wave2,
+                                wave3
+                        );
+
+                /*
+                 * Свод становится уже возле краёв.
+                 */
+                double wallFactor =
+                        Math.abs(side);
+
+                double edgeCompression =
+                        1.0D
+                                - wallFactor * wallFactor * 0.18D;
+
+                ceiling *= edgeCompression;
+                floor *= edgeCompression;
+
+                double localCenterY =
+                        centerY
+                                + getVerticalDrift(
+                                longitudinal,
+                                maxHeight,
+                                wave2
+                        );
+
+                /*
+                 * -------------------------------------------------
+                 * Y
+                 * -------------------------------------------------
+                 */
+
                 for (int y = minY; y <= maxY; y++) {
 
-                    double ny =
-                            (y - centerY) /
-                                    (height * 0.5D);
+                    double vertical =
+                            y - localCenterY;
 
                     /*
-                     * Большая форма пола.
+                     * За пределами потолка/пола.
                      */
-                    double floor =
-                            -0.78D
-                                    + Math.sin(nx * 4.2D + noise1) * 0.12D
-                                    + Math.cos(nz * 5.0D + noise2) * 0.10D
-                                    + Math.sin(nx * 8.0D + nz * 3.0D + noise3) * 0.055D
-                                    + Math.sin(
-                                    localX * 0.075D
-                                            + localZ * 0.055D
-                                            + noise4
-                            ) * 0.10D;
-
-                    /*
-                     * Большая форма потолка.
-                     */
-                    double ceiling =
-                            0.82D
-                                    + Math.sin(nx * 4.0D + noise2) * 0.13D
-                                    + Math.cos(nz * 5.5D + noise3) * 0.10D
-                                    + Math.sin(nx * 9.0D + nz * 4.0D + noise1) * 0.055D
-                                    + Math.cos(
-                                    localX * 0.065D
-                                            - localZ * 0.05D
-                                            + noise4
-                            ) * 0.09D;
-
-                    if (ny <= floor || ny >= ceiling) {
+                    if (vertical >= ceiling
+                            || vertical <= -floor) {
                         continue;
                     }
 
                     /*
-                     * Вертикальная позиция относительно
-                     * текущей формы потолка.
+                     * Нормализованная высота:
+                     *
+                     * -1 = пол
+                     *  0 = центр
+                     * +1 = потолок
                      */
-                    double vertical =
-                            ny / ceiling;
+                    double normalizedY =
+                            vertical >= 0.0D
+                                    ? vertical / ceiling
+                                    : -vertical / floor;
+
+                    /*
+                     * Базовая форма свода.
+                     */
+                    double verticalFactor =
+                            1.0D
+                                    - normalizedY * normalizedY;
+
+                    if (verticalFactor <= 0.0D) {
+                        continue;
+                    }
 
                     /*
                      * Чем ближе к потолку/полу,
-                     * тем сильнее разрешаем неровность стен.
+                     * тем уже становится помещение.
                      */
-                    double verticalFactor =
-                            1.0D + Math.abs(ny) * 0.18D;
-
-                    /*
-                     * Неровность стены.
-                     *
-                     * В отличие от старой версии она зависит
-                     * от высоты, поэтому стена не образует
-                     * одну огромную вертикальную плоскость.
-                     */
-                    double wallNoise =
-                            Math.sin(
-                                    nx * 5.0D
-                                            + nz * 3.0D
-                                            + noise1
-                            ) * 0.075D
-
-                                    + Math.cos(
-                                    nx * 9.0D
-                                            - nz * 5.0D
-                                            + noise2
-                            ) * 0.055D
-
-                                    + Math.sin(
-                                    nz * 8.0D
-                                            + ny * 4.0D
-                                            + noise3
-                            ) * 0.065D
-
-                                    + Math.cos(
-                                    nx * 6.0D
-                                            + ny * 7.0D
-                                            + nz * 3.0D
-                                            + noise4
-                            ) * 0.045D
-
-                                    + Math.sin(
-                                    localX * 0.12D
-                                            + localZ * 0.09D
-                                            + y * 0.16D
-                                            + noise2
-                            ) * 0.035D;
-
-                    /*
-                     * Дополнительные крупные выступы.
-                     */
-                    double largeRelief =
-                            Math.sin(
-                                    localX * 0.045D
-                                            + localZ * 0.035D
-                                            + noise3
-                            ) * 0.10D;
-
-                    double radius =
-                            1.0D
-                                    + (wallNoise + largeRelief)
-                                    * verticalFactor;
-
-                    /*
-                     * Реальная граница стены.
-                     *
-                     * Торцы сужаются через taper,
-                     * но внутри остаётся естественная
-                     * неоднородность.
-                     */
-                    double horizontalRadius =
-                            (1.0D - taper * 0.05D)
-                                    * radius;
-
-                    double distance =
-                            Math.abs(nz)
-                                    / Math.max(
-                                    0.08D,
-                                    horizontalRadius
+                    double allowedWidth =
+                            width
+                                    * Math.sqrt(
+                                    verticalFactor
                             );
 
                     /*
-                     * На концах камеры форма дополнительно
-                     * становится менее симметричной.
+                     * Неровность стен.
                      */
-                    if (t > 0.72D) {
+                    double wallNoise =
+                            getWallNoise(
+                                    x,
+                                    y,
+                                    z,
+                                    longitudinal,
+                                    normalizedY,
+                                    wave1,
+                                    wave2,
+                                    wave3
+                            );
 
-                        double endNoise =
-                                Math.sin(
-                                        localX * 0.22D
-                                                + localZ * 0.11D
-                                                + y * 0.19D
-                                                + noise1
-                                ) * 0.08D;
+                    allowedWidth += wallNoise;
 
-                        distance += endNoise;
-                    }
-
-                    /*
-                     * Эллиптическое вертикальное сечение.
-                     */
-                    double shape =
-                            distance * distance
-                                    + vertical * vertical;
-
-                    if (shape >= 1.0D) {
+                    if (Math.abs(localLateral) > allowedWidth) {
                         continue;
                     }
 
                     /*
-                     * Мелкая внутренняя неоднородность.
+                     * Неровность потолка/пола.
                      */
-                    double detail =
-                            Math.sin(
-                                    localX * 0.17D
-                                            + localZ * 0.13D
-                                            + y * 0.25D
-                                            + noise4
-                            ) * 0.018D;
+                    double verticalNoise =
+                            getVerticalSurfaceNoise(
+                                    x,
+                                    y,
+                                    z,
+                                    longitudinal,
+                                    side,
+                                    wave1,
+                                    wave2,
+                                    wave3
+                            );
 
-                    if (shape + detail >= 1.0D) {
+                    if (vertical > ceiling - verticalNoise) {
                         continue;
                     }
 
-                    pos.set(x, y, z);
+                    if (vertical < -floor + verticalNoise) {
+                        continue;
+                    }
 
-                    this.carveBlock(
-                            context,
-                            configuration,
+                    if (!isInsideChunk(
                             chunk,
-                            biomeGetter,
-                            carvingMask,
-                            pos,
-                            checkPos,
-                            aquifer,
-                            new MutableBoolean(false)
-                    );
+                            x,
+                            z
+                    )) {
+                        continue;
+                    }
+
+                    candidates++;
+                    insideChunk++;
+
+                    BlockPos.MutableBlockPos pos =
+                            new BlockPos.MutableBlockPos(
+                                    x,
+                                    y,
+                                    z
+                            );
+
+                    boolean carved =
+                            carveBlock(
+                                    context,
+                                    configuration,
+                                    chunk,
+                                    biomeGetter,
+                                    carvingMask,
+                                    pos,
+                                    new BlockPos.MutableBlockPos(),
+                                    aquifer,
+                                    hasGrass
+                            );
+
+                    if (carved) {
+                        carvedBlocks++;
+                    }
                 }
+                /*
+                 * -------------------------------------------------
+                 * ВЫРЕЗАНИЕ ПО Y
+                 * -------------------------------------------------
+                 */
+
+
+
             }
         }
 
-        decorate(
-                chunk,
-                centerX,
-                centerY,
-                centerZ,
-                length,
-                width,
-                height,
-                dirX,
-                dirZ,
-                sideX,
-                sideZ,
-                random
-        );
 
         System.out.println(
-                "[MSBioms CHAMBER] CENTER X="
-                        + Math.round(centerX)
-                        + " Y="
-                        + Math.round(centerY)
-                        + " Z="
-                        + Math.round(centerZ)
-                        + " | SIZE="
-                        + Math.round(length)
+                "[MSBioms CHAMBER] "
+                        + "CENTER="
+                        + (int) centerX
+                        + ","
+                        + (int) centerY
+                        + ","
+                        + (int) centerZ
+                        + " SIZE="
+                        + (int) length
                         + "x"
-                        + Math.round(width)
+                        + (int) maxWidth
                         + "x"
-                        + Math.round(height)
+                        + (int) maxHeight
+                        + " | candidates="
+                        + candidates
+                        + " insideChunk="
+                        + insideChunk
+                        + " carved="
+                        + carvedBlocks
         );
 
         return true;
     }
 
-    private void decorate(
-            ChunkAccess chunk,
-            double cx,
-            double cy,
-            double cz,
-            double length,
-            double width,
-            double height,
-            double dirX,
-            double dirZ,
-            double sideX,
-            double sideZ,
-            RandomSource random
+
+    /*
+     * =========================================================
+     * FUSED FLOOR ↔ CEILING FORMATION
+     * =========================================================
+     *
+     * This follows the mathematical profile used by
+     * vanilla LargeDripstoneFeature.
+     */
+    private double getWallNoise(
+            int x, int y, int z,
+            double longitudinal,
+            double normalizedY,
+            double wave1, double wave2, double wave3
+    ) {
+        double large =
+                Math.sin(x * 0.035D + z * 0.028D + wave1)
+                        * 4.0D;
+
+        double medium =
+                Math.sin(x * 0.085D - z * 0.065D
+                        + longitudinal * 0.035D + wave2)
+                        * 1.8D;
+
+        double small =
+                Math.sin(x * 0.18D + z * 0.15D
+                        + y * 0.04D + wave3)
+                        * 0.6D;
+
+        double edge =
+                0.35D + 0.65D * Math.pow(Math.abs(normalizedY), 0.5D);
+
+        return (large + medium + small) * edge;
+    }
+    private double getLargeBulge(
+            double longitudinal,
+            double lateral,
+            double phase1,
+            double phase2
     ) {
         /*
-         * Озёра оставляем.
-         */
-        int lakes = 3 + random.nextInt(3);
-
-        for (int i = 0; i < lakes; i++) {
-
-            double distance =
-                    (random.nextDouble() - 0.5D)
-                            * length
-                            * 0.72D;
-
-            double side =
-                    (random.nextDouble() - 0.5D)
-                            * width
-                            * 0.48D;
-
-            int x = Mth.floor(
-                    cx
-                            + dirX * distance
-                            + sideX * side
-            );
-
-            int z = Mth.floor(
-                    cz
-                            + dirZ * distance
-                            + sideZ * side
-            );
-
-            createLake(
-                    chunk,
-                    x,
-                    z,
-                    5 + random.nextInt(6),
-                    4 + random.nextInt(5),
-                    2 + random.nextInt(2),
-                    cy,
-                    height
-            );
-        }
-
-        /*
-         * Теперь только один тип колонн:
-         * сросшиеся пол ↔ потолок.
+         * Три крупных выступа.
          *
-         * Они редкие.
+         * Они достаточно плавные, чтобы не выглядеть
+         * случайными блоками.
          */
-        int columns = 3 + random.nextInt(3);
 
-        for (int i = 0; i < columns; i++) {
+        double b1 =
+                Math.exp(
+                        -Math.pow(
+                                (longitudinal + 32.0D) / 15.0D,
+                                2.0D
+                        )
+                )
+                        * Math.sin(
+                        lateral * 0.08D + phase1
+                );
 
-            double distance =
-                    (random.nextDouble() - 0.5D)
-                            * length
-                            * 0.70D;
+        double b2 =
+                Math.exp(
+                        -Math.pow(
+                                (longitudinal - 8.0D) / 20.0D,
+                                2.0D
+                        )
+                )
+                        * Math.sin(
+                        lateral * 0.07D + phase2
+                );
 
-            double side =
-                    (random.nextDouble() - 0.5D)
-                            * width
-                            * 0.58D;
+        double b3 =
+                Math.exp(
+                        -Math.pow(
+                                (longitudinal - 35.0D) / 13.0D,
+                                2.0D
+                        )
+                )
+                        * Math.cos(
+                        lateral * 0.10D + phase1
+                );
 
-            int x = Mth.floor(
-                    cx
-                            + dirX * distance
-                            + sideX * side
-            );
+        return (b1 + b2 + b3) * 4.0D;
+    }
+    private double getCeilingHeight(
+            double longitudinal,
+            double maxHeight,
+            double wave1,
+            double wave2,
+            double wave3
+    ) {
+        double large =
+                Math.sin(
+                        longitudinal * 0.045D
+                                + wave1
+                );
 
-            int z = Mth.floor(
-                    cz
-                            + dirZ * distance
-                            + sideZ * side
-            );
+        double medium =
+                Math.sin(
+                        longitudinal * 0.095D
+                                + wave2
+                );
 
-            createFusedColumn(
-                    chunk,
-                    x,
-                    z,
-                    cy,
-                    height,
-                    random
-            );
-        }
+        double small =
+                Math.sin(
+                        longitudinal * 0.17D
+                                + wave3
+                );
+
+        return maxHeight
+                * (
+                0.72D
+                        + large * 0.14D
+                        + medium * 0.08D
+                        + small * 0.035D
+        );
+    }
+    private double getFloorHeight(
+            double longitudinal,
+            double maxHeight,
+            double wave1,
+            double wave2,
+            double wave3
+    ) {
+        double large =
+                Math.sin(
+                        longitudinal * 0.052D
+                                + wave3
+                );
+
+        double medium =
+                Math.sin(
+                        longitudinal * 0.105D
+                                + wave1
+                );
+
+        double small =
+                Math.sin(
+                        longitudinal * 0.19D
+                                + wave2
+                );
+
+        return maxHeight
+                * (
+                0.66D
+                        + large * 0.13D
+                        + medium * 0.075D
+                        + small * 0.035D
+        );
+    }
+    private double getVerticalDrift(
+            double longitudinal,
+            double maxHeight,
+            double phase
+    ) {
+        return maxHeight
+                * 0.12D
+                * Math.sin(
+                longitudinal * 0.045D
+                        + phase
+        );
+    }
+    private double getVerticalSurfaceNoise(
+            int x,
+            int y,
+            int z,
+            double longitudinal,
+            double side,
+            double wave1,
+            double wave2,
+            double wave3
+    ) {
+        /*
+         * Крупные волны.
+         */
+        double large =
+                Math.sin(
+                        x * 0.075D
+                                + z * 0.055D
+                                + wave1
+                );
+
+        /*
+         * Более мелкие.
+         */
+        double medium =
+                Math.sin(
+                        x * 0.16D
+                                - z * 0.11D
+                                + y * 0.025D
+                                + wave2
+                );
+
+        /*
+         * Поверхность сильнее меняется возле стен.
+         */
+        double edge =
+                Math.pow(
+                        Math.abs(side),
+                        2.0D
+                );
+
+        return
+                (large * 0.9D
+                        + medium * 0.45D)
+                        * edge;
     }
 
-    private void createFusedColumn(
+    private void placeFusedFormation(
             ChunkAccess chunk,
-            int cx,
-            int cz,
-            double cy,
-            double chamberHeight,
+            CarvingContext context,
+            RandomSource random,
+            double x,
+            double centerY,
+            double z
+    ) {
+
+        int rootX =
+                Mth.floor(x);
+
+        int rootZ =
+                Mth.floor(z);
+
+        /*
+         * Formation only makes sense when its root is
+         * reasonably inside the chamber chunk.
+         */
+        if (!isInsideChunk(chunk, rootX, rootZ)) {
+            return;
+        }
+
+        int searchMin =
+                Math.max(
+                        context.getMinGenY() + 1,
+                        -127
+                );
+
+        int searchMax =
+                Math.min(
+                        context.getMinGenY()
+                                + context.getGenDepth()
+                                - 1,
+                        504
+                );
+
+
+        /*
+         * =====================================================
+         * FIND FLOOR
+         * =====================================================
+         */
+
+        int floorY =
+                findSolidBelow(
+                        chunk,
+                        rootX,
+                        Mth.floor(centerY),
+                        rootZ,
+                        searchMin
+                );
+
+        /*
+         * =====================================================
+         * FIND CEILING
+         * =====================================================
+         */
+
+        int ceilingY =
+                findSolidAbove(
+                        chunk,
+                        rootX,
+                        Mth.floor(centerY),
+                        rootZ,
+                        searchMax
+                );
+
+        if (floorY == Integer.MIN_VALUE
+                || ceilingY == Integer.MAX_VALUE) {
+            return;
+        }
+
+
+        /*
+         * Air gap must be large enough.
+         */
+        int gap =
+                ceilingY - floorY - 1;
+
+        if (gap < 8) {
+            return;
+        }
+
+
+        /*
+         * =====================================================
+         * RADIUS
+         * =====================================================
+         *
+         * Vanilla LargeDripstone limits radius according
+         * to cave height.
+         */
+
+        int radius =
+                Mth.clamp(
+                        2 + random.nextInt(3),
+                        2,
+                        Math.max(
+                                2,
+                                gap / 8
+                        )
+                );
+
+        radius =
+                Math.min(radius, 4);
+
+
+        /*
+         * =====================================================
+         * HEIGHT
+         * =====================================================
+         *
+         * We want the two formations to actually meet.
+         */
+
+        int usableHeight =
+                gap - 2;
+
+        int lowerHeight =
+                (int) (
+                        usableHeight
+                                * (
+                                0.42D
+                                        + random.nextDouble()
+                                        * 0.14D
+                        )
+                );
+
+        int upperHeight =
+                usableHeight
+                        - lowerHeight;
+
+
+        /*
+         * Small random vertical imbalance.
+         */
+        int imbalance =
+                random.nextInt(3) - 1;
+
+        lowerHeight =
+                Math.max(
+                        2,
+                        lowerHeight + imbalance
+                );
+
+        upperHeight =
+                Math.max(
+                        2,
+                        usableHeight - lowerHeight
+                );
+
+
+        /*
+         * =====================================================
+         * PLACE STALAGMITE
+         * =====================================================
+         */
+
+        placeLargeFormation(
+                chunk,
+                rootX,
+                floorY + 1,
+                rootZ,
+                radius,
+                lowerHeight,
+                true,
+                random
+        );
+
+
+        /*
+         * =====================================================
+         * PLACE STALACTITE
+         * =====================================================
+         */
+
+        placeLargeFormation(
+                chunk,
+                rootX,
+                ceilingY - 1,
+                rootZ,
+                radius,
+                upperHeight,
+                false,
+                random
+        );
+    }
+
+
+    /*
+     * =========================================================
+     * VANILLA-STYLE RADIAL PROFILE
+     * =========================================================
+     *
+     * Formula copied from the actual 26.2
+     * SpeleothemUtils.getSpeleothemHeight() logic.
+     */
+
+    private double getSpeleothemHeight(
+            double distanceFromCenter,
+            double radius,
+            double scale,
+            double bluntness
+    ) {
+
+        if (distanceFromCenter < bluntness) {
+            distanceFromCenter =
+                    bluntness;
+        }
+
+        double r =
+                distanceFromCenter
+                        / radius
+                        * 0.384D;
+
+        double part1 =
+                0.75D
+                        * Math.pow(
+                        r,
+                        1.3333333333333333D
+                );
+
+        double part2 =
+                Math.pow(
+                        r,
+                        0.6666666666666666D
+                );
+
+        double part3 =
+                0.3333333333333333D
+                        * Math.log(r);
+
+        double height =
+                scale
+                        * (
+                        part1
+                                - part2
+                                - part3
+                );
+
+        height =
+                Math.max(
+                        height,
+                        0.0D
+                );
+
+        return height
+                / 0.384D
+                * radius;
+    }
+
+
+    /*
+     * =========================================================
+     * PLACE LARGE FORMATION
+     * =========================================================
+     */
+
+    private void placeLargeFormation(
+            ChunkAccess chunk,
+            int rootX,
+            int rootY,
+            int rootZ,
+            int radius,
+            int height,
+            boolean pointingUp,
             RandomSource random
     ) {
-        if (!isInsideChunk(chunk, cx, cz)) {
-            return;
-        }
 
-        int floorY = findFloor(
-                chunk,
-                cx,
-                cz,
-                Mth.floor(cy - chamberHeight * 0.05D),
-                Mth.floor(cy - chamberHeight * 0.70D)
-        );
+        double scale =
+                height
+                        / Math.max(
+                        1.0D,
+                        getSpeleothemHeight(
+                                0.0D,
+                                radius,
+                                1.0D,
+                                0.0D
+                        )
+                );
 
-        if (floorY == Integer.MIN_VALUE) {
-            return;
-        }
+        double bluntness =
+                radius <= 2
+                        ? 0.5D
+                        : 1.0D;
 
-        int ceilingY = findCeiling(
-                chunk,
-                cx,
-                cz,
-                Mth.floor(cy + chamberHeight * 0.05D),
-                Mth.floor(cy + chamberHeight * 0.70D)
-        );
 
-        if (ceilingY == Integer.MIN_VALUE) {
-            return;
-        }
+        for (int dx = -radius;
+             dx <= radius;
+             dx++) {
 
-        int totalHeight = ceilingY - floorY;
+            for (int dz = -radius;
+                 dz <= radius;
+                 dz++) {
 
-        /*
-         * Слишком низкие образования не делаем.
-         */
-        if (totalHeight < 8) {
-            return;
-        }
-
-        /*
-         * Случайный небольшой изгиб ствола.
-         */
-        double bendX =
-                random.nextDouble() * Math.PI * 2.0D;
-
-        double bendZ =
-                random.nextDouble() * Math.PI * 2.0D;
-
-        /*
-         * Радиус основания.
-         */
-        double baseRadius =
-                1.5D + random.nextDouble() * 1.5D;
-
-        BlockState stone =
-                floorY <= 0
-                        ? Blocks.DEEPSLATE.defaultBlockState()
-                        : Blocks.STONE.defaultBlockState();
-
-        BlockPos.MutableBlockPos pos =
-                new BlockPos.MutableBlockPos();
-
-        for (int y = floorY; y <= ceilingY; y++) {
-
-            double progress =
-                    (y - floorY)
-                            / (double) totalHeight;
-
-            /*
-             * Внизу и наверху колонна широкая,
-             * в центре значительно тоньше.
-             *
-             * Получаем форму:
-             *
-             * ████
-             *  ███
-             *   ██
-             *   ██
-             *  ███
-             * ████
-             */
-            double edge =
-                    Math.sin(progress * Math.PI);
-
-            double radius =
-                    baseRadius
-                            * (0.48D + edge * 0.52D);
-
-            /*
-             * Небольшая природная вариация радиуса.
-             */
-            radius +=
-                    Math.sin(
-                            y * 0.55D
-                                    + bendX
-                    ) * 0.25D;
-
-            radius = Math.max(
-                    1.0D,
-                    radius
-            );
-
-            /*
-             * Лёгкий изгиб.
-             */
-            int offsetX = Mth.floor(
-                    Math.sin(
-                            progress * Math.PI
-                                    + bendX
-                    ) * 1.25D
-            );
-
-            int offsetZ = Mth.floor(
-                    Math.cos(
-                            progress * Math.PI
-                                    + bendZ
-                    ) * 1.25D
-            );
-
-            int centerX = cx + offsetX;
-            int centerZ = cz + offsetZ;
-
-            int radiusInt =
-                    Mth.ceil(radius) + 1;
-
-            for (int x = centerX - radiusInt;
-                 x <= centerX + radiusInt;
-                 x++) {
-
-                for (int z = centerZ - radiusInt;
-                     z <= centerZ + radiusInt;
-                     z++) {
-
-                    if (!isInsideChunk(chunk, x, z)) {
-                        continue;
-                    }
-
-                    double dx =
-                            x - centerX;
-
-                    double dz =
-                            z - centerZ;
-
-                    /*
-                     * Немного вытягиваем сечение.
-                     */
-                    double irregular =
-                            Math.sin(
-                                    x * 0.72D
-                                            + z * 0.43D
-                                            + y * 0.21D
-                            ) * 0.18D;
-
-                    double distance =
-                            dx * dx
-                                    + dz * dz;
-
-                    double allowed =
-                            radius
-                                    + irregular;
-
-                    if (distance >
-                            allowed * allowed) {
-                        continue;
-                    }
-
-                    pos.set(x, y, z);
-
-                    /*
-                     * Очень важно:
-                     * колонна только заполняет воздух.
-                     * Она не уничтожает окружающий камень.
-                     */
-                    if (chunk.getBlockState(pos).isAir()) {
-                        chunk.setBlockState(
-                                pos,
-                                stone,
-                                2
-                        );
-                    }
-                }
-            }
-        }
-    }
-
-    private int findFloor(
-            ChunkAccess chunk,
-            int x,
-            int z,
-            int startY,
-            int minY
-    ) {
-        if (!isInsideChunk(chunk, x, z)) {
-            return Integer.MIN_VALUE;
-        }
-
-        BlockPos.MutableBlockPos pos =
-                new BlockPos.MutableBlockPos();
-
-        for (int y = startY; y >= minY; y--) {
-
-            pos.set(x, y, z);
-
-            if (!chunk.getBlockState(pos).isAir()) {
-                continue;
-            }
-
-            pos.set(x, y - 1, z);
-
-            BlockState below =
-                    chunk.getBlockState(pos);
-
-            if (!below.isAir()
-                    && below.getFluidState().isEmpty()) {
-                return y;
-            }
-        }
-
-        return Integer.MIN_VALUE;
-    }
-
-    private int findCeiling(
-            ChunkAccess chunk,
-            int x,
-            int z,
-            int startY,
-            int maxY
-    ) {
-        if (!isInsideChunk(chunk, x, z)) {
-            return Integer.MIN_VALUE;
-        }
-
-        BlockPos.MutableBlockPos pos =
-                new BlockPos.MutableBlockPos();
-
-        for (int y = startY; y <= maxY; y++) {
-
-            pos.set(x, y, z);
-
-            if (!chunk.getBlockState(pos).isAir()) {
-                return y;
-            }
-        }
-
-        return Integer.MIN_VALUE;
-    }
-
-    private void createLake(
-            ChunkAccess chunk,
-            int cx,
-            int cz,
-            int rx,
-            int rz,
-            int depth,
-            double cy,
-            double chamberHeight
-    ) {
-        int floorY = findFloor(
-                chunk,
-                cx,
-                cz,
-                Mth.floor(
-                        cy - chamberHeight * 0.10D
-                ),
-                Mth.floor(
-                        cy - chamberHeight * 0.70D
-                )
-        );
-
-        if (floorY == Integer.MIN_VALUE) {
-            return;
-        }
-
-        int waterSurface =
-                floorY - 1;
-
-        BlockPos.MutableBlockPos pos =
-                new BlockPos.MutableBlockPos();
-
-        for (int x = cx - rx;
-             x <= cx + rx;
-             x++) {
-
-            for (int z = cz - rz;
-                 z <= cz + rz;
-                 z++) {
-
-                if (!isInsideChunk(chunk, x, z)) {
-                    continue;
-                }
-
-                double dx =
-                        (x - cx) / (double) rx;
-
-                double dz =
-                        (z - cz) / (double) rz;
-
-                double edge =
-                        Math.sin(
-                                x * 0.63D
-                                        + z * 0.31D
-                        ) * 0.08D
-                                + Math.cos(
-                                x * 0.27D
-                                        - z * 0.51D
-                        ) * 0.05D;
-
-                if (dx * dx
-                        + dz * dz
-                        + edge > 1.0D) {
-                    continue;
-                }
-
-                double centerDistance =
+                double distance =
                         Math.sqrt(
                                 dx * dx
                                         + dz * dz
                         );
 
-                int localDepth =
-                        centerDistance > 0.65D
-                                ? 1
-                                : depth;
+                if (distance > radius) {
+                    continue;
+                }
 
-                for (
-                        int y = waterSurface - localDepth + 1;
-                        y <= waterSurface;
-                        y++
-                ) {
-                    pos.set(x, y, z);
+                double columnHeight =
+                        getSpeleothemHeight(
+                                distance,
+                                radius,
+                                scale,
+                                bluntness
+                        );
 
-                    chunk.setBlockState(
-                            pos,
-                            Blocks.WATER.defaultBlockState(),
-                            2
-                    );
+                int localHeight =
+                        Math.max(
+                                1,
+                                (int) Math.ceil(
+                                        columnHeight
+                                )
+                        );
+
+                for (int y = 0;
+                     y < localHeight;
+                     y++) {
+
+                    int worldY =
+                            pointingUp
+                                    ? rootY + y
+                                    : rootY - y;
+
+                    if (isInsideChunk(
+                            chunk,
+                            rootX + dx,
+                            rootZ + dz
+                    )) {
+
+                        BlockPos pos =
+                                new BlockPos(
+                                        rootX + dx,
+                                        worldY,
+                                        rootZ + dz
+                                );
+
+                        BlockState current =
+                                chunk.getBlockState(pos);
+
+                        /*
+                         * Only replace air/water.
+                         *
+                         * Never destroy surrounding stone.
+                         */
+                        if (current.isAir()
+                                || current.is(Blocks.WATER)) {
+
+                            chunk.setBlockState(
+                                    pos,
+                                    getFormationBlock(
+                                            worldY
+                                    ),
+                                    2
+                            );
+                        }
+                    }
                 }
             }
         }
     }
+
+
+    /*
+     * =========================================================
+     * BLOCK TYPE
+     * =========================================================
+     *
+     * Same basic idea as vanilla underground terrain:
+     * deepslate below Y=0, stone above.
+     */
+
+    private BlockState getFormationBlock(
+            int y
+    ) {
+
+        if (y < 0) {
+            return Blocks.DEEPSLATE
+                    .defaultBlockState();
+        }
+
+        return Blocks.STONE
+                .defaultBlockState();
+    }
+
+
+    /*
+     * =========================================================
+     * FIND FLOOR
+     * =========================================================
+     */
+
+    private int findSolidBelow(
+            ChunkAccess chunk,
+            int x,
+            int startY,
+            int z,
+            int minY
+    ) {
+
+        for (int y = startY;
+             y >= minY;
+             y--) {
+
+            if (!isInsideChunk(
+                    chunk,
+                    x,
+                    z
+            )) {
+                return Integer.MIN_VALUE;
+            }
+
+            BlockState state =
+                    chunk.getBlockState(
+                            new BlockPos(
+                                    x,
+                                    y,
+                                    z
+                            )
+                    );
+
+            if (!state.isAir()
+                    && state.getFluidState().isEmpty()) {
+
+                return y;
+            }
+        }
+
+        return Integer.MIN_VALUE;
+    }
+
+
+    /*
+     * =========================================================
+     * FIND CEILING
+     * =========================================================
+     */
+
+    private int findSolidAbove(
+            ChunkAccess chunk,
+            int x,
+            int startY,
+            int z,
+            int maxY
+    ) {
+
+        for (int y = startY;
+             y <= maxY;
+             y++) {
+
+            if (!isInsideChunk(
+                    chunk,
+                    x,
+                    z
+            )) {
+                return Integer.MAX_VALUE;
+            }
+
+            BlockState state =
+                    chunk.getBlockState(
+                            new BlockPos(
+                                    x,
+                                    y,
+                                    z
+                            )
+                    );
+
+            if (!state.isAir()
+                    && state.getFluidState().isEmpty()) {
+
+                return y;
+            }
+        }
+
+        return Integer.MAX_VALUE;
+    }
+
+
+    /*
+     * =========================================================
+     * CHUNK BOUNDS
+     * =========================================================
+     */
 
     private boolean isInsideChunk(
             ChunkAccess chunk,
             int x,
             int z
     ) {
+
         return x >= chunk.getPos().getMinBlockX()
                 && x <= chunk.getPos().getMaxBlockX()
                 && z >= chunk.getPos().getMinBlockZ()
                 && z <= chunk.getPos().getMaxBlockZ();
-    }
-
-    private double smoothStep(
-            double edge0,
-            double edge1,
-            double value
-    ) {
-        double t =
-                Mth.clamp(
-                        (value - edge0)
-                                / (edge1 - edge0),
-                        0.0D,
-                        1.0D
-                );
-
-        return t * t * (3.0D - 2.0D * t);
     }
 }

@@ -1,8 +1,9 @@
 package msbioms.worldgen;
 
 import msbioms.MSBioms;
+import msbioms.worldgen.feature.BogPlantFeature;
 import msbioms.worldgen.feature.WillowGroundVegetationFeature;
-import msbioms.worldgen.feature.WillowShoreVegetationFeature;
+import msbioms.worldgen.feature.WillowHighGrassFeature;
 import msbioms.worldgen.feature.WillowVineFeature;
 
 import net.minecraft.core.Registry;
@@ -35,14 +36,31 @@ public class ModFeatures {
                             NoneFeatureConfiguration.CODEC
                     )
             );
-    public static final Feature<NoneFeatureConfiguration> WILLOW_SHORE_VEGETATION =
+    public static final Feature<NoneFeatureConfiguration> WILLOW_HIGH_GRASS =
             Registry.register(
                     BuiltInRegistries.FEATURE,
-                    MSBioms.id("willow_shore_vegetation"),
-                    new WillowShoreVegetationFeature(
+                    Identifier.fromNamespaceAndPath(
+                            MSBioms.MOD_ID,
+                            "willow_high_grass"
+                    ),
+                    new WillowHighGrassFeature(
                             NoneFeatureConfiguration.CODEC
                     )
             );
+    public static final Feature<NoneFeatureConfiguration> BOG_PLANT =
+            Registry.register(
+                    BuiltInRegistries.FEATURE,
+                    Identifier.fromNamespaceAndPath(
+                            MSBioms.MOD_ID,
+                            "bog_plant"
+                    ),
+                    new BogPlantFeature(
+                            NoneFeatureConfiguration.CODEC
+                    )
+            );
+
+
+
 
 
 

@@ -65,6 +65,10 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_HANGING_SIGN))
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_WALL_HANGING_SIGN));
 
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.getRK(ModBlocks.MICRO_STONE))
+                .add(ModBlocks.getRK(ModBlocks.MICRO_OAK_PLANKS));
+
         // =========================
         // Stairs / slabs
         // =========================
