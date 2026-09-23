@@ -1,5 +1,6 @@
 package msbioms.block;
 
+import msbioms.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
@@ -7,6 +8,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -146,7 +148,7 @@ public class TallPlantPartBlock extends Block implements SimpleWaterloggedBlock 
     // GROUND
     // =========================================================
 
-    private static boolean isValidGround(
+    public static boolean isValidGround(
             BlockState state
     ) {
         return state.is(BlockTags.DIRT)
@@ -157,6 +159,15 @@ public class TallPlantPartBlock extends Block implements SimpleWaterloggedBlock 
                 || state.is(Blocks.GRAVEL)
                 || state.is(Blocks.MOSS_BLOCK)
                 || state.is(ModBlocks.MOSS);
+    }
+    @Override
+    protected ItemStack getCloneItemStack(
+            LevelReader level,
+            BlockPos pos,
+            BlockState state,
+            boolean includeData
+    ) {
+        return new ItemStack(ModItems.HIGH_GRASS);
     }
 
     private static boolean isFullWater(

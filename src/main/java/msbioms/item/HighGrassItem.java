@@ -47,10 +47,7 @@ public class HighGrassItem extends Item {
                     level.getBlockState(clickedPos);
 
             boolean validGround =
-                    clickedState.is(BlockTags.DIRT)
-                            || clickedState.is(Blocks.GRASS_BLOCK)
-                            || clickedState.is(Blocks.CLAY)
-                            || clickedState.is(Blocks.MUD);
+                    TallPlantPartBlock.isValidGround(clickedState);
 
             if (!validGround) {
                 return InteractionResult.FAIL;

@@ -1,7 +1,51 @@
 {
-  "variants": {
-    "": {
-      "model": "msbioms:block/moss_carpet"
+  "multipart": [
+    {
+      "apply": {
+        "model": "msbioms:block/moss_carpet"
+      }
+    },
+
+    {
+      "when": {
+        "north": "tall"
+      },
+      "apply": {
+        "model": "msbioms:block/moss_carpet_side"
+      }
+    },
+
+    {
+      "when": {
+        "east": "tall"
+      },
+      "apply": {
+        "model": "msbioms:block/moss_carpet_side",
+        "y": 90,
+        "uvlock": true
+      }
+    },
+
+    {
+      "when": {
+        "south": "tall"
+      },
+      "apply": {
+        "model": "msbioms:block/moss_carpet_side",
+        "y": 180,
+        "uvlock": true
+      }
+    },
+
+    {
+      "when": {
+        "west": "tall"
+      },
+      "apply": {
+        "model": "msbioms:block/moss_carpet_side",
+        "y": 270,
+        "uvlock": true
+      }
     }
-  }
+  ]
 }

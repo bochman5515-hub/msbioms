@@ -49,5 +49,164 @@
   "item.msbioms.high_grass": "Болотная трава",
   "item.msbioms.dead_branch": "Сухая веточка",
   "item.msbioms.watergrass": "Ряска",
-  "item.msbioms.bog": "Пучок элодеи"
+  "item.msbioms.bog": "Пучок элодеи",
+
+
+    "creativemodetab.msbioms.msbioms_blocks": "Меню мода MSB",
+    "creativemodetab.msbioms.msbioms_vanilla_variants": "Ванильные варианты блоков",
+
+    "item.msbioms.dried_earth": "Сухая земля",
+
+    "item.msbioms.willow_log": "Ивовое бревно",
+    "item.msbioms.willow_wood": "Ивовая древесина",
+    "item.msbioms.stripped_willow_log": "Очищенное ивовое бревно",
+    "item.msbioms.stripped_willow_wood": "Очищенная ивовая древесина",
+
+    "item.msbioms.willow_planks": "Ивовые доски",
+    "item.msbioms.willow_stairs": "Ивовые ступеньки",
+    "item.msbioms.willow_slab": "Ивовая плита",
+
+    "item.msbioms.willow_leaves": "Ивовая листва",
+    "item.msbioms.willow_sapling": "Саженец ивы",
+
+    "item.msbioms.willow_fence": "Ивовый забор",
+    "item.msbioms.willow_fence_gate": "Ивовая калитка",
+
+    "item.msbioms.willow_door": "Ивовая дверь",
+    "item.msbioms.willow_trapdoor": "Ивовый люк",
+    "item.msbioms.willow_pressure_plate": "Ивовая нажимная плита",
+    "item.msbioms.willow_button": "Ивовая кнопка",
+
+    "item.msbioms.willow_sign": "Ивовая табличка",
+    "item.msbioms.willow_hanging_sign": "Ивовая подвесная табличка",
+
+    "item.msbioms.packed_ice_stairs": "Ступеньки из плотного льда",
+    "item.msbioms.packed_ice_slab": "Плита из плотного льда",
+
+    "item.msbioms.smooth_basalt_slab": "Плита из гладкого базальта",
+    "item.msbioms.smooth_basalt_stairs": "Ступеньки из гладкого базальта",
+    "item.msbioms.smooth_basalt_wall": "Ограда из гладкого базальта",
+
+    "item.msbioms.calcite_slab": "Плита из кальцита",
+    "item.msbioms.calcite_stairs": "Ступеньки из кальцита",
+    "item.msbioms.calcite_wall": "Ограда из кальцита",
+
+    "item.msbioms.prismarine_bricks_wall": "Ограда из призмаринового кирпича",
+    "item.msbioms.dark_prismarine_wall": "Ограда из тёмного призмарина",
+
+    "item.msbioms.polished_andesite_wall": "Ограда из полированного андезита",
+    "item.msbioms.polished_diorite_wall": "Ограда из полированного диорита",
+    "item.msbioms.polished_granite_wall": "Ограда из полированного гранита",
+
+    "item.msbioms.purpur_block_wall": "Ограда из пурпура",
+    "item.msbioms.quartz_bricks_wall": "Ограда из кварцевых кирпичей",
+    "item.msbioms.smooth_quartz_wall": "Гладкая кварцевая ограда",
+
+    "item.msbioms.high_grass": "Болотная трава",
+    "item.msbioms.dead_branch": "Сухая веточка",
+    "item.msbioms.watergrass": "Ряска",
+    "item.msbioms.bog": "Пучок элодеи",
+
+    "item.msbioms.salt_block": "Соляной блок",
+
+    "item.msbioms.blue_ice_stairs": "Ступеньки из синего льда",
+    "item.msbioms.blue_ice_slab": "Плита из синего льда",
+    "item.msbioms.blue_ice_wall": "Ограда из синего льда",
+
+    "item.msbioms.resin_stairs": "Ступеньки из смолы",
+    "item.msbioms.resin_slab": "Плита из смолы",
+    "item.msbioms.resin_wall": "Ограда из смолы",
+
+    "item.msbioms.dripstone_stairs": "Ступеньки из капельника",
+    "item.msbioms.dripstone_slab": "Плита из капельника",
+    "item.msbioms.dripstone_wall": "Ограда из капельника",
+
+    "item.msbioms.packed_mud_stairs": "Ступеньки из плотной грязи",
+    "item.msbioms.packed_mud_slab": "Плита из плотной грязи",
+    "item.msbioms.packed_mud_wall": "Ограда из плотной грязи",
+
+    "item.msbioms.end_stone_stairs": "Ступеньки из эндерняка",
+    "item.msbioms.end_stone_slab": "Плита из эндерняка",
+    "item.msbioms.end_stone_wall": "Ограда из эндерняка",
+
+    "item.msbioms.amethyst_stairs": "Ступеньки из аметиста",
+    "item.msbioms.amethyst_slab": "Плита из аметиста",
+    "item.msbioms.amethyst_wall": "Ограда из аметиста",
+
+    "item.msbioms.smooth_stone_stairs": "Ступеньки из гладкого камня",
+    "item.msbioms.smooth_stone_wall": "Ограда из гладкого камня",
+
+    "item.msbioms.smooth_sandstone_wall": "Ограда из гладкого песчаника",
+    "item.msbioms.smooth_red_sandstone_wall": "Ограда из гладкого красного песчаника",
+
+    "item.msbioms.honeycomb_stairs": "Ступеньки из пчелиных сот",
+    "item.msbioms.honeycomb_slab": "Плита из пчелиных сот",
+    "item.msbioms.honeycomb_wall": "Ограда из пчелиных сот",
+
+    "item.msbioms.clay_stairs": "Ступеньки из глины",
+    "item.msbioms.clay_slab": "Плита из глины",
+    "item.msbioms.clay_wall": "Ограда из глины",
+
+    "item.msbioms.netherrack_stairs": "Ступеньки из незерака",
+    "item.msbioms.netherrack_slab": "Плита из незерака",
+    "item.msbioms.netherrack_wall": "Ограда из незерака",
+
+    "item.msbioms.bone_slab": "Костяная плита",
+    "item.msbioms.hay_slab": "Плита из сена",
+    "item.msbioms.mud_slab": "Плита из грязи",
+    "item.msbioms.basalt_slab": "Плита из базальта",
+
+    "item.msbioms.moss": "Мох",
+    "item.msbioms.moss_carpet": "Моховой коврик",
+    "item.msbioms.willow_vine": "Ивовая лоза",
+
+    "item.msbioms.micro_oak_planks": "Микродоски дуба",
+    "item.msbioms.micro_birch_planks": "Микродоски берёзы",
+    "item.msbioms.micro_spruce_planks": "Микродоски ели",
+    "item.msbioms.micro_jungle_planks": "Микродоски тропического дерева",
+    "item.msbioms.micro_acacia_planks": "Микродоски акации",
+    "item.msbioms.micro_dark_oak_planks": "Микродоски тёмного дуба",
+    "item.msbioms.micro_mangrove_planks": "Микродоски мангрового дерева",
+    "item.msbioms.micro_cherry_planks": "Микродоски вишни",
+    "item.msbioms.micro_pale_oak_planks": "Микродоски бледного дуба",
+    "item.msbioms.micro_bamboo_mosaic": "Микромозаика из бамбука",
+    "item.msbioms.micro_warped_planks": "Микродоски искажённого дерева",
+    "item.msbioms.micro_crimson_planks": "Микродоски багрового дерева",
+    "item.msbioms.micro_willow_planks": "Микродоски ивы",
+
+    "item.msbioms.micro_stone": "Микрокамень",
+    "item.msbioms.micro_cobblestone": "Микробулыжник",
+    "item.msbioms.micro_mossy_cobblestone": "Микромоховой булыжник",
+    "item.msbioms.micro_andesite": "Микроандезит",
+    "item.msbioms.micro_granite": "Микрогранит",
+    "item.msbioms.micro_diorite": "Микродиорит",
+    "item.msbioms.micro_cobbled_deepslate": "Микроколотый глубинный сланец",
+    "item.msbioms.micro_tuff": "Микротyф",
+    "item.msbioms.micro_tuff_bricks": "Микрокирпичи из туфа",
+    "item.msbioms.micro_deepslate_bricks": "Микрокирпичи из глубинного сланца",
+    "item.msbioms.micro_stone_bricks": "Микрокаменные кирпичи",
+    "item.msbioms.micro_bricks": "Микрокирпичи",
+
+    "item.msbioms.micro_prismarine": "Микропризмарин",
+    "item.msbioms.micro_dark_prismarine": "Микротёмный призмарин",
+    "item.msbioms.micro_smooth_sandstone": "Микрогладкий песчаник",
+    "item.msbioms.micro_smooth_red_sandstone": "Микрогладкий красный песчаник",
+    "item.msbioms.micro_smooth_quartz": "Микрогладкий кварц",
+
+    "item.msbioms.micro_blackstone": "Микрочёрный камень",
+    "item.msbioms.micro_polished_blackstone_bricks": "Микрокирпичи из полированного чернокамня",
+    "item.msbioms.micro_end_bricks": "Микроендерский кирпич",
+    "item.msbioms.micro_quartz_bricks": "Микрокварцевые кирпичи",
+    "item.msbioms.micro_nether_bricks": "Микронезерские кирпичи",
+    "item.msbioms.micro_red_nether_bricks": "Микрокрасные незерские кирпичи",
+    "item.msbioms.micro_dripstone_block": "Микроблок капельника",
+    "item.msbioms.micro_smooth_basalt": "Микрогладкий базальт",
+    "item.msbioms.micro_amethyst_block": "Микроаметистовый блок",
+    "item.msbioms.micro_resin_block": "Микроблок смолы",
+    "item.msbioms.micro_resin_bricks": "Микрокирпичи из смолы",
+    "item.msbioms.micro_sulfur": "Микросера",
+    "item.msbioms.micro_sulfur_bricks": "Микрокирпичи из серы",
+    "item.msbioms.micro_cinnabar": "Микрокиноварь",
+    "item.msbioms.micro_cinnabar_bricks": "Микрокирпичи из киновари"
+
 }

@@ -316,12 +316,12 @@ public class ModItems {
                     )
             );
 
-    public static final Item MICRO_MAGMA =
+    public static final Item MICRO_END_BRICKS =
             registerItem(
-                    "micro_magma",
+                    "micro_end_bricks",
                     properties -> new MicroBlockItem(
                             properties,
-                            () -> ModBlocks.MICRO_MAGMA
+                            () -> ModBlocks.MICRO_END_BRICKS
                     )
             );
 

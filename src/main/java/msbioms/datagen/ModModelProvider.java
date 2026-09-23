@@ -995,8 +995,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         generateMicroBlock(
                 generator,
-                ModBlocks.MICRO_MAGMA,
-                Blocks.MAGMA_BLOCK
+                ModBlocks.MICRO_END_BRICKS,
+                Blocks.END_STONE_BRICKS
         );
 
         generateMicroBlock(
@@ -1306,8 +1306,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         generateMicroBlockItem(
                 generator,
-                ModItems.MICRO_MAGMA,
-                ModBlocks.MICRO_MAGMA
+                ModItems.MICRO_END_BRICKS,
+                ModBlocks.MICRO_END_BRICKS
         );
 
         generateMicroBlockItem(

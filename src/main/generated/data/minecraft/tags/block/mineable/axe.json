@@ -16,6 +16,22 @@
     "msbioms:willow_sign",
     "msbioms:willow_wall_sign",
     "msbioms:willow_hanging_sign",
-    "msbioms:willow_wall_hanging_sign"
+    "msbioms:willow_wall_hanging_sign",
+    "msbioms:micro_oak_planks",
+    "msbioms:micro_birch_planks",
+    "msbioms:micro_spruce_planks",
+    "msbioms:micro_jungle_planks",
+    "msbioms:micro_acacia_planks",
+    "msbioms:micro_dark_oak_planks",
+    "msbioms:micro_mangrove_planks",
+    "msbioms:micro_cherry_planks",
+    "msbioms:micro_pale_oak_planks",
+    "msbioms:micro_bamboo_mosaic",
+    "msbioms:micro_warped_planks",
+    "msbioms:micro_crimson_planks",
+    "msbioms:micro_willow_planks",
+    "msbioms:honeycomb_stairs",
+    "msbioms:honeycomb_slab",
+    "msbioms:honeycomb_wall"
   ]
 }

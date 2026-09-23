@@ -336,6 +336,7 @@ public class ModBlocks {
                     properties
                             .strength(3.5F)
                             .requiresCorrectToolForDrops()
+                            .sound(SoundType.DEEPSLATE)
                             .noOcclusion(),
                     () -> ModItems.MICRO_COBBLED_DEEPSLATE
             )
@@ -347,6 +348,7 @@ public class ModBlocks {
                     properties
                             .strength(1.5F)
                             .requiresCorrectToolForDrops()
+                            .sound(SoundType.TUFF)
                             .noOcclusion(),
                     () -> ModItems.MICRO_TUFF
             )
@@ -358,6 +360,7 @@ public class ModBlocks {
                     properties
                             .strength(3.5F)
                             .requiresCorrectToolForDrops()
+                            .sound(SoundType.TUFF_BRICKS)
                             .noOcclusion(),
                     () -> ModItems.MICRO_TUFF_BRICKS
             )
@@ -369,6 +372,7 @@ public class ModBlocks {
                     properties
                             .strength(3.5F)
                             .requiresCorrectToolForDrops()
+                            .sound(SoundType.DEEPSLATE_BRICKS)
                             .noOcclusion(),
                     () -> ModItems.MICRO_DEEPSLATE_BRICKS
             )
@@ -480,13 +484,13 @@ public class ModBlocks {
             )
     );
 
-    public static final Block MICRO_MAGMA = registerBlockWithoutItem(
-            "micro_magma",
+    public static final Block MICRO_END_BRICKS = registerBlockWithoutItem(
+            "micro_end_bricks",
             properties -> new MicroBlock(
                     properties
                             .strength(0.5F)
                             .noOcclusion(),
-                    () -> ModItems.MICRO_MAGMA
+                    () -> ModItems.MICRO_END_BRICKS
             )
     );
 
@@ -507,6 +511,7 @@ public class ModBlocks {
                     properties
                             .strength(2.0F)
                             .requiresCorrectToolForDrops()
+                            .sound(SoundType.NETHER_BRICKS)
                             .noOcclusion(),
                     () -> ModItems.MICRO_NETHER_BRICKS
             )
@@ -518,6 +523,7 @@ public class ModBlocks {
                     properties
                             .strength(2.0F)
                             .requiresCorrectToolForDrops()
+                            .sound(SoundType.NETHER_BRICKS)
                             .noOcclusion(),
                     () -> ModItems.MICRO_RED_NETHER_BRICKS
             )
@@ -529,6 +535,7 @@ public class ModBlocks {
                     properties
                             .strength(1.5F)
                             .requiresCorrectToolForDrops()
+                            .sound(SoundType.DRIPSTONE_BLOCK)
                             .noOcclusion(),
                     () -> ModItems.MICRO_DRIPSTONE_BLOCK
             )
@@ -540,6 +547,7 @@ public class ModBlocks {
                     properties
                             .strength(1.25F)
                             .requiresCorrectToolForDrops()
+                            .sound(SoundType.BASALT)
                             .noOcclusion(),
                     () -> ModItems.MICRO_SMOOTH_BASALT
             )
@@ -551,6 +559,7 @@ public class ModBlocks {
                     properties
                             .strength(1.5F)
                             .requiresCorrectToolForDrops()
+                            .sound(SoundType.AMETHYST)
                             .noOcclusion(),
                     () -> ModItems.MICRO_AMETHYST_BLOCK
             )
@@ -561,6 +570,7 @@ public class ModBlocks {
             properties -> new MicroBlock(
                     properties
                             .strength(1.0F)
+                            .sound(SoundType.RESIN)
                             .noOcclusion(),
                     () -> ModItems.MICRO_RESIN_BLOCK
             )
@@ -571,6 +581,7 @@ public class ModBlocks {
             properties -> new MicroBlock(
                     properties
                             .strength(1.5F)
+                            .sound(SoundType.RESIN_BRICKS)
                             .noOcclusion(),
                     () -> ModItems.MICRO_RESIN_BRICKS
             )
@@ -581,6 +592,7 @@ public class ModBlocks {
             properties -> new MicroBlock(
                     properties
                             .strength(1.0F)
+                            .sound(SoundType.SULFUR)
                             .noOcclusion(),
                     () -> ModItems.MICRO_SULFUR
             )
@@ -591,6 +603,7 @@ public class ModBlocks {
             properties -> new MicroBlock(
                     properties
                             .strength(1.5F)
+                            .sound(SoundType.SULFUR)
                             .noOcclusion(),
                     () -> ModItems.MICRO_SULFUR_BRICKS
             )
@@ -601,6 +614,7 @@ public class ModBlocks {
             properties -> new MicroBlock(
                     properties
                             .strength(1.0F)
+                            .sound(SoundType.CINNABAR)
                             .noOcclusion(),
                     () -> ModItems.MICRO_CINNABAR
             )
@@ -611,6 +625,7 @@ public class ModBlocks {
             properties -> new MicroBlock(
                     properties
                             .strength(1.5F)
+                            .sound(SoundType.CINNABAR)
                             .noOcclusion(),
                     () -> ModItems.MICRO_CINNABAR_BRICKS
             )
@@ -646,6 +661,7 @@ public class ModBlocks {
             properties -> new WillowVineBlock(
                     properties
                             .noCollision()
+                            .offsetType(BlockBehaviour.OffsetType.XYZ)
                             .instabreak()
                             .sound(SoundType.MOSS)
             )
@@ -655,6 +671,7 @@ public class ModBlocks {
             properties -> new WillowVinePlantBlock(
                     properties
                             .noCollision()
+                            .offsetType(BlockBehaviour.OffsetType.XYZ)
                             .instabreak()
                             .sound(SoundType.MOSS)
             )
@@ -663,7 +680,7 @@ public class ModBlocks {
 
     public static final Block MOSS_CARPET = registerBlock(
             "moss_carpet",
-            properties -> new CarpetBlock(
+            properties -> new MossCarpetBlock(
                     properties
                             .mapColor(MapColor.TERRACOTTA_GREEN)
                             .strength(0.1f)
@@ -996,6 +1013,7 @@ public class ModBlocks {
                             .noCollision()
                             .instabreak()
                             .sound(SoundType.GRASS)
+                            .offsetType(BlockBehaviour.OffsetType.XYZ)
                             .pushReaction(PushReaction.DESTROY),
                     ResourceKey.create(
                             BuiltInRegistries.BLOCK.key(),
@@ -1012,10 +1030,12 @@ public class ModBlocks {
                             .noCollision()
                             .instabreak()
                             .sound(SoundType.GRASS)
+                            .offsetType(BlockBehaviour.OffsetType.XYZ)
                             .pushReaction(PushReaction.DESTROY),
                     ResourceKey.create(
                             BuiltInRegistries.BLOCK.key(),
                             MSBioms.id("high_grass")
+
                     ),
                     true
             )
@@ -1066,7 +1086,7 @@ public class ModBlocks {
                     Blocks.SMOOTH_BASALT.defaultBlockState(),
                     properties
                             .strength(2f)
-                            .sound(SoundType.STONE)
+                            .sound(SoundType.DRIPSTONE_BLOCK)
                             .mapColor(MapColor.COLOR_BROWN)
             )
     );
@@ -1075,7 +1095,7 @@ public class ModBlocks {
             properties -> new SlabBlock(
                     properties
                             .strength(2f)
-                            .sound(SoundType.STONE)
+                            .sound(SoundType.DRIPSTONE_BLOCK)
                             .mapColor(MapColor.COLOR_BROWN)
 
             )
@@ -1085,7 +1105,7 @@ public class ModBlocks {
             properties -> new WallBlock(
                     properties
                             .strength(2f)
-                            .sound(SoundType.STONE)
+                            .sound(SoundType.DRIPSTONE_BLOCK)
                             .mapColor(MapColor.COLOR_BROWN)
             )
     );
@@ -1257,7 +1277,7 @@ public class ModBlocks {
                     Blocks.CLAY.defaultBlockState(),
                     properties
                             .strength(2f)
-                            .sound(SoundType.GRASS)
+                            .sound(SoundType.GRAVEL)
                             .mapColor(MapColor.CLAY)
             )
     );
@@ -1266,7 +1286,7 @@ public class ModBlocks {
             properties -> new SlabBlock(
                     properties
                             .strength(2f)
-                            .sound(SoundType.GRASS)
+                            .sound(SoundType.GRAVEL)
                             .mapColor(MapColor.CLAY)
 
             )
@@ -1276,7 +1296,7 @@ public class ModBlocks {
             properties -> new WallBlock(
                     properties
                             .strength(2f)
-                            .sound(SoundType.GRASS)
+                            .sound(SoundType.GRAVEL)
                             .mapColor(MapColor.CLAY)
             )
     );
@@ -1317,8 +1337,8 @@ public class ModBlocks {
             properties -> new SlabBlock(
                     properties
                             .strength(2f)
-                            .sound(SoundType.GRASS)
-                            .mapColor(MapColor.CLAY)
+                            .sound(SoundType.BONE_BLOCK)
+                            .mapColor(MapColor.TERRACOTTA_WHITE)
             )
     );
     public static final Block HAY_SLAB = registerBlock(

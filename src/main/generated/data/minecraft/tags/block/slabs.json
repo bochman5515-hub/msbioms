@@ -1,5 +1,21 @@
 {
   "values": [
-    "msbioms:willow_slab"
+    "msbioms:willow_slab",
+    "msbioms:packed_ice_slab",
+    "msbioms:blue_ice_slab",
+    "msbioms:calcite_slab",
+    "msbioms:resin_slab",
+    "msbioms:smooth_basalt_slab",
+    "msbioms:dripstone_slab",
+    "msbioms:packed_mud_slab",
+    "msbioms:end_stone_slab",
+    "msbioms:amethyst_slab",
+    "msbioms:honeycomb_slab",
+    "msbioms:clay_slab",
+    "msbioms:netherrack_slab",
+    "msbioms:bone_slab",
+    "msbioms:hay_slab",
+    "msbioms:mud_slab",
+    "msbioms:basalt_slab"
   ]
 }

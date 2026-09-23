@@ -1,5 +1,18 @@
 {
   "values": [
-    "msbioms:willow_stairs"
+    "msbioms:willow_stairs",
+    "msbioms:packed_ice_stairs",
+    "msbioms:blue_ice_stairs",
+    "msbioms:calcite_stairs",
+    "msbioms:resin_stairs",
+    "msbioms:smooth_basalt_stairs",
+    "msbioms:dripstone_stairs",
+    "msbioms:packed_mud_stairs",
+    "msbioms:end_stone_stairs",
+    "msbioms:amethyst_stairs",
+    "msbioms:smooth_stone_stairs",
+    "msbioms:honeycomb_stairs",
+    "msbioms:clay_stairs",
+    "msbioms:netherrack_stairs"
   ]
 }

@@ -179,7 +179,7 @@ public class ModCreativeModeTabs {
                                 output.accept(ModItems.MICRO_SMOOTH_QUARTZ);
                                 output.accept(ModItems.MICRO_BLACKSTONE);
                                 output.accept(ModItems.MICRO_POLISHED_BLACKSTONE_BRICKS);
-                                output.accept(ModItems.MICRO_MAGMA);
+                                output.accept(ModItems.MICRO_END_BRICKS);
                                 output.accept(ModItems.MICRO_QUARTZ_BRICKS);
                                 output.accept(ModItems.MICRO_NETHER_BRICKS);
                                 output.accept(ModItems.MICRO_RED_NETHER_BRICKS);
