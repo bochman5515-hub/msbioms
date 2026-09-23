@@ -1,0 +1,68 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "msbioms:block/micro_cinnabar_cell_0"
+      },
+      "when": {
+        "cell_0": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "msbioms:block/micro_cinnabar_cell_1"
+      },
+      "when": {
+        "cell_1": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "msbioms:block/micro_cinnabar_cell_2"
+      },
+      "when": {
+        "cell_2": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "msbioms:block/micro_cinnabar_cell_3"
+      },
+      "when": {
+        "cell_3": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "msbioms:block/micro_cinnabar_cell_4"
+      },
+      "when": {
+        "cell_4": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "msbioms:block/micro_cinnabar_cell_5"
+      },
+      "when": {
+        "cell_5": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "msbioms:block/micro_cinnabar_cell_6"
+      },
+      "when": {
+        "cell_6": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "msbioms:block/micro_cinnabar_cell_7"
+      },
+      "when": {
+        "cell_7": "true"
+      }
+    }
+  ]
+}

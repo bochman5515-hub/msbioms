@@ -1,0 +1,12 @@
+{
+  "parent": "msbioms:block/micro_cube_4",
+  "textures": {
+    "down": "minecraft:block/quartz_bricks",
+    "east": "minecraft:block/quartz_bricks",
+    "north": "minecraft:block/quartz_bricks",
+    "particle": "minecraft:block/quartz_bricks",
+    "south": "minecraft:block/quartz_bricks",
+    "up": "minecraft:block/quartz_bricks",
+    "west": "minecraft:block/quartz_bricks"
+  }
+}

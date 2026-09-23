@@ -1,0 +1,12 @@
+{
+  "parent": "msbioms:block/micro_cube_1",
+  "textures": {
+    "down": "msbioms:block/willow_planks",
+    "east": "msbioms:block/willow_planks",
+    "north": "msbioms:block/willow_planks",
+    "particle": "msbioms:block/willow_planks",
+    "south": "msbioms:block/willow_planks",
+    "up": "msbioms:block/willow_planks",
+    "west": "msbioms:block/willow_planks"
+  }
+}

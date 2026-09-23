@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": {
+      "feature": "msbioms:willow_tree_nbt",
+      "placement": []
+    },
+    "features": [
+      {
+        "chance": 0.3,
+        "feature": {
+          "feature": "msbioms:big_willow_tree_nbt",
+          "placement": []
+        }
+      }
+    ]
+  }
+}

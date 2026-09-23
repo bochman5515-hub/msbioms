@@ -1,0 +1,12 @@
+{
+  "parent": "msbioms:block/micro_cube_7",
+  "textures": {
+    "down": "minecraft:block/smooth_basalt",
+    "east": "minecraft:block/smooth_basalt",
+    "north": "minecraft:block/smooth_basalt",
+    "particle": "minecraft:block/smooth_basalt",
+    "south": "minecraft:block/smooth_basalt",
+    "up": "minecraft:block/smooth_basalt",
+    "west": "minecraft:block/smooth_basalt"
+  }
+}

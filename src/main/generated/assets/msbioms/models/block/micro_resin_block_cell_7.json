@@ -1,0 +1,12 @@
+{
+  "parent": "msbioms:block/micro_cube_7",
+  "textures": {
+    "down": "minecraft:block/resin_block",
+    "east": "minecraft:block/resin_block",
+    "north": "minecraft:block/resin_block",
+    "particle": "minecraft:block/resin_block",
+    "south": "minecraft:block/resin_block",
+    "up": "minecraft:block/resin_block",
+    "west": "minecraft:block/resin_block"
+  }
+}

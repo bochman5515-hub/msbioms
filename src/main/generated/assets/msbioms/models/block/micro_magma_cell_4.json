@@ -1,0 +1,12 @@
+{
+  "parent": "msbioms:block/micro_cube_4",
+  "textures": {
+    "down": "minecraft:block/magma_block",
+    "east": "minecraft:block/magma_block",
+    "north": "minecraft:block/magma_block",
+    "particle": "minecraft:block/magma_block",
+    "south": "minecraft:block/magma_block",
+    "up": "minecraft:block/magma_block",
+    "west": "minecraft:block/magma_block"
+  }
+}
