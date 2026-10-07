@@ -5,6 +5,7 @@ import msbioms.MSBioms;
 import msbioms.item.MicroBlockItem;
 import msbioms.item.ModItems;
 import msbioms.mixin.BlockEntityTypeAccessor;
+import msbioms.particle.ModParticles;
 import msbioms.worldgen.ModConfiguredFeatures;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 
@@ -27,8 +28,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
-import static msbioms.block.ModWoodTypes.WILLOW;
-import static msbioms.block.ModWoodTypes.WILLOW_SET;
+import static msbioms.block.ModWoodTypes.*;
 import static net.minecraft.world.level.block.Blocks.PACKED_ICE;
 
 
@@ -85,6 +85,7 @@ public class ModBlocks {
                             .noOcclusion()
                             .randomTicks()
                             .instabreak()
+                            .noCollision()
                             .sound(SoundType.CHERRY_SAPLING)
             )
     );
@@ -112,23 +113,550 @@ public class ModBlocks {
             )
     );
 
-    //public static final Block WILLOW_LEAVES = registerBlock(
-     //       "willow_leaves",
-     //       properties -> new UntintedParticleLeavesBlock(
-     //               0.01f,
-      //              ParticleTypes.CHERRY_LEAVES,
-      //              properties
-      //                      .mapColor(MapColor.TERRACOTTA_GREEN)
-      //                      .strength(0.2f)
-      //                      .randomTicks()
-      //                      .sound(SoundType.AZALEA_LEAVES)
-      //                      .noOcclusion()
-      //                      .isValidSpawn(Blocks::ocelotOrParrot)
-      //                      .isSuffocating(Blocks::never)
-      //                      .isViewBlocking(Blocks::never)
-      //                      .ignitedByLava()
-      //      )
-    //);
+    public static final Block GLOOMY_LOG = registerBlock(
+            "gloomy_log",
+            properties -> new RotatedPillarBlock(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+
+    public static final Block GLOOMY_WOOD = registerBlock(
+            "gloomy_wood",
+            properties -> new RotatedPillarBlock(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+
+    public static final Block STRIPPED_GLOOMY_LOG = registerBlock(
+            "stripped_gloomy_log",
+            properties -> new RotatedPillarBlock(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+
+    public static final Block STRIPPED_GLOOMY_WOOD = registerBlock(
+            "stripped_gloomy_wood",
+            properties -> new RotatedPillarBlock(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+
+
+    public static final Block GLOOMY_PLANKS = registerBlock(
+            "gloomy_planks",
+            properties -> new Block(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+    public static final Block GLOOMY_STAIRS = registerBlock(
+            "gloomy_stairs",
+            properties -> new StairBlock(
+                    GLOOMY_PLANKS.defaultBlockState(),
+                    properties.strength(2.0f).sound(SoundType.WOOD)
+            )
+    );
+
+    public static final Block GLOOMY_SLAB = registerBlock(
+            "gloomy_slab",
+            properties -> new SlabBlock(
+                    properties.strength(2.0f).sound(SoundType.WOOD)
+            )
+    );
+    public static final Block GLOOMY_LEAVES = registerBlock(
+            "gloomy_leaves",
+            properties -> new TintedParticleLeavesBlock(
+                    0.01f,
+                    properties
+                            .mapColor(MapColor.TERRACOTTA_GREEN)
+                            .strength(0.2f)
+                            .randomTicks()
+                            .sound(SoundType.AZALEA_LEAVES)
+                            .noOcclusion()
+                            .isValidSpawn(Blocks::ocelotOrParrot)
+                            .isSuffocating(Blocks::never)
+                            .isViewBlocking(Blocks::never)
+                            .ignitedByLava()
+            )
+    );
+    public static final Block GLOOMY_LEAVES_FLOVER = registerBlock(
+            "gloomy_leaves_flover",
+            properties -> new TintedParticleLeavesBlock(
+                    0.01f,
+                    properties
+                            .mapColor(MapColor.TERRACOTTA_GREEN)
+                            .strength(0.2f)
+                            .randomTicks()
+                            .sound(SoundType.AZALEA_LEAVES)
+                            .noOcclusion()
+                            .isValidSpawn(Blocks::ocelotOrParrot)
+                            .isSuffocating(Blocks::never)
+                            .isViewBlocking(Blocks::never)
+                            .ignitedByLava()
+            )
+    );
+    public static final Block GLOOMY_SAPLING = registerBlock(
+            "gloomy_sapling",
+            properties -> new SaplingBlock(
+                    ModConfiguredFeatures.GLOOMY,
+                    properties
+                            .mapColor(MapColor.PLANT)
+                            .noOcclusion()
+                            .noCollision()
+                            .randomTicks()
+                            .instabreak()
+                            .sound(SoundType.CHERRY_SAPLING)
+            )
+    );
+
+
+
+    public static final Block MAPLE_LOG = registerBlock(
+            "maple_log",
+            properties -> new RotatedPillarBlock(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+
+    public static final Block MAPLE_WOOD = registerBlock(
+            "maple_wood",
+            properties -> new RotatedPillarBlock(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+
+    public static final Block STRIPPED_MAPLE_LOG = registerBlock(
+            "stripped_maple_log",
+            properties -> new RotatedPillarBlock(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+
+    public static final Block STRIPPED_MAPLE_WOOD = registerBlock(
+            "stripped_maple_wood",
+            properties -> new RotatedPillarBlock(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+
+
+    public static final Block MAPLE_PLANKS = registerBlock(
+            "maple_planks",
+            properties -> new Block(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+    public static final Block MAPLE_STAIRS = registerBlock(
+            "maple_stairs",
+            properties -> new StairBlock(
+                    MAPLE_PLANKS.defaultBlockState(),
+                    properties.strength(2.0f).sound(SoundType.WOOD)
+            )
+    );
+
+    public static final Block MAPLE_SLAB = registerBlock(
+            "maple_slab",
+            properties -> new SlabBlock(
+                    properties.strength(2.0f).sound(SoundType.WOOD)
+            )
+    );
+    public static final Block MAPLE_RED_LEAVES = registerBlock(
+            "maple_red_leaves",
+            properties -> new UntintedParticleLeavesBlock(
+                    0.01f,
+                    ModParticles.RED_MAPLE_LEAVES,
+                    properties
+                            .mapColor(MapColor.COLOR_RED)
+                            .strength(0.2f)
+                            .randomTicks()
+                            .sound(SoundType.AZALEA_LEAVES)
+                            .noOcclusion()
+                            .isValidSpawn(Blocks::ocelotOrParrot)
+                            .isSuffocating(Blocks::never)
+                            .isViewBlocking(Blocks::never)
+                            .ignitedByLava()
+            )
+    );
+    public static final Block MAPLE_YELLOW_LEAVES = registerBlock(
+            "maple_yellow_leaves",
+            properties -> new UntintedParticleLeavesBlock(
+                    0.01f,
+                    ModParticles.YELLOW_MAPLE_LEAVES,
+                    properties
+                            .mapColor(MapColor.COLOR_YELLOW)
+                            .strength(0.2f)
+                            .randomTicks()
+                            .sound(SoundType.AZALEA_LEAVES)
+                            .noOcclusion()
+                            .isValidSpawn(Blocks::ocelotOrParrot)
+                            .isSuffocating(Blocks::never)
+                            .isViewBlocking(Blocks::never)
+                            .ignitedByLava()
+            )
+    );
+    public static final Block MAPLE_SAPLING = registerBlock(
+            "maple_sapling",
+            properties -> new SaplingBlock(
+                    ModConfiguredFeatures.GLOOMY,
+                    properties
+                            .mapColor(MapColor.PLANT)
+                            .noOcclusion()
+                            .noCollision()
+                            .randomTicks()
+                            .instabreak()
+                            .sound(SoundType.CHERRY_SAPLING)
+            )
+    );
+
+    public static final Block POPLAR_CATKIN = registerBlock(
+            "poplar_catkin",
+            properties -> new PoplarCatkinBlock(
+                    6.0f,
+                    6.0f,
+                    properties
+                            .mapColor(MapColor.COLOR_LIGHT_GREEN)
+                            .noOcclusion()
+                            .noCollision()
+                            .instabreak()
+                            .sound(SoundType.GRASS)
+            )
+    );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static final Block THORNY_VINE = registerBlockWithoutItem(
+            "thorny_vine",
+            properties -> new ThornyVineBlock(
+                    properties
+                            .noCollision()
+                            .instabreak()
+                            .sound(SoundType.MOSS)
+            )
+    );
+
+    public static final Block THORNY_VINE_PLANT = registerBlockWithoutItem(
+            "thorny_vine_plant",
+            properties -> new ThornyVinePlantBlock(
+                    properties
+                            .noCollision()
+                            .instabreak()
+                            .sound(SoundType.MOSS)
+            )
+    );
+    public static final Block GLOWING_FRUIT = registerBlockWithoutItem(
+            "glowing_fruit",
+            properties -> new GlowingFruitBlock(
+                    properties
+                            .mapColor(MapColor.COLOR_YELLOW)
+                            .strength(0.2f)
+                            .noOcclusion()
+                            .lightLevel(state -> 12)
+                            .sound(SoundType.CROP)
+            )
+    );
+    public static final Block MAPLE_FENCE = registerBlock(
+            "maple_fence",
+            properties -> new FenceBlock(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+
+    public static final Block MAPLE_FENCE_GATE = registerBlock(
+            "maple_fence_gate",
+            properties -> new FenceGateBlock(
+                    MAPLE,
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+    public static final Block MAPLE_DOOR = registerBlock(
+            "maple_door",
+            properties -> new DoorBlock(
+                    MAPLE_SET,
+                    properties
+                            .strength(2f)
+                            .noOcclusion()
+            )
+    );
+
+    public static final Block MAPLE_TRAPDOOR = registerBlock(
+            "maple_trapdoor",
+            properties -> new TrapDoorBlock(
+                    MAPLE_SET,
+                    properties
+                            .strength(2f)
+                            .noOcclusion()
+            )
+    );
+
+    public static final Block MAPLE_PRESSURE_PLATE = registerBlock(
+            "maple_pressure_plate",
+            properties -> new PressurePlateBlock(
+                    MAPLE_SET,
+                    properties.strength(0.5f)
+            )
+    );
+
+    public static final Block MAPLE_BUTTON = registerBlock(
+            "maple_button",
+            properties -> new ButtonBlock(
+                    MAPLE_SET,
+                    30,
+                    properties.strength(0.5f)
+            )
+    );
+
+
+    // Maple sign
+    public static final Block MAPLE_SIGN = registerBlockWithoutItem(
+            "maple_sign",
+            properties -> new StandingSignBlock(
+                    ModWoodTypes.MAPLE,
+                    properties.strength(1f)
+            )
+    );
+
+    public static final Block MAPLE_WALL_SIGN = registerBlockWithoutItem(
+            "maple_wall_sign",
+            properties -> new WallSignBlock(
+                    ModWoodTypes.MAPLE,
+                    properties.strength(1f)
+            )
+    );
+
+    public static final Block MAPLE_HANGING_SIGN = registerBlockWithoutItem(
+            "maple_hanging_sign",
+            properties -> new CeilingHangingSignBlock(
+                    ModWoodTypes.MAPLE,
+                    properties.strength(1f)
+            )
+    );
+
+    public static final Block MAPLE_WALL_HANGING_SIGN = registerBlockWithoutItem(
+            "maple_wall_hanging_sign",
+            properties -> new WallHangingSignBlock(
+                    ModWoodTypes.MAPLE,
+                    properties.strength(1f)
+            )
+    );
+
+
+
+
+    //POPLAR WOOD
+
+    public static final Block POPLAR_LOG = registerBlock(
+            "poplar_log",
+            properties -> new RotatedPillarBlock(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+
+    public static final Block POPLAR_WOOD = registerBlock(
+            "poplar_wood",
+            properties -> new RotatedPillarBlock(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+
+    public static final Block STRIPPED_POPLAR_LOG = registerBlock(
+            "stripped_poplar_log",
+            properties -> new RotatedPillarBlock(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+
+    public static final Block STRIPPED_POPLAR_WOOD = registerBlock(
+            "stripped_poplar_wood",
+            properties -> new RotatedPillarBlock(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+
+
+    public static final Block POPLAR_PLANKS = registerBlock(
+            "poplar_planks",
+            properties -> new Block(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+    public static final Block POPLAR_STAIRS = registerBlock(
+            "poplar_stairs",
+            properties -> new StairBlock(
+                    POPLAR_PLANKS.defaultBlockState(),
+                    properties.strength(2.0f).sound(SoundType.WOOD)
+            )
+    );
+
+    public static final Block POPLAR_SLAB = registerBlock(
+            "poplar_slab",
+            properties -> new SlabBlock(
+                    properties.strength(2.0f).sound(SoundType.WOOD)
+            )
+    );
+    public static final Block POPLAR_LEAVES = registerBlock(
+            "poplar_leaves",
+            properties -> new TintedParticleLeavesBlock(
+                    0.01f,
+                    properties
+                            .mapColor(MapColor.TERRACOTTA_LIGHT_GREEN)
+                            .strength(0.2f)
+                            .randomTicks()
+                            .sound(SoundType.AZALEA_LEAVES)
+                            .noOcclusion()
+                            .isValidSpawn(Blocks::ocelotOrParrot)
+                            .isSuffocating(Blocks::never)
+                            .isViewBlocking(Blocks::never)
+                            .ignitedByLava()
+            )
+    );
+    public static final Block POPLAR_SAPLING = registerBlock(
+            "poplar_sapling",
+            properties -> new SaplingBlock(
+                    ModConfiguredFeatures.GLOOMY,
+                    properties
+                            .mapColor(MapColor.PLANT)
+                            .noOcclusion()
+                            .noCollision()
+                            .randomTicks()
+                            .instabreak()
+                            .sound(SoundType.CHERRY_SAPLING)
+            )
+    );
+    public static final Block POPLAR_FENCE = registerBlock(
+            "poplar_fence",
+            properties -> new FenceBlock(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+
+    public static final Block POPLAR_FENCE_GATE = registerBlock(
+            "poplar_fence_gate",
+            properties -> new FenceGateBlock(
+                    POPLAR,
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+    public static final Block POPLAR_DOOR = registerBlock(
+            "poplar_door",
+            properties -> new DoorBlock(
+                    POPLAR_SET,
+                    properties
+                            .strength(2f)
+                            .noOcclusion()
+            )
+    );
+
+    public static final Block POPLAR_TRAPDOOR = registerBlock(
+            "poplar_trapdoor",
+            properties -> new TrapDoorBlock(
+                    POPLAR_SET,
+                    properties
+                            .strength(2f)
+                            .noOcclusion()
+            )
+    );
+
+    public static final Block POPLAR_PRESSURE_PLATE = registerBlock(
+            "poplar_pressure_plate",
+            properties -> new PressurePlateBlock(
+                    POPLAR_SET,
+                    properties.strength(0.5f)
+            )
+    );
+
+    public static final Block POPLAR_BUTTON = registerBlock(
+            "poplar_button",
+            properties -> new ButtonBlock(
+                    POPLAR_SET,
+                    30,
+                    properties.strength(0.5f)
+            )
+    );
+
+
+    // Poplar sign
+    public static final Block POPLAR_SIGN = registerBlockWithoutItem(
+            "poplar_sign",
+            properties -> new StandingSignBlock(
+                    ModWoodTypes.POPLAR,
+                    properties.strength(1f)
+            )
+    );
+
+    public static final Block POPLAR_WALL_SIGN = registerBlockWithoutItem(
+            "poplar_wall_sign",
+            properties -> new WallSignBlock(
+                    ModWoodTypes.POPLAR,
+                    properties.strength(1f)
+            )
+    );
+
+    public static final Block POPLAR_HANGING_SIGN = registerBlockWithoutItem(
+            "poplar_hanging_sign",
+            properties -> new CeilingHangingSignBlock(
+                    ModWoodTypes.POPLAR,
+                    properties.strength(1f)
+            )
+    );
+
+    public static final Block POPLAR_WALL_HANGING_SIGN = registerBlockWithoutItem(
+            "poplar_wall_hanging_sign",
+            properties -> new WallHangingSignBlock(
+                    ModWoodTypes.POPLAR,
+                    properties.strength(1f)
+            )
+    );
+
+
 
 
 
@@ -744,7 +1272,97 @@ public class ModBlocks {
             )
     );
 
+
+
+    public static final Block GLOOMY_FENCE = registerBlock(
+            "gloomy_fence",
+            properties -> new FenceBlock(
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+
+    public static final Block GLOOMY_FENCE_GATE = registerBlock(
+            "gloomy_fence_gate",
+            properties -> new FenceGateBlock(
+                    GLOOMY,
+                    properties
+                            .strength(2f)
+                            .sound(SoundType.WOOD)
+            )
+    );
+    public static final Block GLOOMY_DOOR = registerBlock(
+            "gloomy_door",
+            properties -> new DoorBlock(
+                    GLOOMY_SET,
+                    properties
+                            .strength(2f)
+                            .noOcclusion()
+            )
+    );
+
+    public static final Block GLOOMY_TRAPDOOR = registerBlock(
+            "gloomy_trapdoor",
+            properties -> new TrapDoorBlock(
+                    GLOOMY_SET,
+                    properties
+                            .strength(2f)
+                            .noOcclusion()
+            )
+    );
+
+    public static final Block GLOOMY_PRESSURE_PLATE = registerBlock(
+            "gloomy_pressure_plate",
+            properties -> new PressurePlateBlock(
+                    GLOOMY_SET,
+                    properties.strength(0.5f)
+            )
+    );
+
+    public static final Block GLOOMY_BUTTON = registerBlock(
+            "gloomy_button",
+            properties -> new ButtonBlock(
+                    GLOOMY_SET,
+                    30,
+                    properties.strength(0.5f)
+            )
+    );
+
+
     // Willow sign
+    public static final Block GLOOMY_SIGN = registerBlockWithoutItem(
+            "gloomy_sign",
+            properties -> new StandingSignBlock(
+                    ModWoodTypes.GLOOMY,
+                    properties.strength(1f)
+            )
+    );
+
+    public static final Block GLOOMY_WALL_SIGN = registerBlockWithoutItem(
+            "gloomy_wall_sign",
+            properties -> new WallSignBlock(
+                    ModWoodTypes.GLOOMY,
+                    properties.strength(1f)
+            )
+    );
+
+    public static final Block GLOOMY_HANGING_SIGN = registerBlockWithoutItem(
+            "gloomy_hanging_sign",
+            properties -> new CeilingHangingSignBlock(
+                    ModWoodTypes.GLOOMY,
+                    properties.strength(1f)
+            )
+    );
+
+    public static final Block GLOOMY_WALL_HANGING_SIGN = registerBlockWithoutItem(
+            "gloomy_wall_hanging_sign",
+            properties -> new WallHangingSignBlock(
+                    ModWoodTypes.GLOOMY,
+                    properties.strength(1f)
+            )
+    );
+
 
     public static final Block WILLOW_SIGN = registerBlockWithoutItem(
             "willow_sign",
@@ -784,10 +1402,16 @@ public class ModBlocks {
 
     // Existing blocks
 
+
     public static final Block DRIED_EARTH = registerBlock(
             "dried_earth",
-            properties -> new Block(
-                    properties.strength(0.5f)));
+            properties -> new NaturalMossBlock(
+                    properties
+                            .mapColor(MapColor.TERRACOTTA_GREEN)
+                            .strength(0.5f)
+                            .sound(SoundType.MOSS)
+            )
+    );
 
     public static final Block SALT_BLOCk = registerBlock(
             "salt_block",
@@ -797,6 +1421,22 @@ public class ModBlocks {
                             .friction(28f)
 
             ));
+    public static final Block CLAY_EARTH = registerBlock(
+            "clay_earth",
+            properties -> new PlantableBlock(
+                    properties
+                            .mapColor(MapColor.DIRT)
+                            .strength(1.0f)
+                            .sound(SoundType.PACKED_MUD),
+
+                    Blocks.FERN,
+                    Blocks.SHORT_GRASS,
+                    Blocks.TALL_GRASS,
+                    Blocks.LARGE_FERN,
+                    Blocks.MOSS_CARPET
+            )
+    );
+
 
     public static final Block PACKED_ICE_STAIRS = registerBlock(
             "packed_ice_stairs",
@@ -1450,44 +2090,112 @@ public class ModBlocks {
         );
     }
     private static void registerSignItems() {
-
         ResourceKey<Item> signItemKey = ResourceKey.create(
                 BuiltInRegistries.ITEM.key(),
                 Identifier.fromNamespaceAndPath(
                         MSBioms.MOD_ID,
-                        "willow_sign"
-                )
-        );
-
+                        "willow_sign"));
         Registry.register(
                 BuiltInRegistries.ITEM,
                 signItemKey,
                 new SignItem(
                         WILLOW_SIGN,
                         WILLOW_WALL_SIGN,
-                        new Item.Properties().setId(signItemKey)
-                )
-        );
-
-
+                        new Item.Properties().setId(signItemKey)));
         ResourceKey<Item> hangingSignItemKey = ResourceKey.create(
                 BuiltInRegistries.ITEM.key(),
                 Identifier.fromNamespaceAndPath(
                         MSBioms.MOD_ID,
-                        "willow_hanging_sign"
-                )
-        );
-
+                        "willow_hanging_sign"));
         Registry.register(
                 BuiltInRegistries.ITEM,
                 hangingSignItemKey,
                 new HangingSignItem(
                         WILLOW_HANGING_SIGN,
                         WILLOW_WALL_HANGING_SIGN,
-                        new Item.Properties().setId(hangingSignItemKey)
-                )
-        );
+                        new Item.Properties().setId(hangingSignItemKey)));
+
+        //GLOOMY SIGN
+
+        ResourceKey<Item> gloomySignItemKey = ResourceKey.create(
+                BuiltInRegistries.ITEM.key(),
+                Identifier.fromNamespaceAndPath(
+                        MSBioms.MOD_ID,
+                        "gloomy_sign"));
+        Registry.register(
+                BuiltInRegistries.ITEM,
+                gloomySignItemKey,
+                new SignItem(
+                        GLOOMY_SIGN,
+                        GLOOMY_WALL_SIGN,
+                        new Item.Properties().setId(gloomySignItemKey)));
+        ResourceKey<Item> gloomyHangingSignItemKey = ResourceKey.create(
+                BuiltInRegistries.ITEM.key(),
+                Identifier.fromNamespaceAndPath(
+                        MSBioms.MOD_ID,
+                        "gloomy_hanging_sign"));
+        Registry.register(
+                BuiltInRegistries.ITEM,
+                gloomyHangingSignItemKey,
+                new HangingSignItem(
+                        GLOOMY_HANGING_SIGN,
+                        GLOOMY_WALL_HANGING_SIGN,
+                        new Item.Properties().setId(gloomyHangingSignItemKey)));
+
+        //Клён SIGN
+
+        ResourceKey<Item> mapleSignItemKey = ResourceKey.create(
+                BuiltInRegistries.ITEM.key(),
+                Identifier.fromNamespaceAndPath(
+                        MSBioms.MOD_ID,
+                        "maple_sign"));
+        Registry.register(
+                BuiltInRegistries.ITEM,
+                mapleSignItemKey,
+                new SignItem(
+                        MAPLE_SIGN,
+                        MAPLE_WALL_SIGN,
+                        new Item.Properties().setId(mapleSignItemKey)));
+        ResourceKey<Item> mapleHangingSignItemKey = ResourceKey.create(
+                BuiltInRegistries.ITEM.key(),
+                Identifier.fromNamespaceAndPath(
+                        MSBioms.MOD_ID,
+                        "maple_hanging_sign"));
+        Registry.register(
+                BuiltInRegistries.ITEM,
+                mapleHangingSignItemKey,
+                new HangingSignItem(
+                        MAPLE_HANGING_SIGN,
+                        MAPLE_WALL_HANGING_SIGN,
+                        new Item.Properties().setId(mapleHangingSignItemKey)));
+        //Тополь SIGN
+
+        ResourceKey<Item> poplarSignItemKey = ResourceKey.create(
+                BuiltInRegistries.ITEM.key(),
+                Identifier.fromNamespaceAndPath(
+                        MSBioms.MOD_ID,
+                        "poplar_sign"));
+        Registry.register(
+                BuiltInRegistries.ITEM,
+                poplarSignItemKey,
+                new SignItem(
+                        POPLAR_SIGN,
+                        POPLAR_WALL_SIGN,
+                        new Item.Properties().setId(poplarSignItemKey)));
+        ResourceKey<Item> poplarHangingSignItemKey = ResourceKey.create(
+                BuiltInRegistries.ITEM.key(),
+                Identifier.fromNamespaceAndPath(
+                        MSBioms.MOD_ID,
+                        "poplar_hanging_sign"));
+        Registry.register(
+                BuiltInRegistries.ITEM,
+                poplarHangingSignItemKey,
+                new HangingSignItem(
+                        POPLAR_HANGING_SIGN,
+                        POPLAR_WALL_HANGING_SIGN,
+                        new Item.Properties().setId(poplarHangingSignItemKey)));
     }
+
 
 
     public static void registerModBlocks() {
@@ -1509,6 +2217,13 @@ public class ModBlocks {
 
         signBlocks.add(WILLOW_SIGN);
         signBlocks.add(WILLOW_WALL_SIGN);
+        signBlocks.add(GLOOMY_SIGN);
+        signBlocks.add(GLOOMY_WALL_SIGN);
+        signBlocks.add(MAPLE_SIGN);
+        signBlocks.add(MAPLE_WALL_SIGN);
+
+        signBlocks.add(POPLAR_SIGN);
+        signBlocks.add(POPLAR_WALL_SIGN);
 
         signAccessor.msbioms$setValidBlocks(signBlocks);
 
@@ -1521,6 +2236,13 @@ public class ModBlocks {
 
         hangingSignBlocks.add(WILLOW_HANGING_SIGN);
         hangingSignBlocks.add(WILLOW_WALL_HANGING_SIGN);
+        hangingSignBlocks.add(GLOOMY_HANGING_SIGN);
+        hangingSignBlocks.add(GLOOMY_WALL_HANGING_SIGN);
+        hangingSignBlocks.add(MAPLE_HANGING_SIGN);
+        hangingSignBlocks.add(MAPLE_WALL_HANGING_SIGN);
+
+        hangingSignBlocks.add(POPLAR_HANGING_SIGN);
+        hangingSignBlocks.add(POPLAR_WALL_HANGING_SIGN);
 
         hangingSignAccessor.msbioms$setValidBlocks(hangingSignBlocks);
     }
@@ -1536,6 +2258,33 @@ public class ModBlocks {
                 WILLOW_WOOD,
                 STRIPPED_WILLOW_WOOD
         );
+        StrippableBlockRegistry.register(
+                GLOOMY_LOG,
+                STRIPPED_GLOOMY_LOG
+        );
+        StrippableBlockRegistry.register(
+                GLOOMY_WOOD,
+                STRIPPED_GLOOMY_WOOD
+        );
+
+
+        StrippableBlockRegistry.register(
+                MAPLE_LOG,
+                STRIPPED_MAPLE_LOG
+        );
+        StrippableBlockRegistry.register(
+                MAPLE_WOOD,
+                STRIPPED_MAPLE_WOOD
+        );
+
+        StrippableBlockRegistry.register(
+                POPLAR_LOG,
+                STRIPPED_POPLAR_LOG
+        );
+        StrippableBlockRegistry.register(
+                POPLAR_WOOD,
+                STRIPPED_POPLAR_WOOD
+        );
     }
     public static ResourceKey<Block> getRK(Block block) {
         return ResourceKey.create(
@@ -1545,6 +2294,22 @@ public class ModBlocks {
 
 
     }
+    public static final BlockFamily GLOOMY_FAMILY =
+            new BlockFamily.Builder(GLOOMY_PLANKS)
+                    .slab(GLOOMY_SLAB)
+                    .stairs(GLOOMY_STAIRS)
+                    .fence(GLOOMY_FENCE)
+                    .fenceGate(GLOOMY_FENCE_GATE)
+                    .button(GLOOMY_BUTTON)
+                    .pressurePlate(GLOOMY_PRESSURE_PLATE)
+                    .strippedLog(GLOOMY_LOG)
+                    .sign(GLOOMY_SIGN, GLOOMY_WALL_SIGN)
+                    .hangingSign(
+                            GLOOMY_HANGING_SIGN,
+                            GLOOMY_WALL_HANGING_SIGN
+                    )
+                    .getFamily();
+
     public static final BlockFamily WILLOW_FAMILY =
             new BlockFamily.Builder(WILLOW_PLANKS)
                     .slab(WILLOW_SLAB)
@@ -1561,4 +2326,37 @@ public class ModBlocks {
                     )
                     .getFamily();
 
+    public static final BlockFamily POPLAR_FAMILY =
+            new BlockFamily.Builder(POPLAR_PLANKS)
+                    .slab(POPLAR_SLAB)
+                    .stairs(POPLAR_STAIRS)
+                    .fence(POPLAR_FENCE)
+                    .fenceGate(POPLAR_FENCE_GATE)
+                    .button(POPLAR_BUTTON)
+                    .pressurePlate(POPLAR_PRESSURE_PLATE)
+                    .strippedLog(POPLAR_LOG)
+                    .sign(POPLAR_SIGN, POPLAR_WALL_SIGN)
+                    .hangingSign(
+                            POPLAR_HANGING_SIGN,
+                            POPLAR_WALL_HANGING_SIGN
+                    )
+                    .getFamily();
+
+    public static final BlockFamily MAPLE_FAMILY =
+            new BlockFamily.Builder(MAPLE_PLANKS)
+                    .slab(MAPLE_SLAB)
+                    .stairs(MAPLE_STAIRS)
+                    .fence(MAPLE_FENCE)
+                    .fenceGate(MAPLE_FENCE_GATE)
+                    .button(MAPLE_BUTTON)
+                    .pressurePlate(MAPLE_PRESSURE_PLATE)
+                    .strippedLog(MAPLE_LOG)
+                    .sign(MAPLE_SIGN, MAPLE_WALL_SIGN)
+                    .hangingSign(
+                            MAPLE_HANGING_SIGN,
+                            MAPLE_WALL_HANGING_SIGN
+                    )
+                    .getFamily();
+
 }
+

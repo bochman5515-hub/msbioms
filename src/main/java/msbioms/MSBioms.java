@@ -3,7 +3,10 @@ package msbioms;
 import msbioms.block.ModBlocks;
 import msbioms.block.ModWoodTypes;
 import msbioms.creativemodetab.ModCreativeModeTabs;
+import msbioms.density_function.FlatDomainWarp;
+import msbioms.density_function.Signum;
 import msbioms.item.ModItems;
+import msbioms.particle.ModParticles;
 import msbioms.worldgen.ModBiomeGeneration;
 import msbioms.worldgen.ModFeatures;
 import msbioms.worldgen.carver.ChambersCarver;
@@ -32,9 +35,20 @@ public class MSBioms implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		Registry.register(
+				BuiltInRegistries.DENSITY_FUNCTION_TYPE,
+				id("flat_domain_warp"),
+				FlatDomainWarp.MAP_CODEC
+		);
+		Registry.register(
+				BuiltInRegistries.DENSITY_FUNCTION_TYPE,
+				id("signum"),
+				Signum.MAP_CODEC
+		);
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+		ModParticles.register();
 		ModWoodTypes.register();
 		ModBlocks.registerModBlocks();
 		ModItems.registerModItems();
@@ -56,6 +70,7 @@ public class MSBioms implements ModInitializer {
 							CaveCarverConfiguration.CODEC
 					)
 			);
+
 
 
 	public static Identifier id(String path) {

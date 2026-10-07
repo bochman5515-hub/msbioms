@@ -1,5 +1,8 @@
 {
   "values": [
+    "msbioms:gloomy_pressure_plate",
+    "msbioms:poplar_pressure_plate",
+    "msbioms:maple_pressure_plate",
     "msbioms:willow_pressure_plate"
   ]
 }

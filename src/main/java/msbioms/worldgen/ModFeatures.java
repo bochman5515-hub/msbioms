@@ -1,10 +1,7 @@
 package msbioms.worldgen;
 
 import msbioms.MSBioms;
-import msbioms.worldgen.feature.BogPlantFeature;
-import msbioms.worldgen.feature.WillowGroundVegetationFeature;
-import msbioms.worldgen.feature.WillowHighGrassFeature;
-import msbioms.worldgen.feature.WillowVineFeature;
+import msbioms.worldgen.feature.*;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -55,6 +52,39 @@ public class ModFeatures {
                             "bog_plant"
                     ),
                     new BogPlantFeature(
+                            NoneFeatureConfiguration.CODEC
+                    )
+            );
+    public static final Feature<NoneFeatureConfiguration> THORNY_VINES =
+            Registry.register(
+                    BuiltInRegistries.FEATURE,
+                    Identifier.fromNamespaceAndPath(
+                            MSBioms.MOD_ID,
+                            "thorny_vines"
+                    ),
+                    new ThornyVineFeature(
+                            NoneFeatureConfiguration.CODEC
+                    )
+            );
+    public static final Feature<NoneFeatureConfiguration> GLOOMY_GROUND_VEGETATION =
+            Registry.register(
+                    BuiltInRegistries.FEATURE,
+                    Identifier.fromNamespaceAndPath(
+                            MSBioms.MOD_ID,
+                            "gloomy_ground_vegetation"
+                    ),
+                    new GloomyGroundVegetationFeature(
+                            NoneFeatureConfiguration.CODEC
+                    )
+            );
+    public static final Feature<NoneFeatureConfiguration> GLOOMY_WATER_VEGETATION =
+            Registry.register(
+                    BuiltInRegistries.FEATURE,
+                    Identifier.fromNamespaceAndPath(
+                            MSBioms.MOD_ID,
+                            "gloomy_water_vegetation"
+                    ),
+                    new GloomyWaterVegetationFeature(
                             NoneFeatureConfiguration.CODEC
                     )
             );

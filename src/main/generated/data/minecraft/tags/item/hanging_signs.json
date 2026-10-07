@@ -1,5 +1,8 @@
 {
   "values": [
-    "msbioms:willow_hanging_sign"
+    "msbioms:willow_hanging_sign",
+    "msbioms:poplar_hanging_sign",
+    "msbioms:gloomy_hanging_sign",
+    "msbioms:maple_hanging_sign"
   ]
 }

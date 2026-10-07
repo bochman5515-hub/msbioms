@@ -36,5 +36,6 @@ public class OverworldBiomeBuilderMixin {
          * preset: minecraft:overworld
          */
         ModBiomeParameters.addWillowForest(biomes);
+        ModBiomeParameters.addGloomyForest(biomes);
     }
 }

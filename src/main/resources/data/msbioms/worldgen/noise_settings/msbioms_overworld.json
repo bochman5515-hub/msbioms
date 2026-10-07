@@ -63,9 +63,9 @@
                           "argument1": {
                             "type": "minecraft:y_clamped_gradient",
                             "from_value": 1.0,
-                            "from_y": 240,
+                            "from_y": 360,
                             "to_value": 0.0,
-                            "to_y": 256
+                            "to_y": 380
                           },
                           "argument2": {
                             "type": "minecraft:add",
@@ -74,7 +74,7 @@
                               "type": "minecraft:range_choice",
                               "input": {
                                 "type": "minecraft:cache_once",
-                                "argument": "minecraft:overworld/sloped_cheese"
+                                "argument": "msbioms:terrain/sloped_cheese"
                               },
                               "max_exclusive": 1.5625,
                               "min_inclusive": -1000000.0,
@@ -82,7 +82,7 @@
                                 "type": "minecraft:min",
                                 "argument1": {
                                   "type": "minecraft:cache_once",
-                                  "argument": "minecraft:overworld/sloped_cheese"
+                                  "argument": "msbioms:terrain/sloped_cheese"
                                 },
                                 "argument2": {
                                   "type": "minecraft:mul",
@@ -154,7 +154,11 @@
                                               "argument1": -0.64,
                                               "argument2": {
                                                 "type": "minecraft:cache_once",
-                                                "argument": "minecraft:overworld/sloped_cheese"
+                                                "argument": {
+                                                  "type": "minecraft:add",
+                                                  "argument1": "msbioms:terrain/mountain_terrain_add",
+                                                  "argument2": "msbioms:terrain/continents_offset"
+                                                }
                                               }
                                             }
                                           },
@@ -253,9 +257,9 @@
                   "argument1": {
                     "type": "minecraft:y_clamped_gradient",
                     "from_value": 1.0,
-                    "from_y": 240,
+                    "from_y": 360,
                     "to_value": 0.0,
-                    "to_y": 256
+                    "to_y": 380
                   },
                   "argument2": {
                     "type": "minecraft:add",
@@ -337,7 +341,7 @@
             }
           }
         },
-        "max": 320.0,
+        "max": 400.0,
         "min": -40.0
       }
     },

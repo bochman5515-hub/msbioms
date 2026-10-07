@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:mul",
+  "argument1": 0.8,
+  "argument2": {
+    "type": "minecraft:abs",
+    "argument": "minecraft:overworld/ridges"
+  }
+}

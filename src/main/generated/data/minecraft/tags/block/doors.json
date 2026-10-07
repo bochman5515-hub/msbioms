@@ -1,5 +1,8 @@
 {
   "values": [
+    "msbioms:gloomy_door",
+    "msbioms:poplar_door",
+    "msbioms:maple_door",
     "msbioms:willow_door"
   ]
 }

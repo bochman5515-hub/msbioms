@@ -194,7 +194,7 @@ public class MossCarpetBlock extends CarpetBlock {
     // UPDATE ALL SIDES
     // =========================================================
 
-    private static BlockState updateAllSides(
+    public static BlockState updateAllSides(
             BlockState state,
             LevelReader level,
             BlockPos pos

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:mul",
+    "argument1": 1.0,
+    "argument2": "msbioms:terrain/erosion/mountain_ranges"
+  },
+  "argument2": {
+    "type": "minecraft:mul",
+    "argument1": 1.0,
+    "argument2": "msbioms:terrain/erosion/eroded_zones"
+  }
+}

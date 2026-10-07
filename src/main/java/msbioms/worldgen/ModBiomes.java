@@ -9,6 +9,7 @@ import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstrapContext;
 
 import net.minecraft.data.worldgen.placement.AquaticPlacements;
+import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -61,6 +62,11 @@ public class ModBiomes {
             ResourceKey.create(
                     Registries.BIOME,
                     MSBioms.id("willow_forest")
+            );
+    public static final ResourceKey<Biome> GLOOMY_FOREST_KEY =
+            ResourceKey.create(
+                    Registries.BIOME,
+                    MSBioms.id("gloomy_forest")
             );
 
 
@@ -377,11 +383,144 @@ public class ModBiomes {
 
 
 
+
+
+
+
+
         /*
          * =====================================================
          * REGISTRATION
          * =====================================================
          */
+        /*
+         * =====================================================
+         * GLOOMY FOREST
+         * =====================================================
+         */
+
+        BiomeGenerationSettings.Builder gloomyGenerationBuilder =
+                new BiomeGenerationSettings.Builder(
+                        placedFeatures,
+                        worldCarvers
+                );
+
+        /*
+         * Базовая генерация Overworld.
+         */
+        BiomeDefaultFeatures.addDefaultOres(
+                gloomyGenerationBuilder
+        );
+
+        BiomeDefaultFeatures.addDefaultSoftDisks(
+                gloomyGenerationBuilder
+        );
+
+        BiomeDefaultFeatures.addDefaultMushrooms(
+                gloomyGenerationBuilder
+        );
+
+        /*
+         * =====================================================
+         * GLOOMY TREE
+         * =====================================================
+         */
+
+
+        /*
+         * =====================================================
+         * THORNY VINES
+         * =====================================================
+         */
+
+
+        gloomyGenerationBuilder.addFeature(
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                ModPlacedFeatures.GLOOMY_TREE_PLACED_KEY
+        );
+
+        gloomyGenerationBuilder.addFeature(
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                ModPlacedFeatures.GLOOMY_GROUND_VEGETATION_PLACED_KEY
+        );
+
+        gloomyGenerationBuilder.addFeature(
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                ModPlacedFeatures.THORNY_VINES_PLACED_KEY
+        );
+        gloomyGenerationBuilder.addFeature(
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                ModPlacedFeatures.GLOOMY_WATER_VEGETATION_PLACED_KEY
+        );
+
+
+        BiomeGenerationSettings gloomyGeneration =
+                gloomyGenerationBuilder.build();
+        /*
+         * =====================================================
+         * GLOOMY FOREST VISUALS
+         * =====================================================
+         */
+
+        BiomeSpecialEffects gloomyEffects =
+                new BiomeSpecialEffects.Builder()
+                        .waterColor(0x1D4E5E)
+                        .grassColorOverride(0x586B69)
+                        .foliageColorOverride(0x586B69)
+                        .build();
+
+
+        /*
+         * =====================================================
+         * GLOOMY FOREST BIOME
+         * =====================================================
+         */
+
+        Biome gloomyForest =
+                new Biome.BiomeBuilder()
+
+                        .hasPrecipitation(true)
+
+                        .temperature(0.45F)
+
+                        .downfall(0.85F)
+
+                        .specialEffects(gloomyEffects)
+
+                        .mobSpawnSettings(mobSpawnSettings)
+
+                        .generationSettings(gloomyGeneration)
+
+                        .setAttribute(
+                                EnvironmentAttributes.WATER_FOG_COLOR,
+                                0xC5CFD1
+                        )
+
+                        .setAttribute(
+                                EnvironmentAttributes.FOG_COLOR,
+                                0xC5CFD1
+                        )
+                        .setAttribute(
+                                EnvironmentAttributes.FOG_START_DISTANCE,
+                                0.0F
+                        )
+                        .setAttribute(
+                                EnvironmentAttributes.FOG_END_DISTANCE,
+                                30.0F
+                        )
+
+                        .setAttribute(
+                                EnvironmentAttributes.SKY_COLOR,
+                                0xB4C6D9
+                        )
+
+
+
+                        .build();
+
+
+
+
 
         /* Регистрируем ивовый лес.*/
         context.register(
@@ -393,5 +532,10 @@ public class ModBiomes {
                 SALT_STONY_SHORE_KEY,
                 saltStonyShore
         );
+        context.register(
+                GLOOMY_FOREST_KEY,
+                gloomyForest
+        );
+
     }
 }

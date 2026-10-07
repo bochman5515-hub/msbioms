@@ -1,6 +1,12 @@
 {
   "values": [
     "msbioms:willow_sign",
-    "msbioms:willow_wall_sign"
+    "msbioms:willow_wall_sign",
+    "msbioms:gloomy_sign",
+    "msbioms:gloomy_wall_sign",
+    "msbioms:poplar_sign",
+    "msbioms:poplar_wall_sign",
+    "msbioms:maple_sign",
+    "msbioms:maple_wall_sign"
   ]
 }

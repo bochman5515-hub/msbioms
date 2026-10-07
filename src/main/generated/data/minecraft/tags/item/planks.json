@@ -1,5 +1,8 @@
 {
   "values": [
-    "msbioms:willow_planks"
+    "msbioms:willow_planks",
+    "msbioms:poplar_planks",
+    "msbioms:gloomy_planks",
+    "msbioms:maple_planks"
   ]
 }

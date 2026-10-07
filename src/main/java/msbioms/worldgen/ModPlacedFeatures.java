@@ -2,10 +2,12 @@ package msbioms.worldgen;
 
 import msbioms.MSBioms;
 
+import msbioms.block.ModBlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -38,6 +40,11 @@ public class ModPlacedFeatures {
                             "willow_tree"
                     )
             );
+    public static final ResourceKey<PlacedFeature> GLOOMY_TREE_PLACED_KEY =
+            ResourceKey.create(
+                    Registries.PLACED_FEATURE,
+                    MSBioms.id("gloomy_tree")
+            );
 
     public static final ResourceKey<PlacedFeature> CHAMBER_PLACED_KEY =
             ResourceKey.create(
@@ -63,6 +70,24 @@ public class ModPlacedFeatures {
             ResourceKey.create(
                     Registries.PLACED_FEATURE,
                     MSBioms.id("bog_plant")
+            );
+    public static final ResourceKey<PlacedFeature> THORNY_VINES_PLACED_KEY =
+            ResourceKey.create(
+                    Registries.PLACED_FEATURE,
+                    Identifier.fromNamespaceAndPath(
+                            MSBioms.MOD_ID,
+                            "thorny_vines"
+                    )
+            );
+    public static final ResourceKey<PlacedFeature> GLOOMY_GROUND_VEGETATION_PLACED_KEY =
+            ResourceKey.create(
+                    Registries.PLACED_FEATURE,
+                    MSBioms.id("gloomy_ground_vegetation")
+            );
+    public static final ResourceKey<PlacedFeature> GLOOMY_WATER_VEGETATION_PLACED_KEY =
+            ResourceKey.create(
+                    Registries.PLACED_FEATURE,
+                    MSBioms.id("gloomy_water_vegetation")
             );
 
 
@@ -94,6 +119,20 @@ public class ModPlacedFeatures {
                 )
         );
         context.register(
+                GLOOMY_TREE_PLACED_KEY,
+
+                new PlacedFeature(
+                        configuredFeatures.getOrThrow(
+                                ModConfiguredFeatures.GLOOMY_TREE
+                        ),
+
+                        VegetationPlacements.treePlacement(
+                                CountPlacement.of(1),
+                                ModBlocks.GLOOMY_SAPLING
+                        )
+                )
+        );
+        context.register(
                 WILLOW_HIGH_GRASS_PLACED_KEY,
 
                 new PlacedFeature(
@@ -116,6 +155,23 @@ public class ModPlacedFeatures {
                                                 Blocks.WATER
                                         )
                                 )
+                        )
+                )
+        );
+        context.register(
+                GLOOMY_GROUND_VEGETATION_PLACED_KEY,
+                new PlacedFeature(
+                        Holder.direct(
+                                new ConfiguredFeature<>(
+                                        ModFeatures.GLOOMY_GROUND_VEGETATION,
+                                        NoneFeatureConfiguration.INSTANCE
+                                )
+                        ),
+                        List.of(
+                                CountPlacement.of(3),
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                                BiomeFilter.biome()
                         )
                 )
         );
@@ -199,6 +255,42 @@ public class ModPlacedFeatures {
                         )
                 )
         );
+        context.register(
+                THORNY_VINES_PLACED_KEY,
+                new PlacedFeature(
+                        Holder.direct(
+                                new ConfiguredFeature<>(
+                                        ModFeatures.THORNY_VINES,
+                                        NoneFeatureConfiguration.INSTANCE
+                                )
+                        ),
+                        List.of(
+                                CountPlacement.of(12),
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                                BiomeFilter.biome()
+                        )
+                )
+        );
+        context.register(
+                GLOOMY_WATER_VEGETATION_PLACED_KEY,
+                new PlacedFeature(
+                        Holder.direct(
+                                new ConfiguredFeature<>(
+                                        ModFeatures.GLOOMY_WATER_VEGETATION,
+                                        NoneFeatureConfiguration.INSTANCE
+                                )
+                        ),
+                        List.of(
+                                CountPlacement.of(4),
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                                BiomeFilter.biome()
+                        )
+                )
+        );
+
 
     }
+
 }

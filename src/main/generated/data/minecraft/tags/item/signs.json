@@ -1,5 +1,8 @@
 {
   "values": [
-    "msbioms:willow_sign"
+    "msbioms:willow_sign",
+    "msbioms:poplar_sign",
+    "msbioms:gloomy_sign",
+    "msbioms:maple_sign"
   ]
 }

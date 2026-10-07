@@ -1,5 +1,6 @@
 package msbioms.datagen;
 
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import msbioms.block.ModBlocks;
 import msbioms.item.ModItems;
@@ -38,6 +39,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 
         // Dried Earth
         dropSelf(ModBlocks.DRIED_EARTH);
+        dropSelf(ModBlocks.DRIED_EARTH);
         dropSelf(ModBlocks.SALT_BLOCk);
         dropSelf(ModBlocks.CALCITE_SLAB);
         dropSelf(ModBlocks.CALCITE_STAIRS);
@@ -62,14 +64,6 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.BONE_SLAB);
         dropSelf(ModBlocks.HAY_SLAB);
         dropSelf(ModBlocks.BASALT_SLAB);
-
-
-        // Willow logs
-        dropSelf(ModBlocks.WILLOW_LOG);
-        dropSelf(ModBlocks.WILLOW_WOOD);
-
-        dropSelf(ModBlocks.STRIPPED_WILLOW_LOG);
-        dropSelf(ModBlocks.STRIPPED_WILLOW_WOOD);
 
         dropSelf(ModBlocks.RESIN_SLAB);
         dropSelf(ModBlocks.RESIN_STAIRS);
@@ -105,23 +99,65 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 
 
         // Willow building blocks
+
+        dropSelf(ModBlocks.WILLOW_LOG);
+        dropSelf(ModBlocks.WILLOW_WOOD);
+        dropSelf(ModBlocks.STRIPPED_WILLOW_LOG);
+        dropSelf(ModBlocks.STRIPPED_WILLOW_WOOD);
         dropSelf(ModBlocks.WILLOW_PLANKS);
         dropSelf(ModBlocks.WILLOW_STAIRS);
         dropSelf(ModBlocks.WILLOW_SLAB);
-
         dropSelf(ModBlocks.WILLOW_FENCE);
         dropSelf(ModBlocks.WILLOW_FENCE_GATE);
-
         dropSelf(ModBlocks.WILLOW_PRESSURE_PLATE);
         dropSelf(ModBlocks.WILLOW_BUTTON);
-
         dropSelf(ModBlocks.WILLOW_TRAPDOOR);
 
+        dropSelf(ModBlocks.GLOOMY_LOG);
+        dropSelf(ModBlocks.GLOOMY_WOOD);
+        dropSelf(ModBlocks.STRIPPED_GLOOMY_LOG);
+        dropSelf(ModBlocks.STRIPPED_GLOOMY_WOOD);
+        dropSelf(ModBlocks.GLOOMY_PLANKS);
+        dropSelf(ModBlocks.GLOOMY_STAIRS);
+        dropSelf(ModBlocks.GLOOMY_SLAB);
+        dropSelf(ModBlocks.GLOOMY_FENCE);
+        dropSelf(ModBlocks.GLOOMY_FENCE_GATE);
+        dropSelf(ModBlocks.GLOOMY_PRESSURE_PLATE);
+        dropSelf(ModBlocks.GLOOMY_BUTTON);
+        dropSelf(ModBlocks.GLOOMY_TRAPDOOR);
 
-        dropDoublePlant(ModBlocks.HIGH_GRASS,ModBlocks.HIGH_GRASS_PLANT, ModItems.HIGH_GRASS);
+        dropSelf(ModBlocks.MAPLE_LOG);
+        dropSelf(ModBlocks.MAPLE_WOOD);
+        dropSelf(ModBlocks.STRIPPED_MAPLE_LOG);
+        dropSelf(ModBlocks.STRIPPED_MAPLE_WOOD);
+        dropSelf(ModBlocks.MAPLE_PLANKS);
+        dropSelf(ModBlocks.MAPLE_STAIRS);
+        dropSelf(ModBlocks.MAPLE_SLAB);
+        dropSelf(ModBlocks.MAPLE_FENCE);
+        dropSelf(ModBlocks.MAPLE_FENCE_GATE);
+        dropSelf(ModBlocks.MAPLE_PRESSURE_PLATE);
+        dropSelf(ModBlocks.MAPLE_BUTTON);
+        dropSelf(ModBlocks.MAPLE_TRAPDOOR);
+
+        dropSelf(ModBlocks.POPLAR_LOG);
+        dropSelf(ModBlocks.POPLAR_WOOD);
+        dropSelf(ModBlocks.STRIPPED_POPLAR_LOG);
+        dropSelf(ModBlocks.STRIPPED_POPLAR_WOOD);
+        dropSelf(ModBlocks.POPLAR_PLANKS);
+        dropSelf(ModBlocks.POPLAR_STAIRS);
+        dropSelf(ModBlocks.POPLAR_SLAB);
+        dropSelf(ModBlocks.POPLAR_FENCE);
+        dropSelf(ModBlocks.POPLAR_FENCE_GATE);
+        dropSelf(ModBlocks.POPLAR_PRESSURE_PLATE);
+        dropSelf(ModBlocks.POPLAR_BUTTON);
+        dropSelf(ModBlocks.POPLAR_TRAPDOOR);
+
+
 
 
         add(ModBlocks.WILLOW_DOOR, this::createDoorTable);
+        add(ModBlocks.GLOOMY_DOOR, this::createDoorTable);
+        add(ModBlocks.MAPLE_DOOR, this::createDoorTable);
 
 
 
@@ -152,6 +188,80 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
                                                 .when(doesNotHaveSilkTouch())
                                                 .when(hasShears().invert())
                                 )
+                )
+        );
+        add(
+                ModBlocks.GLOOMY_LEAVES,
+                block -> createSilkTouchOrShearsDispatchTable(
+                        block,
+                        LootItem.lootTableItem(ModItems.DEAD_BRANCH)
+                                .when(LootItemRandomChanceCondition.randomChance(0.05f))
+                ).withPool(
+                        LootPool.lootPool()
+                                .add(
+                                        LootItem.lootTableItem(ModBlocks.GLOOMY_SAPLING)
+                                                .when(LootItemRandomChanceCondition.randomChance(0.05f))
+                                                .when(doesNotHaveSilkTouch())
+                                                .when(hasShears().invert())
+                                )
+                )
+        );
+
+        add(
+                ModBlocks.MAPLE_RED_LEAVES,
+                block -> createSilkTouchOrShearsDispatchTable(
+                        block,
+                        LootItem.lootTableItem(ModItems.DEAD_BRANCH)
+                                .when(LootItemRandomChanceCondition.randomChance(0.05f))
+                ).withPool(
+                        LootPool.lootPool()
+                                .add(
+                                        LootItem.lootTableItem(ModBlocks.MAPLE_SAPLING)
+                                                .when(LootItemRandomChanceCondition.randomChance(0.05f))
+                                                .when(doesNotHaveSilkTouch())
+                                                .when(hasShears().invert())
+                                )
+                )
+        );
+
+        add(
+                ModBlocks.MAPLE_YELLOW_LEAVES,
+                block -> createSilkTouchOrShearsDispatchTable(
+                        block,
+                        LootItem.lootTableItem(Items.STICK)
+                                .when(LootItemRandomChanceCondition.randomChance(0.05f))
+                ).withPool(
+                        LootPool.lootPool()
+                                .add(
+                                        LootItem.lootTableItem(ModBlocks.MAPLE_SAPLING)
+                                                .when(LootItemRandomChanceCondition.randomChance(0.05f))
+                                                .when(doesNotHaveSilkTouch())
+                                                .when(hasShears().invert())
+                                )
+                )
+        );
+
+        dropDoublePlant(
+                ModBlocks.HIGH_GRASS,
+                ModBlocks.HIGH_GRASS_PLANT,
+                ModItems.HIGH_GRASS
+        );
+
+
+// Thorny vine
+        add(
+                ModBlocks.THORNY_VINE,
+                block -> createSingleItemTable(
+                        ModItems.THORNY_VINE
+                )
+        );
+
+
+// Glowing fruit
+        add(
+                ModBlocks.GLOWING_FRUIT,
+                block -> createSingleItemTable(
+                        ModItems.GLOWING_FRUIT
                 )
         );
 

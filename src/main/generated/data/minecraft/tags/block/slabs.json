@@ -1,6 +1,9 @@
 {
   "values": [
     "msbioms:willow_slab",
+    "msbioms:gloomy_slab",
+    "msbioms:maple_slab",
+    "msbioms:poplar_slab",
     "msbioms:packed_ice_slab",
     "msbioms:blue_ice_slab",
     "msbioms:calcite_slab",

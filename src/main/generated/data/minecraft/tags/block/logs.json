@@ -3,6 +3,14 @@
     "msbioms:willow_log",
     "msbioms:willow_wood",
     "msbioms:stripped_willow_log",
-    "msbioms:stripped_willow_wood"
+    "msbioms:stripped_willow_wood",
+    "msbioms:gloomy_log",
+    "msbioms:gloomy_wood",
+    "msbioms:stripped_gloomy_log",
+    "msbioms:stripped_gloomy_wood",
+    "msbioms:maple_log",
+    "msbioms:maple_wood",
+    "msbioms:stripped_maple_log",
+    "msbioms:stripped_maple_wood"
   ]
 }

@@ -1,6 +1,9 @@
 {
   "values": [
     "msbioms:willow_stairs",
+    "msbioms:gloomy_stairs",
+    "msbioms:poplar_stairs",
+    "msbioms:maple_stairs",
     "msbioms:packed_ice_stairs",
     "msbioms:blue_ice_stairs",
     "msbioms:calcite_stairs",

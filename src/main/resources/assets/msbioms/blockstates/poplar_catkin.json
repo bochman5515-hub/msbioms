@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "msbioms:block/poplar_catkin",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "msbioms:block/poplar_catkin",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "msbioms:block/poplar_catkin",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "msbioms:block/poplar_catkin",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "msbioms:block/poplar_catkin"
+    },
+    "facing=west": {
+      "model": "msbioms:block/poplar_catkin",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

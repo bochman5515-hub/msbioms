@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:flat_cache",
+  "argument": {
+    "type": "minecraft:cache_2d",
+    "argument": {
+      "type": "minecraft:mul",
+      "argument1": 0.00390625,
+      "argument2": {
+        "type": "minecraft:add",
+        "argument1": -0.3168897689123,
+        "argument2": {
+          "type": "minecraft:add",
+          "argument1": "msbioms:terrain/terrain",
+          "argument2": "msbioms:terrain/features"
+        }
+      }
+    }
+  }
+}

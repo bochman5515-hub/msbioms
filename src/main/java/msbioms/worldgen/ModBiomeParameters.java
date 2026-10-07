@@ -19,12 +19,6 @@ public class ModBiomeParameters {
             Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> biomes
     ) {
 
-        /*
-         * =========================================================
-         * SALT STONY SHORE
-         * =========================================================
-         */
-
         biomes.accept(
                 Pair.of(
                         Climate.parameters(
@@ -88,81 +82,35 @@ public class ModBiomeParameters {
                 Pair.of(
                         Climate.parameters(
 
-                                /*
-                                 * -------------------------------------------------
-                                 * Temperature
-                                 * -------------------------------------------------
-                                 *
-                                 * Умеренный диапазон.
-                                 */
-                                Climate.Parameter.span(
-                                        0.20F,
-                                        0.55F
-                                ),
-
-                                /*
-                                 * -------------------------------------------------
-                                 * Humidity
-                                 * -------------------------------------------------
-                                 *
-                                 * Ивовый лес предпочитает влажные области.
-                                 */
-                                Climate.Parameter.span(
-                                        0.10F,
-                                        1.00F
-                                ),
-
-                                /*
-                                 * -------------------------------------------------
-                                 * Continentalness
-                                 * -------------------------------------------------
-                                 *
-                                 * Диапазон от близких к побережью
-                                 * до умеренно континентальных областей.
-                                 */
-                                Climate.Parameter.span(
-                                        -0.11F,
-                                        0.55F
-                                ),
-
-                                /*
-                                 * -------------------------------------------------
-                                 * Erosion
-                                 * -------------------------------------------------
-                                 */
-                                Climate.Parameter.span(
-                                        -0.375F,
-                                        0.45F
-                                ),
-
-                                /*
-                                 * -------------------------------------------------
-                                 * Weirdness
-                                 * -------------------------------------------------
-                                 *
-                                 * Пока фиксируем в центре.
-                                 */
-                                Climate.Parameter.point(
-                                        0.0F
-                                ),
-
-                                /*
-                                 * -------------------------------------------------
-                                 * Depth
-                                 * -------------------------------------------------
-                                 */
-                                Climate.Parameter.span(
-                                        -0.40F,
-                                        0.40F
-                                ),
-
-                                /*
-                                 * Offset
-                                 */
+                                Climate.Parameter.span(0.20F, 0.55F),
+                                Climate.Parameter.span(0.10F, 1.00F),
+                                Climate.Parameter.span(-0.11F, 0.55F),
+                                Climate.Parameter.span(-0.375F, 0.45F),
+                                Climate.Parameter.point(0.0F),
+                                Climate.Parameter.span(-0.40F, 0.40F),
                                 0.0F
                         ),
 
                         ModBiomes.WILLOW_FOREST_KEY
+                )
+        );
+
+    }
+    public static void addGloomyForest(
+            Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> biomes
+    ) {
+        biomes.accept(
+                Pair.of(
+                        Climate.parameters(
+                                Climate.Parameter.span(0.10F, 0.50F),   // temperature
+                                Climate.Parameter.span(0.10F, 0.80F),   // humidity
+                                Climate.Parameter.span(-0.05F, 0.50F),  // continentalness
+                                Climate.Parameter.span(-0.20F, 0.45F),  // erosion
+                                Climate.Parameter.point(0.0F),           // depth
+                                Climate.Parameter.span(-0.20F, 0.30F),         // weirdness
+                                0.0F
+                        ),
+                        ModBiomes.GLOOMY_FOREST_KEY
                 )
         );
     }

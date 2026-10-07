@@ -1,5 +1,8 @@
 {
   "values": [
+    "msbioms:gloomy_fence_gate",
+    "msbioms:poplar_fence_gate",
+    "msbioms:maple_fence_gate",
     "msbioms:willow_fence_gate"
   ]
 }

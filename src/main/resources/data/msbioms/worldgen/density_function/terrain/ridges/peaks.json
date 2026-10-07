@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:add",
+    "argument1": {
+      "type": "minecraft:abs",
+      "argument": {
+        "type": "minecraft:noise",
+        "noise": "msbioms:ridges/peaks_a",
+        "xz_scale": 0.30,
+        "y_scale": 0.0
+      }
+    },
+    "argument2": {
+      "type": "minecraft:abs",
+      "argument": {
+        "type": "minecraft:noise",
+        "noise": "msbioms:ridges/peaks_b",
+        "xz_scale": 0.22,
+        "y_scale": 0.0
+      }
+    }
+  },
+  "argument2": {
+    "type": "minecraft:abs",
+    "argument": {
+      "type": "minecraft:noise",
+      "noise": "msbioms:ridges/peaks_c",
+      "xz_scale": 0.20,
+      "y_scale": 0.0
+    }
+  }
+}

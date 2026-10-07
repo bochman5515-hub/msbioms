@@ -33,14 +33,28 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_LOG))
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_WOOD))
                 .add(ModBlocks.getRK(ModBlocks.STRIPPED_WILLOW_LOG))
-                .add(ModBlocks.getRK(ModBlocks.STRIPPED_WILLOW_WOOD));
+                .add(ModBlocks.getRK(ModBlocks.STRIPPED_WILLOW_WOOD))
+
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_LOG))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_WOOD))
+                .add(ModBlocks.getRK(ModBlocks.STRIPPED_GLOOMY_LOG))
+                .add(ModBlocks.getRK(ModBlocks.STRIPPED_GLOOMY_WOOD))
+
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_LOG))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_WOOD))
+                .add(ModBlocks.getRK(ModBlocks.STRIPPED_MAPLE_LOG))
+                .add(ModBlocks.getRK(ModBlocks.STRIPPED_MAPLE_WOOD));
+
 
         // =========================
         // Willow planks
         // =========================
 
         tag(BlockTags.PLANKS)
-                .add(ModBlocks.getRK(ModBlocks.WILLOW_PLANKS));
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_PLANKS))
+                .add(ModBlocks.getRK(ModBlocks.WILLOW_PLANKS))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_PLANKS))
+        ;
 
         // =========================
         // Mineable with axe
@@ -63,7 +77,41 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_SIGN))
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_WALL_SIGN))
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_HANGING_SIGN))
-                .add(ModBlocks.getRK(ModBlocks.WILLOW_WALL_HANGING_SIGN));
+                .add(ModBlocks.getRK(ModBlocks.WILLOW_WALL_HANGING_SIGN))
+
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_WOOD))
+                .add(ModBlocks.getRK(ModBlocks.STRIPPED_GLOOMY_LOG))
+                .add(ModBlocks.getRK(ModBlocks.STRIPPED_GLOOMY_WOOD))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_PLANKS))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_STAIRS))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_SLAB))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_FENCE))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_FENCE_GATE))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_DOOR))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_TRAPDOOR))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_PRESSURE_PLATE))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_BUTTON))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_SIGN))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_WALL_SIGN))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_HANGING_SIGN))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_WALL_HANGING_SIGN))
+
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_WOOD))
+                .add(ModBlocks.getRK(ModBlocks.STRIPPED_MAPLE_LOG))
+                .add(ModBlocks.getRK(ModBlocks.STRIPPED_MAPLE_WOOD))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_PLANKS))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_STAIRS))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_SLAB))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_FENCE))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_FENCE_GATE))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_DOOR))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_TRAPDOOR))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_PRESSURE_PLATE))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_BUTTON))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_SIGN))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_WALL_SIGN))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_HANGING_SIGN))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_WALL_HANGING_SIGN));
 
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.getRK(ModBlocks.MICRO_OAK_PLANKS))
@@ -111,6 +159,16 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.getRK(ModBlocks.MICRO_SULFUR_BRICKS))
                 .add(ModBlocks.getRK(ModBlocks.MICRO_AMETHYST_BLOCK));
 
+        tag(BlockTags.CLIMBABLE)
+                .add(ModBlocks.getRK(ModBlocks.THORNY_VINE))
+                .add(ModBlocks.getRK(ModBlocks.THORNY_VINE_PLANT));
+        tag(BlockTags.DIRT)
+                .add(ModBlocks.getRK(ModBlocks.CLAY_EARTH))
+                .add(ModBlocks.getRK(ModBlocks.DRIED_EARTH))
+                .add(ModBlocks.getRK(ModBlocks.MOSS));
+
+
+
 
 
         // =========================
@@ -119,6 +177,11 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
         tag(BlockTags.STAIRS)
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_STAIRS))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_STAIRS))
+                .add(ModBlocks.getRK(ModBlocks.POPLAR_STAIRS))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_STAIRS))
+
+
                 .add(ModBlocks.getRK(ModBlocks.PACKED_ICE_STAIRS))
                 .add(ModBlocks.getRK(ModBlocks.BLUE_ICE_STAIRS))
                 .add(ModBlocks.getRK(ModBlocks.CALCITE_STAIRS))
@@ -135,6 +198,11 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
         tag(BlockTags.SLABS)
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_SLAB))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_SLAB))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_SLAB))
+                .add(ModBlocks.getRK(ModBlocks.POPLAR_SLAB))
+
+
                 .add(ModBlocks.getRK(ModBlocks.PACKED_ICE_SLAB))
                 .add(ModBlocks.getRK(ModBlocks.BLUE_ICE_SLAB))
                 .add(ModBlocks.getRK(ModBlocks.CALCITE_SLAB))
@@ -157,24 +225,45 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         // =========================
 
         tag(BlockTags.LEAVES)
-                .add(ModBlocks.getRK(ModBlocks.WILLOW_LEAVES));
+                .add(ModBlocks.getRK(ModBlocks.WILLOW_LEAVES))
+                .add(ModBlocks.getRK(ModBlocks.POPLAR_LEAVES))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_LEAVES))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_LEAVES_FLOVER))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_RED_LEAVES))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_YELLOW_LEAVES))
+
+        ;
 
 
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.getRK(ModBlocks.MOSS))
                 .add(ModBlocks.getRK(ModBlocks.MOSS_CARPET))
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_LEAVES))
+                .add(ModBlocks.getRK(ModBlocks.POPLAR_LEAVES))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_LEAVES))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_LEAVES_FLOVER))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_RED_LEAVES))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_YELLOW_LEAVES))
                 .add(ModBlocks.getRK(ModBlocks.HAY_SLAB));
 
         tag(BlockTags.SIGNS)
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_SIGN))
-                .add(ModBlocks.getRK(ModBlocks.WILLOW_WALL_SIGN));
+                .add(ModBlocks.getRK(ModBlocks.WILLOW_WALL_SIGN))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_SIGN))
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_WALL_SIGN))
+                .add(ModBlocks.getRK(ModBlocks.POPLAR_SIGN))
+                .add(ModBlocks.getRK(ModBlocks.POPLAR_WALL_SIGN))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_SIGN))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_WALL_SIGN));
 
         // =========================
         // Fence
         // =========================
 
         tag(BlockTags.FENCES)
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_FENCE))
+                .add(ModBlocks.getRK(ModBlocks.POPLAR_FENCE))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_FENCE))
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_FENCE));
 
 
@@ -185,6 +274,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         // =========================
 
         tag(BlockTags.FENCE_GATES)
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_FENCE_GATE))
+                .add(ModBlocks.getRK(ModBlocks.POPLAR_FENCE_GATE))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_FENCE_GATE))
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_FENCE_GATE));
 
         // =========================
@@ -192,6 +284,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         // =========================
 
         tag(BlockTags.DOORS)
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_DOOR))
+                .add(ModBlocks.getRK(ModBlocks.POPLAR_DOOR))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_DOOR))
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_DOOR));
 
         // =========================
@@ -199,6 +294,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         // =========================
 
         tag(BlockTags.TRAPDOORS)
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_TRAPDOOR))
+                .add(ModBlocks.getRK(ModBlocks.POPLAR_TRAPDOOR))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_TRAPDOOR))
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_TRAPDOOR));
 
         // =========================
@@ -206,6 +304,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         // =========================
 
         tag(BlockTags.PRESSURE_PLATES)
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_PRESSURE_PLATE))
+                .add(ModBlocks.getRK(ModBlocks.POPLAR_PRESSURE_PLATE))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_PRESSURE_PLATE))
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_PRESSURE_PLATE));
 
         // =========================
@@ -213,6 +314,9 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         // =========================
 
         tag(BlockTags.BUTTONS)
+                .add(ModBlocks.getRK(ModBlocks.GLOOMY_BUTTON))
+                .add(ModBlocks.getRK(ModBlocks.MAPLE_BUTTON))
+                .add(ModBlocks.getRK(ModBlocks.POPLAR_BUTTON))
                 .add(ModBlocks.getRK(ModBlocks.WILLOW_BUTTON));
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)

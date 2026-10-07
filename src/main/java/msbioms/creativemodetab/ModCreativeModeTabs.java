@@ -3,6 +3,7 @@ package msbioms.creativemodetab;
 import msbioms.MSBioms;
 import msbioms.block.ModBlocks;
 
+import msbioms.datagen.ModItemTagsProvider;
 import msbioms.item.ModItems;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
@@ -60,6 +61,76 @@ public class ModCreativeModeTabs {
                                 output.accept(ModItems.BOG);
                                 output.accept(ModItems.HIGH_GRASS);
                                 output.accept(ModBlocks.WILLOW_VINE);
+                                output.accept(ModItems.GLOWING_FRUIT);
+                                output.accept(ModItems.THORNY_VINE);
+
+
+                                output.accept(ModBlocks.GLOOMY_LOG);
+                                output.accept(ModBlocks.GLOOMY_WOOD);
+                                output.accept(ModBlocks.STRIPPED_GLOOMY_LOG);
+                                output.accept(ModBlocks.STRIPPED_GLOOMY_WOOD);
+                                output.accept(ModBlocks.GLOOMY_LEAVES);
+                                output.accept(ModBlocks.GLOOMY_LEAVES_FLOVER);
+
+                                output.accept(ModBlocks.GLOOMY_PLANKS);
+                                output.accept(ModBlocks.GLOOMY_STAIRS);
+                                output.accept(ModBlocks.GLOOMY_SLAB);
+
+                                output.accept(ModBlocks.GLOOMY_FENCE);
+                                output.accept(ModBlocks.GLOOMY_FENCE_GATE);
+                                output.accept(ModBlocks.GLOOMY_DOOR);
+                                output.accept(ModBlocks.GLOOMY_TRAPDOOR);
+                                output.accept(ModBlocks.GLOOMY_PRESSURE_PLATE);
+                                output.accept(ModBlocks.GLOOMY_BUTTON);
+
+                                output.accept(ModBlocks.GLOOMY_SIGN);
+                                output.accept(ModBlocks.GLOOMY_HANGING_SIGN);
+                                output.accept(ModBlocks.GLOOMY_SAPLING);
+                                output.accept(ModBlocks.CLAY_EARTH);
+
+                                output.accept(ModBlocks.MAPLE_LOG);
+                                output.accept(ModBlocks.MAPLE_WOOD);
+                                output.accept(ModBlocks.STRIPPED_MAPLE_LOG);
+                                output.accept(ModBlocks.STRIPPED_MAPLE_WOOD);
+                                output.accept(ModBlocks.MAPLE_RED_LEAVES);
+                                output.accept(ModBlocks.MAPLE_YELLOW_LEAVES);
+
+                                output.accept(ModBlocks.MAPLE_PLANKS);
+                                output.accept(ModBlocks.MAPLE_STAIRS);
+                                output.accept(ModBlocks.MAPLE_SLAB);
+
+                                output.accept(ModBlocks.MAPLE_FENCE);
+                                output.accept(ModBlocks.MAPLE_FENCE_GATE);
+                                output.accept(ModBlocks.MAPLE_DOOR);
+                                output.accept(ModBlocks.MAPLE_TRAPDOOR);
+                                output.accept(ModBlocks.MAPLE_PRESSURE_PLATE);
+                                output.accept(ModBlocks.MAPLE_BUTTON);
+
+                                output.accept(ModBlocks.MAPLE_SIGN);
+                                output.accept(ModBlocks.MAPLE_HANGING_SIGN);
+                                output.accept(ModBlocks.MAPLE_SAPLING);
+
+
+                                output.accept(ModBlocks.POPLAR_LOG);
+                                output.accept(ModBlocks.POPLAR_WOOD);
+                                output.accept(ModBlocks.STRIPPED_POPLAR_LOG);
+                                output.accept(ModBlocks.STRIPPED_POPLAR_WOOD);
+                                output.accept(ModBlocks.POPLAR_LEAVES);
+                                output.accept(ModBlocks.POPLAR_PLANKS);
+                                output.accept(ModBlocks.POPLAR_STAIRS);
+                                output.accept(ModBlocks.POPLAR_SLAB);
+                                output.accept(ModBlocks.POPLAR_FENCE);
+                                output.accept(ModBlocks.POPLAR_FENCE_GATE);
+                                output.accept(ModBlocks.POPLAR_DOOR);
+                                output.accept(ModBlocks.POPLAR_TRAPDOOR);
+                                output.accept(ModBlocks.POPLAR_PRESSURE_PLATE);
+                                output.accept(ModBlocks.POPLAR_BUTTON);
+                                output.accept(ModBlocks.POPLAR_SIGN);
+                                output.accept(ModBlocks.POPLAR_HANGING_SIGN);
+                                output.accept(ModBlocks.POPLAR_SAPLING);
+                                output.accept(ModBlocks.POPLAR_CATKIN);
+
+
 
                             })
                             .build()

@@ -7,6 +7,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 
@@ -18,6 +19,7 @@ public class ModItems {
             "dead_branch",
             Item::new
     );
+
 
     public static final Item HIGH_GRASS = registerItem(
             "high_grass",
@@ -45,6 +47,29 @@ public class ModItems {
                     () -> ModBlocks.MICRO_OAK_PLANKS
             )
     );
+    public static final Item THORNY_VINE =
+            registerItem(
+                    "thorny_vine",
+                    properties -> new BlockItem(
+                            ModBlocks.THORNY_VINE,
+                            properties
+                    )
+            );
+    private static final FoodProperties GLOWING_FRUIT_FOOD =
+            new FoodProperties.Builder()
+                    .nutrition(10)
+                    .saturationModifier(0.5F)
+                    .build();
+
+
+    public static final Item GLOWING_FRUIT =
+            registerItem(
+                    "glowing_fruit",
+                    properties -> new BlockItem(
+                            ModBlocks.GLOWING_FRUIT,
+                            properties.food(GLOWING_FRUIT_FOOD)
+                    )
+            );
     // =========================
 // Micro blocks — planks
 // =========================
@@ -468,5 +493,6 @@ public class ModItems {
                 "Registering items for " + MSBioms.MOD_ID
         );
     }
+
 
 }

@@ -642,6 +642,37 @@ public class ModModelProvider extends FabricModelProvider {
         generator.blockStateOutput.accept(blockState);
     }
 
+    private void generateFlatBlockItem(
+            ItemModelGenerators generator,
+            Block block
+    ) {
+        String name =
+                BuiltInRegistries.BLOCK
+                        .getKey(block)
+                        .getPath();
+
+        Identifier modelId =
+                MSBioms.id("item/" + name);
+
+        Identifier texture =
+                MSBioms.id("block/" + name);
+
+        ModelTemplates.FLAT_ITEM.create(
+                modelId,
+                new TextureMapping()
+                        .put(
+                                TextureSlot.LAYER0,
+                                new Material(texture)
+                        ),
+                generator.modelOutput
+        );
+
+        generator.itemModelOutput.accept(
+                block.asItem(),
+                ItemModelUtils.plainModel(modelId)
+        );
+    }
+
 
 
 
@@ -742,10 +773,40 @@ public class ModModelProvider extends FabricModelProvider {
                 .wood(ModBlocks.STRIPPED_WILLOW_WOOD);
 
 
+        generator.woodProvider(ModBlocks.GLOOMY_LOG)
+                .log(ModBlocks.GLOOMY_LOG)
+                .wood(ModBlocks.GLOOMY_WOOD);
 
-        // =========================
-        // Willow wood family
-        // =========================
+        generator.woodProvider(ModBlocks.STRIPPED_GLOOMY_LOG)
+                .log(ModBlocks.STRIPPED_GLOOMY_LOG)
+                .wood(ModBlocks.STRIPPED_GLOOMY_WOOD);
+
+        generator.family(ModBlocks.GLOOMY_PLANKS)
+                .generateFor(ModBlocks.GLOOMY_FAMILY);
+
+
+
+        generator.woodProvider(ModBlocks.MAPLE_LOG)
+                .log(ModBlocks.MAPLE_LOG)
+                .wood(ModBlocks.MAPLE_WOOD);
+
+
+        generator.woodProvider(ModBlocks.STRIPPED_MAPLE_LOG)
+                .log(ModBlocks.STRIPPED_MAPLE_LOG)
+                .wood(ModBlocks.STRIPPED_MAPLE_WOOD);
+
+        generator.woodProvider(ModBlocks.POPLAR_LOG)
+                .log(ModBlocks.POPLAR_LOG)
+                .wood(ModBlocks.POPLAR_WOOD);
+
+
+        generator.woodProvider(ModBlocks.STRIPPED_POPLAR_LOG)
+                .log(ModBlocks.STRIPPED_POPLAR_LOG)
+                .wood(ModBlocks.STRIPPED_POPLAR_WOOD);
+
+
+
+
         generator.family(Blocks.PACKED_ICE)
                 .stairs(ModBlocks.PACKED_ICE_STAIRS)
                 .slab(ModBlocks.PACKED_ICE_SLAB);
@@ -890,6 +951,12 @@ public class ModModelProvider extends FabricModelProvider {
 
         generator.family(ModBlocks.WILLOW_PLANKS)
                 .generateFor(ModBlocks.WILLOW_FAMILY);
+
+        generator.family(ModBlocks.MAPLE_PLANKS)
+                .generateFor(ModBlocks.MAPLE_FAMILY);
+
+        generator.family(ModBlocks.POPLAR_PLANKS)
+                .generateFor(ModBlocks.POPLAR_FAMILY);
         // =========================
         // Willow leaves
         // =========================
@@ -904,6 +971,23 @@ public class ModModelProvider extends FabricModelProvider {
                 ModBlocks.WILLOW_SAPLING,
                 BlockModelGenerators.PlantType.NOT_TINTED
         );
+        generator.createCrossBlockWithDefaultItem(
+                ModBlocks.GLOOMY_SAPLING,
+                BlockModelGenerators.PlantType.NOT_TINTED
+        );
+        generator.createCrossBlockWithDefaultItem(
+                ModBlocks.MAPLE_SAPLING,
+                BlockModelGenerators.PlantType.NOT_TINTED
+        );
+        generator.createCrossBlockWithDefaultItem(
+                ModBlocks.POPLAR_SAPLING,
+                BlockModelGenerators.PlantType.NOT_TINTED
+        );
+
+
+
+
+
         generateMicroBlock(
                 generator,
                 ModBlocks.MICRO_COBBLESTONE,
@@ -1101,6 +1185,16 @@ public class ModModelProvider extends FabricModelProvider {
         generator.createDoor(ModBlocks.WILLOW_DOOR);
         generator.createTrapdoor(ModBlocks.WILLOW_TRAPDOOR);
 
+        generator.createDoor(ModBlocks.GLOOMY_DOOR);
+        generator.createTrapdoor(ModBlocks.GLOOMY_TRAPDOOR);
+
+        generator.createDoor(ModBlocks.MAPLE_DOOR);
+        generator.createTrapdoor(ModBlocks.MAPLE_TRAPDOOR);
+
+        generator.createDoor(ModBlocks.POPLAR_DOOR);
+        generator.createTrapdoor(ModBlocks.POPLAR_TRAPDOOR);
+
+
         generator.createGrowingPlant(
                 ModBlocks.HIGH_GRASS,
                 ModBlocks.HIGH_GRASS_PLANT,
@@ -1112,6 +1206,22 @@ public class ModModelProvider extends FabricModelProvider {
         // =========================
 
         generator.createTrivialCube(ModBlocks.DRIED_EARTH);
+        generator.createTrivialCube(ModBlocks.CLAY_EARTH);
+
+        generator.createTrivialCube(ModBlocks.GLOOMY_LEAVES);
+        generator.createTrivialCube(ModBlocks.GLOOMY_LEAVES_FLOVER);
+
+        generator.createTrivialCube(ModBlocks.POPLAR_LEAVES);
+
+        generator.createTrivialCube(ModBlocks.MAPLE_RED_LEAVES);
+        generator.createTrivialCube(ModBlocks.MAPLE_YELLOW_LEAVES);
+
+
+
+
+
+
+
         generator.createTrivialCube(ModBlocks.SALT_BLOCk);
         generateBog(generator);
 
@@ -1384,6 +1494,7 @@ public class ModModelProvider extends FabricModelProvider {
 
 
 
+
         generateMicroBlockItem(
                 generator,
                 ModItems.MICRO_OAK_PLANKS,
@@ -1404,6 +1515,21 @@ public class ModModelProvider extends FabricModelProvider {
         generator.generateFlatItem(
                 ModItems.BOG,
                 ModelTemplates.FLAT_ITEM
+        );
+
+        generator.generateFlatItem(
+                ModItems.THORNY_VINE,
+                ModelTemplates.FLAT_ITEM
+        );
+
+        generator.generateFlatItem(
+                ModItems.GLOWING_FRUIT,
+                ModelTemplates.FLAT_ITEM
+        );
+
+        generateFlatBlockItem(
+                generator,
+                ModBlocks.POPLAR_CATKIN
         );
 
     }

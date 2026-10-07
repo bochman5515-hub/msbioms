@@ -5,23 +5,23 @@ import dev.corgitaco.ohthetreesyoullgrow.world.level.levelgen.feature.configurat
 import msbioms.MSBioms;
 import msbioms.block.ModBlocks;
 
-import msbioms.worldgen.feature.WillowVineFeature;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.grower.TreeGrower;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import org.jspecify.annotations.NonNull;
 
@@ -79,6 +79,12 @@ public class ModConfiguredFeatures {
                     Registries.CONFIGURED_FEATURE,
                     MSBioms.id("bog_plant")
             );
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOMY_TREE =
+            ResourceKey.create(
+                    Registries.CONFIGURED_FEATURE,
+                    MSBioms.id("gloomy_tree")
+            );
+
 
 
 
@@ -95,11 +101,81 @@ public class ModConfiguredFeatures {
                     Registries.CONFIGURED_FEATURE,
                     MSBioms.id("willow_medium_big_variant")
             );
+    public static final TreeGrower GLOOMY =
+            new TreeGrower(
+                    "gloomy",
+                    0.0F,
+                    Optional.empty(),
+                    Optional.empty(),
+                    Optional.of(GLOOMY_TREE),
+                    Optional.empty(),
+                    Optional.empty(),
+                    Optional.empty()
+            );
+
 
 
     public static void bootstrap(
             BootstrapContext<ConfiguredFeature<?, ?>> context
     ) {
+        TreeFromStructureNBTConfigV2 gloomyTreeConfig =
+                new TreeFromStructureNBTConfigV2.Builder()
+                        .baseLocation(
+                                MSBioms.id(
+                                        "features/trees/gloomy/gloomy_base"
+                                )
+                        )
+                        .canopyLocation(
+                                MSBioms.id(
+                                        "features/trees/gloomy/gloomy_canopy"
+                                )
+                        )
+                        .height(
+                                UniformInt.of(1, 2)
+                        )
+                        .logProvider(
+                                net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider.simple(
+                                        ModBlocks.GLOOMY_WOOD
+                                )
+                        )
+                        .leavesProvider(
+                                List.of(
+                                        new WeightedStateProvider(
+                                                WeightedList.<BlockState>builder()
+                                                        .add(
+                                                                ModBlocks.GLOOMY_LEAVES.defaultBlockState(),
+                                                                90
+                                                        )
+                                                        .add(
+                                                                ModBlocks.GLOOMY_LEAVES_FLOVER.defaultBlockState(),
+                                                                10
+                                                        )
+                                        )
+                                )
+                        )
+                        .logTarget(
+                                Set.of(Blocks.OAK_LOG)
+                        )
+                        .leavesTarget(
+                                List.of(Blocks.OAK_LEAVES)
+                        )
+                        .growableOn(
+                                BlockPredicate.matchesTag(
+                                        BlockTags.SUBSTRATE_OVERWORLD
+                                )
+                        )
+                        .maxLogDepth(5)
+                        .randomRotation(true)
+                        .build();
+
+        context.register(
+                GLOOMY_TREE,
+                new ConfiguredFeature<>(
+                        TYGFeatures.TREE_FROM_NBT_V2.get(),
+                        gloomyTreeConfig
+                )
+        );
+
 
         // =========================================================
         // TALL SPRUCE
@@ -400,6 +476,7 @@ public class ModConfiguredFeatures {
                 );
         return mediumBigVariant;
     }
+
 
 
     // =============================================================
