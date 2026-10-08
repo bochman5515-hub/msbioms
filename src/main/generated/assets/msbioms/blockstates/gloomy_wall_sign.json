@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "msbioms:block/gloomy_wall_sign",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "msbioms:block/gloomy_wall_sign",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "msbioms:block/gloomy_wall_sign"
+    },
+    "facing=west": {
+      "model": "msbioms:block/gloomy_wall_sign",
+      "y": 90
+    }
+  }
+}

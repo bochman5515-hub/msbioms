@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "msbioms:block/gloomy_log",
+    "side": "msbioms:block/gloomy_log"
+  }
+}

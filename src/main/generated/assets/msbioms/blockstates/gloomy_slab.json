@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "msbioms:block/gloomy_slab"
+    },
+    "type=double": {
+      "model": "msbioms:block/gloomy_planks"
+    },
+    "type=top": {
+      "model": "msbioms:block/gloomy_slab_top"
+    }
+  }
+}

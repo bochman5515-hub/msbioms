@@ -1,0 +1,11 @@
+{
+  "values": [
+    "msbioms:clay_stairs",
+    "msbioms:clay_slab",
+    "msbioms:clay_wall",
+    "msbioms:packed_mud_stairs",
+    "msbioms:packed_mud_slab",
+    "msbioms:packed_mud_wall",
+    "msbioms:mud_slab"
+  ]
+}
