@@ -40,7 +40,7 @@
           "derivative": 0.0,
           "location": -0.1,
           "value": {
-            "coordinate": "minecraft:overworld/erosion",
+            "coordinate": "msbioms:overworld/erosion/erosion",
             "points": [
               {
                 "note": "Mountain peaks E=0",
@@ -239,7 +239,7 @@
           "derivative": 0.0,
           "location": 0.1,
           "value": {
-            "coordinate": "minecraft:overworld/erosion",
+            "coordinate": "msbioms:overworld/erosion/erosion",
             "points": [
               {
                 "note": "Mountain peaks E=0",
@@ -260,10 +260,30 @@
                       "value": 182
                     },
                     {
+                      "derivative": 0.0,
+                      "location": 0.70,
+                      "value": 350
+                    },
+                    {
+                      "derivative": 0.0,
+                      "location": 0.85,
+                      "value": 400
+                    },
+                    {
+                      "derivative": 0.0,
+                      "location": 0.93,
+                      "value": 500
+                    },
+                    {
+                      "derivative": 0.0,
+                      "location": 0.98,
+                      "value": 600
+                    },
+                    {
                       "note": "Peaks",
                       "derivative": 0.0,
                       "location": 1.0,
-                      "value": 348
+                      "value": 700
                     }
                   ]
                 }
@@ -284,13 +304,33 @@
                     {
                       "derivative": 0.0,
                       "location": 0.0,
-                      "value": 142
+                      "value": 150
+                    },
+                    {
+                      "derivative": 0.0,
+                      "location": 0.70,
+                      "value": 250
+                    },
+                    {
+                      "derivative": 0.0,
+                      "location": 0.85,
+                      "value": 400
+                    },
+                    {
+                      "derivative": 0.0,
+                      "location": 0.93,
+                      "value": 500
+                    },
+                    {
+                      "derivative": 0.0,
+                      "location": 0.98,
+                      "value": 600
                     },
                     {
                       "note": "Peaks",
                       "derivative": 0.0,
                       "location": 1.0,
-                      "value": 264
+                      "value": 700
                     }
                   ]
                 }
@@ -316,7 +356,7 @@
                     {
                       "derivative": 0.0,
                       "location": 1.0,
-                      "value": 168
+                      "value": 208
                     }
                   ]
                 }

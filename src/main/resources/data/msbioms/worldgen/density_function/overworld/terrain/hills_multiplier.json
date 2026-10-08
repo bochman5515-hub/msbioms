@@ -12,7 +12,7 @@
         "location": 0.0,
         "derivative": 0.0,
         "value": {
-          "coordinate": "minecraft:overworld/erosion",
+          "coordinate": "msbioms:overworld/erosion/erosion",
           "points": [
             {
               "location": -0.62,
@@ -23,17 +23,17 @@
                   {
                     "location": -1.0,
                     "derivative": 0.0,
-                    "value": 32
+                    "value": 50
                   },
                   {
                     "location": 0.0,
                     "derivative": 0.0,
-                    "value": 48
+                    "value": 75
                   },
                   {
                     "location": 1.0,
                     "derivative": 0.0,
-                    "value": 84
+                    "value": 120
                   }
                 ]
               }
@@ -47,17 +47,17 @@
                   {
                     "location": -1.0,
                     "derivative": 0.0,
-                    "value": 16
+                    "value": 90
                   },
                   {
                     "location": 0.0,
                     "derivative": 0.0,
-                    "value": 24
+                    "value": 45
                   },
                   {
                     "location": 1.0,
                     "derivative": 0.0,
-                    "value": 64
+                    "value": 90
                   }
                 ]
               }

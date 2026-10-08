@@ -1,10 +1,13 @@
 package msbioms;
 
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import msbioms.block.ModBlocks;
 import msbioms.block.ModWoodTypes;
 import msbioms.creativemodetab.ModCreativeModeTabs;
 import msbioms.density_function.FlatDomainWarp;
 import msbioms.density_function.Signum;
+import msbioms.density_function.Sine;
+import msbioms.density_function.ZCoord;
 import msbioms.item.ModItems;
 import msbioms.particle.ModParticles;
 import msbioms.worldgen.ModBiomeGeneration;
@@ -18,6 +21,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import msbioms.worldgen.ModBiomePlacement;
 
+import net.minecraft.util.KeyDispatchDataCodec;
+import net.minecraft.world.level.levelgen.DensityFunctions;
 import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +50,18 @@ public class MSBioms implements ModInitializer {
 				id("signum"),
 				Signum.MAP_CODEC
 		);
+		Registry.register(
+				BuiltInRegistries.DENSITY_FUNCTION_TYPE,
+				id("sine"),
+				Sine.MAP_CODEC
+		);
+
+		Registry.register(
+				BuiltInRegistries.DENSITY_FUNCTION_TYPE,
+				id("z"),
+				ZCoord.MAP_CODEC
+		);
+
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
@@ -70,6 +87,7 @@ public class MSBioms implements ModInitializer {
 							CaveCarverConfiguration.CODEC
 					)
 			);
+
 
 
 
