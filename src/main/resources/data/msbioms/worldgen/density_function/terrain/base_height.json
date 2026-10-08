@@ -10,8 +10,8 @@
         "argument1": -0.3168897689123,
         "argument2": {
           "type": "minecraft:add",
-          "argument1": "msbioms:terrain/terrain",
-          "argument2": "msbioms:terrain/features"
+          "argument1": "msbioms:overworld/terrain/base_height",
+          "argument2": "msbioms:overworld/terrain/features"
         }
       }
     }

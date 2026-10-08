@@ -1,0 +1,5 @@
+{
+  "type": "minecraft:add",
+  "argument1": "msbioms:overworld/terrain/base_height",
+  "argument2": "msbioms:overworld/terrain/features"
+}

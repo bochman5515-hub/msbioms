@@ -7,7 +7,7 @@
       "argument1": {
         "type": "minecraft:noise",
         "noise": "msbioms:terrain/hills",
-        "xz_scale": 0.25,
+        "xz_scale": 0.32,
         "y_scale": 0
       },
       "argument2": {
@@ -18,7 +18,7 @@
           "argument": {
             "type": "minecraft:noise",
             "noise": "msbioms:terrain/hills_c",
-            "xz_scale": 0.14,
+            "xz_scale": 0.5,
             "y_scale": 0
           }
         }
